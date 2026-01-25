@@ -1,0 +1,7 @@
+class GlobalConstants {
+  static const String baseUrl = "https://localhost:8080";
+  static const int timeout = 10000;
+  static const String successCode = "200";
+  static const String tokenKey = "token";
+  static const double topIconSize = 22.0;//顶部icon的大小
+}
