@@ -1,12 +1,113 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/home/LevelTag.dart';
+import 'package:hey/constant/ColorConstants.dart';
+import 'package:hey/constant/GlobalConstants.dart';
 import 'package:hey/models/home/PostBase.dart';
 
-class MyWidget extends StatelessWidget {
+class PostItem extends StatelessWidget {
   final PostBase postBase;
-  const MyWidget({super.key,required this.postBase});
+  static const sizeBoxWidth = 6.0;
+  const PostItem({super.key, required this.postBase});
+  Widget _buildTopArea() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            CircleAvatar(
+              radius: postBase.postType == GlobalConstants.recommendPostType
+                  ? 10
+                  : 14,
+              backgroundImage: NetworkImage(postBase.authorAvatar),
+            ),
+            const SizedBox(width: sizeBoxWidth),
+            Text(
+              postBase.authorNickName,
+              style: TextStyle(
+                fontSize: postBase.postType == GlobalConstants.recommendPostType
+                    ? 12
+                    : 14,
+                fontWeight:
+                    postBase.postType == GlobalConstants.recommendPostType
+                    ? FontWeight.w300
+                    : FontWeight.w400,
+                color: postBase.postType == GlobalConstants.recommendPostType
+                    ? ColorConstants.nickName
+                    : ColorConstants.primaryBlack,
+              ),
+            ),
+            const SizedBox(width: sizeBoxWidth),
+            LevelTag(level: postBase.authorLevel),
+          ],
+        ),
+        const Text('...'),
+      ],
+    );
+  }
+
+  Widget _buildImageArea() {
+    return Text('data');
+  }
+
+  Widget _buildBottomArea() {
+    return Text('data');
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //顶部用户名
+              _buildTopArea(),
+              const SizedBox(height: 10),
+              //标题
+              Text(
+                postBase.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: ColorConstants.titleBlack,
+                ),
+                maxLines: 1,
+                textAlign: TextAlign.left,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 10),
+              //帖子简短内容
+              Text(
+                postBase.shortContent,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: ColorConstants.titleBlack,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 10),
+              //图片区域
+              _buildImageArea(),
+              const SizedBox(height: 10),
+              //底部社区信息、点赞和评论数量展示
+              _buildBottomArea(),
+            ],
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 10),
+          child: Divider(
+            height: 1,
+            thickness: 4,
+            color: ColorConstants.dividerColor,
+          ),
+        ),
+      ],
+    );
   }
 }

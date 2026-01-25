@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/home/PostItem.dart';
 import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/models/home/NamePicture.dart';
 import 'package:hey/models/home/PostBase.dart';
@@ -45,7 +46,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
           'https://bkimg.cdn.bcebos.com/pic/d8f9d72a6059252dbe52cc48379b033b5bb5b931?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080',
     ),
   ];
-  final List<dynamic> _postList = [
+  final List<PostBase> _postList = [
     PostBase(
       postId: '1',
       postType: 'recommend',
@@ -59,12 +60,12 @@ class _HomeRecommendState extends State<HomeRecommend> {
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
-      authorLevel: '8',
+      authorLevel: '1',
       communityName: '千恋 * 万花',
       communityLogo: 'https://qianlianwanhua.com/222.webp',
       commentCount: 52,
       likeCount: 200,
-    ).toJson(),
+    ),
     PostBase(
       postId: '2',
       postType: 'recommend',
@@ -83,7 +84,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
       communityLogo: 'https://qianlianwanhua.com/222.webp',
       commentCount: 52,
       likeCount: 200,
-    ).toJson(),
+    ),
     PostBase(
       postId: '3',
       postType: 'recommend',
@@ -102,7 +103,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
       communityLogo: 'https://qianlianwanhua.com/222.webp',
       commentCount: 52,
       likeCount: 200,
-    ).toJson(),
+    ),
   ];
   // 下拉刷新
   Future<void> _onRefresh() async {
@@ -114,8 +115,8 @@ class _HomeRecommendState extends State<HomeRecommend> {
     );
   }
 
-  Widget _buildPostItem() {
-    return const Text('data');
+  Widget _buildPostItem(PostBase postBase) {
+    return PostItem(postBase: postBase);
   }
 
   Widget _buildGameCardList() {
@@ -210,7 +211,11 @@ class _HomeRecommendState extends State<HomeRecommend> {
         ),
         const Padding(
           padding: EdgeInsets.only(bottom: 10),
-          child: Divider(height: 1, thickness: 4, color: ColorConstants.dividerColor),
+          child: Divider(
+            height: 1,
+            thickness: 4,
+            color: ColorConstants.dividerColor,
+          ),
         ),
       ],
     );
@@ -226,7 +231,8 @@ class _HomeRecommendState extends State<HomeRecommend> {
           if (index == 0) {
             return _buildGameCardList();
           } else {
-            return _buildPostItem();
+            PostBase postBase = _postList[index - 1];
+            return _buildPostItem(postBase);
           }
         },
       ),
