@@ -48,6 +48,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
   final List<dynamic> _postList = [
     PostBase(
       postId: '1',
+      postType: 'recommend',
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
       contentImages: [
@@ -66,6 +67,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
     ).toJson(),
     PostBase(
       postId: '2',
+      postType: 'recommend',
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
       contentImages: [
@@ -84,6 +86,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
     ).toJson(),
     PostBase(
       postId: '3',
+      postType: 'recommend',
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
       contentImages: [

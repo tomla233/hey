@@ -2,6 +2,10 @@
 class PostBase {
   // 帖子id
   final String postId;
+  //帖子类型
+  final String postType;
+  //帖子发布时间
+  final String? postTime;
   //文章标题
   final String title;
   //帖子内容简略
@@ -25,6 +29,8 @@ class PostBase {
 
   PostBase({
     required this.postId,
+    required this.postType,
+    this.postTime,
     required this.title,
     required this.shortContent,
     required this.contentImages,
@@ -36,13 +42,17 @@ class PostBase {
     required this.commentCount,
     required this.likeCount,
   });
-  
+
   factory PostBase.fromJson(Map<String, dynamic> json) {
     return PostBase(
       postId: json['postId'],
+      postType: json['postType'],
+      postTime: json['postTime'] ?? '',
       title: json['title'],
       shortContent: json['shortContent'],
-      contentImages: json['contentImages'],
+      contentImages: json['contentImages'] is List
+          ? List<String>.from(json['contentImages'])
+          : [],
       authorAvatar: json['authorAvatar'],
       authorNickName: json['authorNickName'],
       authorLevel: json['authorLevel'],
