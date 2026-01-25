@@ -16,7 +16,7 @@
 ```
 flutter build apk --target-platform android-arm64 --split-per-abi
 ```
-## 
+## 一起贡献
 - 欢迎提交issue，请详细描述问题，并附上复现步骤
 - 欢迎提交pr，请详细描述修改内容
 - 联系我：QQ：848856689
