@@ -12,6 +12,8 @@ class PostBase {
   final String shortContent;
   //帖子内容图片列表
   final List<String> contentImages;
+  //帖子作者id
+  final String authorId;
   //用户头像
   final String authorAvatar;
   //用户昵称
@@ -34,6 +36,7 @@ class PostBase {
     required this.title,
     required this.shortContent,
     required this.contentImages,
+    required this.authorId,
     required this.authorAvatar,
     required this.authorNickName,
     required this.authorLevel,
@@ -53,6 +56,7 @@ class PostBase {
       contentImages: json['contentImages'] is List
           ? List<String>.from(json['contentImages'])
           : [],
+      authorId: json['authorId'],
       authorAvatar: json['authorAvatar'],
       authorNickName: json['authorNickName'],
       authorLevel: json['authorLevel'],
