@@ -1,5 +1,10 @@
 # hey（仿小黑盒app）
-## 项目介绍
+
+## 其他地址
+- [github](https://github.com/tomla233/hey)
+- [gitee](https://gitee.com/TomLa/hey)
+
+## 项目依赖介绍
 - 项目用的flutter版本：3.38.5
 
 - 状态管理框架：[Mobx](https://mobx.netlify.app/getting-started)
