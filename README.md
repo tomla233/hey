@@ -1,6 +1,6 @@
 # hey（仿小黑盒app）
 
-## 其他地址
+## 其他仓库地址
 - [github](https://github.com/tomla233/hey)
 - [gitee](https://gitee.com/TomLa/hey)
 
