@@ -58,7 +58,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
-      authorLevel: 'Lv.8',
+      authorLevel: '8',
       communityName: '千恋 * 万花',
       communityLogo: 'https://qianlianwanhua.com/222.webp',
       commentCount: 52,
@@ -76,7 +76,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
-      authorLevel: 'Lv.8',
+      authorLevel: '4',
       communityName: '千恋 * 万花',
       communityLogo: 'https://qianlianwanhua.com/222.webp',
       commentCount: 52,
@@ -94,7 +94,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
-      authorLevel: 'Lv.8',
+      authorLevel: '2',
       communityName: '千恋 * 万花',
       communityLogo: 'https://qianlianwanhua.com/222.webp',
       commentCount: 52,
@@ -112,93 +112,104 @@ class _HomeRecommendState extends State<HomeRecommend> {
   }
 
   Widget _buildPostItem() {
-    return const Placeholder();
+    return const Text('data');
   }
 
   Widget _buildGameCardList() {
-    return SizedBox(
-      height: 120,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(top: 16),
-        itemCount: _gameList.length,
-        itemBuilder: (context, index) {
-          //index为0时，显示全部
-          if (index == 0) {
-            return Column(
-              children: [
-                Container(
-                  width: 44,
-                  height: 44,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: Image.asset('lib/assets/all.png', fit: BoxFit.cover),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  _gameList[index].name,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: ColorConstants.primaryBlack,
-                  ),
-                ),
-              ],
-            );
-          }
-          return Column(
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.network(
-                    _gameList[index].picture,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Image.asset(
-                        'lib/assets/box.png',
-                        width: 40,
-                        height: 40,
-                        fit: BoxFit.cover,
-                      );
-                    },
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      } else {
-                        return Image.asset(
-                          'lib/assets/box.png',
-                          width: 40,
-                          height: 40,
+    return Column(
+      children: [
+        SizedBox(
+          height: 100,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(top: 16),
+            itemCount: _gameList.length,
+            itemBuilder: (context, index) {
+              //index为0时，显示全部
+              if (index == 0) {
+                return Column(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(1),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Image.asset(
+                          'lib/assets/all.png',
                           fit: BoxFit.cover,
-                        );
-                      }
-                    },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      _gameList[index].name,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: ColorConstants.primaryBlack,
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return Column(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(1),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Image.network(
+                        _gameList[index].picture,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset(
+                            'lib/assets/box.png',
+                            width: 40,
+                            height: 40,
+                            fit: BoxFit.cover,
+                          );
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Image.asset(
+                              'lib/assets/box.png',
+                              width: 40,
+                              height: 40,
+                              fit: BoxFit.cover,
+                            );
+                          }
+                        },
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                _gameList[index].name,
-                style: const TextStyle(
-                  fontSize: 10,
-                  color: ColorConstants.primaryBlack,
-                ),
-              ),
-            ],
-          );
-        },
-      ),
+                  const SizedBox(height: 5),
+                  Text(
+                    _gameList[index].name,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: ColorConstants.primaryBlack,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 10),
+          child: Divider(height: 1, thickness: 4, color: ColorConstants.dividerColor),
+        ),
+      ],
     );
   }
 
