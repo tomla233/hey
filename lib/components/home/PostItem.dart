@@ -64,8 +64,82 @@ class PostItem extends StatelessWidget {
     );
   }
 
-  Widget _buildImageArea() {
-    return Text('data');
+  Widget _buildImageArea(BuildContext context) {
+    if (postBase.contentImages.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    List<String> imageList = postBase.contentImages.take(3).toList();
+    return Row(
+      children: imageList.asMap().entries.map((entry) {
+        int index = entry.key;
+        String imgUrl = imageList[index];
+        double imageWidth = (MediaQuery.of(context).size.width - 20 - 12) / 3;
+        return Expanded(
+          child: Container(
+            margin: EdgeInsets.only(right: index < 2 ? 6 : 0),
+            height: imageWidth,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    imgUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      // 图片加载失败时的占位图
+                      return Container(
+                        color: ColorConstants.dividerColor,
+                        child: const Icon(
+                          Icons.image_not_supported,
+                          color: Colors.grey,
+                        ),
+                      );
+                    },
+                    loadingBuilder: (context, child, loadingProgress) {
+                      // 图片加载过程中的占位图
+                      if (loadingProgress == null) {
+                        return child;
+                      } else {
+                        return Container(
+                          color: ColorConstants.dividerColor,
+                          child: const Icon(
+                            Icons.image_not_supported,
+                            color: Colors.grey,
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
+                if (index == 2 && postBase.imageCount > 3)
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "共${postBase.imageCount}张",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        );
+      }).toList(),
+    );
   }
 
   Widget _buildBottomArea() {
@@ -116,7 +190,7 @@ class PostItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 //图片区域
-                _buildImageArea(),
+                _buildImageArea(context),
                 const SizedBox(height: 10),
                 //底部社区信息、点赞和评论数量展示
                 _buildBottomArea(),

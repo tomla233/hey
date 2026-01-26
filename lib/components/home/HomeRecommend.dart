@@ -55,8 +55,8 @@ class _HomeRecommendState extends State<HomeRecommend> {
       contentImages: [
         'https://qianlianwanhua.com/gsbj.webp',
         'https://qianlianwanhua.com/2.webp',
-        'https://qianlianwanhua.com/4.webp',
       ],
+      imageCount: 1,
       authorId: '1',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
@@ -77,6 +77,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
         'https://qianlianwanhua.com/2.webp',
         'https://qianlianwanhua.com/4.webp',
       ],
+      imageCount: 4,
       authorId: '2',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
@@ -97,6 +98,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
         'https://qianlianwanhua.com/2.webp',
         'https://qianlianwanhua.com/4.webp',
       ],
+      imageCount: 3,
       authorId: '3',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
