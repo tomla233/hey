@@ -33,7 +33,7 @@ class PostItem extends StatelessWidget {
 
   Widget _buildTopArea() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,      
       children: [
         Row(
           children: [

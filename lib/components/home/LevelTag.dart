@@ -35,12 +35,12 @@ class LevelTag extends StatelessWidget {
         borderRadius: BorderRadius.circular(2),
       ),
       alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 6),
       child: Text(
         tagPrefix + level,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 10,
+          fontSize: 8,
           fontWeight: FontWeight.bold,
         ),
       ),
