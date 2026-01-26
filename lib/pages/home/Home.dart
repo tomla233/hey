@@ -4,6 +4,7 @@ import 'package:hey/components/common/CustomTabAppBar.dart';
 import 'package:hey/components/home/HomeAttention.dart';
 import 'package:hey/components/home/HomeRecommend.dart';
 import 'package:hey/constant/GlobalConstants.dart';
+import 'package:hey/utils/MsgUtil.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -24,10 +25,12 @@ class _HomeState extends State<Home> {
   }
 
   void _onSearchTap() {
+    MsgUtil.show('搜索功能暂未完成');
     print("点击了【搜索图标】");
   }
 
   void _onMailTap() {
+    MsgUtil.show('消息功能暂未完成');
     print("点击了【邮件图标】");
   }
 

@@ -22,6 +22,15 @@ class PostItem extends StatelessWidget {
     print("点击了【社区】,社区id:${postBase.communityId}");
   }
 
+  void _onTapComment() {
+    MsgUtil.show('评论功能暂未完成');
+    print("点击了【评论】");
+  }
+  void _onTapLike() {
+    MsgUtil.show('点赞功能暂未完成');
+    print("点击了【点赞】");
+  }
+
   Widget _buildTopArea() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,6 +72,7 @@ class PostItem extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
+            MsgUtil.show('更多功能暂未完成');
             print("点击了【更多图标】");
           },
           child: const Icon(
@@ -167,9 +177,14 @@ class PostItem extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        CommentHorizontal(commentCount: postBase.commentCount),
+        GestureDetector(
+          onTap: _onTapComment,
+          child: CommentHorizontal(commentCount: postBase.commentCount),
+        ),
         const SizedBox(width: 10),
-        LikeHorizontal(likeCount: postBase.likeCount),
+        GestureDetector(
+          onTap: _onTapLike,
+          child: LikeHorizontal(likeCount: postBase.likeCount)),
       ],
     );
   }
