@@ -16,6 +16,6 @@ class LikeHorizontal extends StatelessWidget {
           style: const TextStyle(fontSize: 12, color: Color(0xFFC8CDD1)),
         ),
       ],
-    );;
+    );
   }
 }
