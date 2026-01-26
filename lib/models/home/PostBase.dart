@@ -22,6 +22,8 @@ class PostBase {
   final String authorNickName;
   //用户等级
   final String authorLevel;
+  //所属社区id
+  final String communityId;
   //所属社区名称
   final String communityName;
   //所属社区logo
@@ -43,6 +45,7 @@ class PostBase {
     required this.authorAvatar,
     required this.authorNickName,
     required this.authorLevel,
+    required this.communityId,
     required this.communityName,
     required this.communityLogo,
     required this.commentCount,
@@ -64,6 +67,7 @@ class PostBase {
       authorAvatar: json['authorAvatar'],
       authorNickName: json['authorNickName'],
       authorLevel: json['authorLevel'],
+      communityId: json['communityId'],
       communityName: json['communityName'],
       communityLogo: json['communityLogo'],
       commentCount: json['commentCount'],
@@ -80,6 +84,7 @@ class PostBase {
       'authorAvatar': authorAvatar,
       'authorNickName': authorNickName,
       'authorLevel': authorLevel,
+      'communityId': communityId,
       'communityName': communityName,
       'communityLogo': communityLogo,
       'commentCount': commentCount,

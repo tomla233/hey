@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/common/CommentHorizontal.dart';
+import 'package:hey/components/common/LikeHorizontal.dart';
 import 'package:hey/components/home/LevelTag.dart';
+import 'package:hey/components/home/communityTag.dart';
 import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/constant/GlobalConstants.dart';
 import 'package:hey/models/home/PostBase.dart';
+import 'package:hey/utils/MsgUtil.dart';
 
 class PostItem extends StatelessWidget {
   final PostBase postBase;
   static const sizeBoxWidth = 6.0;
   const PostItem({super.key, required this.postBase});
   void _onTapAuthor() {
+    MsgUtil.show('作者主页暂未完成');
     print("点击了【作者】,作者id:${postBase.authorId}");
+  }
+
+  void _onTapCommunity() {
+    MsgUtil.show('社区功能暂未完成');
+    print("点击了【社区】,社区id:${postBase.communityId}");
   }
 
   Widget _buildTopArea() {
@@ -146,7 +156,22 @@ class PostItem extends StatelessWidget {
   }
 
   Widget _buildBottomArea() {
-    return Text('data');
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: _onTapCommunity,
+          child: CommunityTag(
+            communityName: postBase.communityName,
+            communityLogo: postBase.communityLogo,
+          ),
+        ),
+        const Spacer(),
+        CommentHorizontal(commentCount: postBase.commentCount),
+        const SizedBox(width: 10),
+        LikeHorizontal(likeCount: postBase.likeCount),
+      ],
+    );
   }
 
   @override
@@ -159,7 +184,7 @@ class PostItem extends StatelessWidget {
             print("点击了【帖子】,帖子id:${postBase.postId}");
           },
           child: Container(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,7 +219,7 @@ class PostItem extends StatelessWidget {
                 const SizedBox(height: 10),
                 //图片区域
                 _buildImageArea(context),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 //底部社区信息、点赞和评论数量展示
                 _buildBottomArea(),
               ],

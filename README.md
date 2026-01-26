@@ -11,6 +11,9 @@
     - 修改每个store文件后：`flutter pub run build_runner build`
     - 自动监听并构建*.g.dart文件：`flutter pub run build_runner watch`
 
+- 消息提示插件： [oktoast](https://pub.dev/packages/oktoast)
+    - utils包下的MsgUtil.dart是基于此插件封装的提示类
+
 
 ## 打包为apk
 ```
