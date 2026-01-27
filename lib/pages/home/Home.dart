@@ -15,6 +15,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late final List<IconActionItem> _rightIconItems;
+  late PageController _pageController;
   int _selectedTabIndex = 1;
   final _tabTitles = ["关注", "推荐"];
   // 切换标签的回调
@@ -22,6 +23,12 @@ class _HomeState extends State<Home> {
     setState(() {
       _selectedTabIndex = index;
     });
+    // 滑动到对应的页面
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
   }
 
   void _onSearchTap() {
@@ -35,18 +42,20 @@ class _HomeState extends State<Home> {
   }
 
   List<Widget> _buildContentPages() {
-    return [
-      const HomeAttention(),
-      const HomeRecommend(),
-    ];
+    return [const HomeAttention(), const HomeRecommend()];
   }
 
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: _selectedTabIndex);
     _rightIconItems = [
       IconActionItem(
-        icon: const Icon(Icons.search_outlined, size: GlobalConstants.topIconSize, color: Colors.black),
+        icon: const Icon(
+          Icons.search_outlined,
+          size: GlobalConstants.topIconSize,
+          color: Colors.black,
+        ),
         onTap: _onSearchTap,
       ),
       IconActionItem(
@@ -54,6 +63,12 @@ class _HomeState extends State<Home> {
         onTap: _onMailTap,
       ),
     ];
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -65,8 +80,13 @@ class _HomeState extends State<Home> {
         onTabTap: _onTabTap,
         rightIconItems: _rightIconItems,
       ),
-      body: IndexedStack(
-        index: _selectedTabIndex,
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            _selectedTabIndex = index;
+          });
+        },
         children: _buildContentPages(),
       ),
     );
