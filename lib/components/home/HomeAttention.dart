@@ -3,6 +3,7 @@ import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/mock/PostService.dart';
 import 'package:hey/models/home/AttentionUserInfo.dart';
 import 'package:hey/models/home/PostBase.dart';
+import 'package:hey/utils/MsgUtil.dart';
 import 'package:hey/utils/ToastUtils.dart';
 
 class HomeAttention extends StatefulWidget {
@@ -27,6 +28,10 @@ class _HomeAttentionState extends State<HomeAttention> {
     );
   }
 
+  void _onTapAttentionUser(String name) {
+    MsgUtil.show('点击了关注的人$name');
+  }
+
   Widget _buildAttentionList() {
     return Column(
       children: [
@@ -39,44 +44,47 @@ class _HomeAttentionState extends State<HomeAttention> {
             itemBuilder: (context, index) {
               AttentionUserInfo attentionUserInfo = _attentionUserList[index];
               bool newMessage = attentionUserInfo.newMessage;
-              return Column(
-                children: [
-                  Stack(
-                    alignment: Alignment.topRight,
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        margin: const EdgeInsets.symmetric(horizontal: 14),
-                        child: CircleAvatar(
-                          radius: 48,
-                          backgroundImage: Image.network(
-                            attentionUserInfo.picture,
-                          ).image,
-                        ),
-                      ),
-                      if (newMessage)
+              return GestureDetector(
+                onTap: () => _onTapAttentionUser(attentionUserInfo.name),
+                child: Column(
+                  children: [
+                    Stack(
+                      alignment: Alignment.topRight,
+                      children: [
                         Container(
-                          width: 10,
-                          height: 10,
-                          margin: const EdgeInsets.only(right: 18, top: 2),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 2),
-                            color: Colors.red,
-                            shape: BoxShape.circle,
+                          width: 48,
+                          height: 48,
+                          margin: const EdgeInsets.symmetric(horizontal: 14),
+                          child: CircleAvatar(
+                            radius: 48,
+                            backgroundImage: Image.network(
+                              attentionUserInfo.picture,
+                            ).image,
                           ),
                         ),
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    attentionUserInfo.name,
-                    style: const TextStyle(
-                      fontSize: 10,
-                      color: Color(0xFF64696D),
+                        if (newMessage)
+                          Container(
+                            width: 10,
+                            height: 10,
+                            margin: const EdgeInsets.only(right: 18, top: 2),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white, width: 2),
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                      ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 5),
+                    Text(
+                      attentionUserInfo.name,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFF64696D),
+                      ),
+                    ),
+                  ],
+                ),
               );
             },
           ),
