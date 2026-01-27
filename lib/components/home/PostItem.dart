@@ -36,15 +36,21 @@ class PostItem extends StatelessWidget {
   //点击更多图标的方法
   void _onTapMore(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Colors.white,
       context: context,
+      isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(14)),
       ),
       isDismissible: true,
       builder: (BuildContext context) {
         return Container(
-          padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            top: 16,
+            bottom: 40,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,

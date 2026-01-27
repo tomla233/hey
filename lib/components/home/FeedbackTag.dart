@@ -10,12 +10,12 @@ class FeedbackTag extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 225, 227, 231),
+        color: const Color(0xFFF7F8FA),
         borderRadius: BorderRadius.circular(6),
       ),
       child: Text(
         feedbackContent,
-        style: const TextStyle(fontSize: 14, color: Color(0xFF585D60)),
+        style: const TextStyle(fontSize: 12, color: Color(0xFF585D60)),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         textAlign: TextAlign.center,
