@@ -23,16 +23,6 @@ class PostItem extends StatelessWidget {
     print("点击了【社区】,社区id:${postBase.communityId}");
   }
 
-  void _onTapComment() {
-    MsgUtil.show('评论功能暂未完成');
-    print("点击了【评论】");
-  }
-
-  void _onTapLike() {
-    MsgUtil.show('点赞功能暂未完成');
-    print("点击了【点赞】");
-  }
-
   //点击更多图标的方法
   void _onTapMore(BuildContext context) {
     showModalBottomSheet(
@@ -363,15 +353,9 @@ class PostItem extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        GestureDetector(
-          onTap: _onTapComment,
-          child: CommentHorizontal(commentCount: postBase.commentCount),
-        ),
+        CommentHorizontal(commentCount: postBase.commentCount),
         const SizedBox(width: 10),
-        GestureDetector(
-          onTap: _onTapLike,
-          child: LikeHorizontal(likeCount: postBase.likeCount),
-        ),
+        LikeHorizontal(likeCount: postBase.likeCount),
       ],
     );
   }
