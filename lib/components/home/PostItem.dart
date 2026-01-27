@@ -249,13 +249,14 @@ class PostItem extends StatelessWidget {
             LevelTag(level: postBase.authorLevel),
           ],
         ),
-        GestureDetector(
-          onTap: () => _onTapMore(context),
-          child: const Icon(
-            Icons.more_horiz_outlined,
-            color: Color(0xFFC8CDD1),
+        if (postBase.postType == GlobalConstants.recommendPostType)
+          GestureDetector(
+            onTap: () => _onTapMore(context),
+            child: const Icon(
+              Icons.more_horiz_outlined,
+              color: Color(0xFFC8CDD1),
+            ),
           ),
-        ),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/home/PostItem.dart';
 import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/mock/PostService.dart';
 import 'package:hey/models/home/AttentionUserInfo.dart';
@@ -14,7 +15,7 @@ class HomeAttention extends StatefulWidget {
 }
 
 class _HomeAttentionState extends State<HomeAttention> {
-  final List<PostBase> _postList = PostService().postList;
+  final List<PostBase> _postList = PostService().attentionPostList;
   //关注列表
   final List<AttentionUserInfo> _attentionUserList =
       PostService().attentionUserList;
@@ -102,7 +103,7 @@ class _HomeAttentionState extends State<HomeAttention> {
   }
 
   Widget _buildPostItem(PostBase postBase) {
-    return const Placeholder();
+     return PostItem(postBase: postBase);
   }
 
   @override
