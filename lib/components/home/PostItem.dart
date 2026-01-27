@@ -187,23 +187,31 @@ class PostItem extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '举报',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: ColorConstants.titleBlack,
-                      fontWeight: FontWeight.w600,
-                    ),
+              InkWell(
+                onTap: () {
+                  MsgUtil.show('举报功能暂未完成');
+                },
+                child: const SizedBox(
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '举报',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: ColorConstants.titleBlack,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Color(0xFFC8CDD1),
+                        size: 16,
+                      ),
+                    ],
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: Color(0xFFC8CDD1),
-                    size: 16,
-                  ),
-                ],
+                ),
               ),
             ],
           ),
