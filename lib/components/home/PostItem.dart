@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CommentHorizontal.dart';
 import 'package:hey/components/common/LikeHorizontal.dart';
+import 'package:hey/components/home/FeedbackTag.dart';
 import 'package:hey/components/home/LevelTag.dart';
 import 'package:hey/components/home/communityTag.dart';
 import 'package:hey/constant/ColorConstants.dart';
@@ -26,14 +27,150 @@ class PostItem extends StatelessWidget {
     MsgUtil.show('评论功能暂未完成');
     print("点击了【评论】");
   }
+
   void _onTapLike() {
     MsgUtil.show('点赞功能暂未完成');
     print("点击了【点赞】");
   }
 
-  Widget _buildTopArea() {
+  //点击更多图标的方法
+  void _onTapMore(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(14)),
+      ),
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                '不感兴趣（选择后将减少相似推荐）',
+                style: TextStyle(fontSize: 16, color: Color(0xFF898D91)),
+              ),
+              const SizedBox(height: 16),
+              Wrap(
+                //水平间距
+                spacing: 12,
+                //垂直间距
+                runSpacing: 12,
+                alignment: WrapAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: FeedbackTag(
+                      feedbackContent: '不喜欢该社区: ${postBase.communityName}',
+                    ),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '相似内容过多'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: FeedbackTag(
+                      feedbackContent: '不喜欢该作者: ${postBase.authorNickName}',
+                    ),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '不喜欢该内容'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: FeedbackTag(
+                      feedbackContent: '不喜欢: ${postBase.communityName}相关',
+                    ),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: FeedbackTag(
+                      feedbackContent: '不喜欢: ${postBase.communityName}相关',
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                '内容反馈',
+                style: TextStyle(fontSize: 16, color: Color(0xFF898D91)),
+              ),
+              const SizedBox(height: 16),
+              Wrap(
+                //水平间距
+                spacing: 12,
+                //垂直间距
+                runSpacing: 12,
+                alignment: WrapAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '软文广告'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '标题党'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '不实炒作'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: 'AI生成'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '内容低俗'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '分区错误'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '内容质量差'),
+                  ),
+                  SizedBox(
+                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    child: const FeedbackTag(feedbackContent: '内容不适'),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '举报',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: ColorConstants.titleBlack,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Color(0xFFC8CDD1),
+                    size: 16,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildTopArea(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,      
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
@@ -71,10 +208,7 @@ class PostItem extends StatelessWidget {
           ],
         ),
         GestureDetector(
-          onTap: () {
-            MsgUtil.show('更多功能暂未完成');
-            print("点击了【更多图标】");
-          },
+          onTap: () => _onTapMore(context),
           child: const Icon(
             Icons.more_horiz_outlined,
             color: Color(0xFFC8CDD1),
@@ -184,7 +318,8 @@ class PostItem extends StatelessWidget {
         const SizedBox(width: 10),
         GestureDetector(
           onTap: _onTapLike,
-          child: LikeHorizontal(likeCount: postBase.likeCount)),
+          child: LikeHorizontal(likeCount: postBase.likeCount),
+        ),
       ],
     );
   }
@@ -204,8 +339,8 @@ class PostItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //顶部用户名
-                _buildTopArea(),
+                //顶部用户名和更多
+                _buildTopArea(context),
                 const SizedBox(height: 10),
                 //标题
                 Text(
