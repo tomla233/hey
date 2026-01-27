@@ -56,9 +56,9 @@ class _HomeRecommendState extends State<HomeRecommend> {
                   child: Column(
                     children: [
                       Container(
-                        width: 44,
-                        height: 44,
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        width: 48,
+                        height: 48,
+                        margin: const EdgeInsets.symmetric(horizontal: 14),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(1),
                         ),
@@ -87,9 +87,9 @@ class _HomeRecommendState extends State<HomeRecommend> {
                 child: Column(
                   children: [
                     Container(
-                      width: 44,
-                      height: 44,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      width: 48,
+                      height: 48,
+                      margin: const EdgeInsets.symmetric(horizontal: 14),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1),
                       ),

@@ -102,7 +102,10 @@ class PostService {
       name: '千恋 * 万花',
       picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
-    CommunityInfo(name: 'PC游戏', picture: 'https://qianlianwanhua.com/gsbj.webp'),
+    CommunityInfo(
+      name: 'PC游戏',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
+    ),
     CommunityInfo(
       name: '刀塔2',
       picture:
@@ -116,15 +119,65 @@ class PostService {
   ];
   // 全局共享的关注好友
   final List<AttentionUserInfo> attentionUserList = [
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子M', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
-    AttentionUserInfo(name: '常陆 茉子N', picture: 'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg'),
+    AttentionUserInfo(
+      newMessage: true,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: true,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: true,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子M',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
+    AttentionUserInfo(
+      newMessage: false,
+      name: '常陆 茉子N',
+      picture:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+    ),
   ];
 }

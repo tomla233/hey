@@ -38,24 +38,42 @@ class _HomeAttentionState extends State<HomeAttention> {
             itemCount: _attentionUserList.length,
             itemBuilder: (context, index) {
               AttentionUserInfo attentionUserInfo = _attentionUserList[index];
+              bool newMessage = attentionUserInfo.newMessage;
               return Column(
                 children: [
-                  Container(
-                    width: 44,
-                    height: 44,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: CircleAvatar(
-                      backgroundImage: Image.network(
-                        attentionUserInfo.picture,
-                      ).image,
-                    ),
+                  Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        margin: const EdgeInsets.symmetric(horizontal: 14),
+                        child: CircleAvatar(
+                          radius: 48,
+                          backgroundImage: Image.network(
+                            attentionUserInfo.picture,
+                          ).image,
+                        ),
+                      ),
+                      if (newMessage)
+                        Container(
+                          width: 10,
+                          height: 10,
+                          margin: const EdgeInsets.only(right: 18, top: 2),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 2),
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                    ],
                   ),
                   const SizedBox(height: 5),
                   Text(
                     attentionUserInfo.name,
                     style: const TextStyle(
                       fontSize: 10,
-                      color: ColorConstants.primaryBlack,
+                      color: Color(0xFF64696D),
                     ),
                   ),
                 ],
