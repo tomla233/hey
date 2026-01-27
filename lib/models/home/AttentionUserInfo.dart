@@ -1,11 +1,11 @@
-class Namepicture {
+class AttentionUserInfo {
   String name;
   String picture;
 
-  Namepicture({required this.name, required this.picture});
+  AttentionUserInfo({required this.name, required this.picture});
 
-  factory Namepicture.fromJson(Map<String, dynamic> json) {
-    return Namepicture(
+  factory AttentionUserInfo.fromJson(Map<String, dynamic> json) {
+    return AttentionUserInfo(
       name: json['name'],
       picture: json['picture'],
     );

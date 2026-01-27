@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/home/PostItem.dart';
 import 'package:hey/constant/ColorConstants.dart';
-import 'package:hey/models/home/NamePicture.dart';
+import 'package:hey/mock/PostService.dart';
+import 'package:hey/models/home/CommunityInfo.dart';
 import 'package:hey/models/home/PostBase.dart';
 import 'package:hey/utils/MsgUtil.dart';
 import 'package:hey/utils/ToastUtils.dart';
@@ -14,106 +15,8 @@ class HomeRecommend extends StatefulWidget {
 }
 
 class _HomeRecommendState extends State<HomeRecommend> {
-  final List<Namepicture> _gameList = [
-    Namepicture(name: '全部', picture: 'https://qianlianwanhua.com/gsbj.webp'),
-    Namepicture(
-      name: 'CS2',
-      picture:
-          'https://media.cdn.queniuqe.com/apps/csgo/images/csgo_react//cs2/header_ctt.png',
-    ),
-    Namepicture(
-      name: 'Wallpaper...',
-      picture:
-          'https://www.wallpaperengine.io/assets/img/wpe/wallpaper_engine.gif',
-    ),
-    Namepicture(
-      name: 'Steam',
-      picture:
-          'https://ts2.tc.mm.bing.net/th/id/OIP-C.UC56kzwDjCf3o1uc_hpYyAHaHa?w=108&h=108&c=1&bgcl=6cfca9&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3',
-    ),
-    Namepicture(
-      name: '千恋 * 万花',
-      picture: 'https://qianlianwanhua.com/gsbj.webp',
-    ),
-    Namepicture(name: 'PC游戏', picture: 'https://qianlianwanhua.com/gsbj.webp'),
-    Namepicture(
-      name: '刀塔2',
-      picture:
-          'https://bkimg.cdn.bcebos.com/pic/58ee3d6d55fbb2fb1d69a212464a20a44623dc74?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080',
-    ),
-    Namepicture(
-      name: '古墓丽影',
-      picture:
-          'https://bkimg.cdn.bcebos.com/pic/d8f9d72a6059252dbe52cc48379b033b5bb5b931?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080',
-    ),
-  ];
-  final List<PostBase> _postList = [
-    PostBase(
-      postId: '1',
-      postType: 'recommend',
-      title: '有没有互动性强的galgame推荐一下',
-      shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
-      contentImages: [
-        'https://qianlianwanhua.com/gsbj.webp',
-        'https://qianlianwanhua.com/2.webp',
-      ],
-      imageCount: 1,
-      authorId: '1',
-      authorAvatar:
-          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
-      authorNickName: '小怪兽',
-      authorLevel: '1',
-      communityId: '2',
-      communityName: '千恋 * 万花',
-      communityLogo: 'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
-      commentCount: 52,
-      likeCount: 200,
-    ),
-    PostBase(
-      postId: '2',
-      postType: 'recommend',
-      title: '有没有互动性强的galgame推荐一下',
-      shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
-      contentImages: [
-        'https://qianlianwanhua.com/gsbj.webp',
-        'https://qianlianwanhua.com/2.webp',
-        'https://qianlianwanhua.com/4.webp',
-      ],
-      imageCount: 4,
-      authorId: '2',
-      authorAvatar:
-          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
-      authorNickName: '小怪兽',
-      authorLevel: '4',
-      communityId: '2',
-      communityName: '千恋 * 万花',
-      communityLogo: 'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
-      commentCount: 52,
-      likeCount: 200,
-    ),
-    PostBase(
-      postId: '3',
-      postType: 'recommend',
-      title: '有没有互动性强的galgame推荐一下',
-      shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
-      contentImages: [
-        'https://qianlianwanhua.com/gsbj.webp',
-        'https://qianlianwanhua.com/2.webp',
-        'https://qianlianwanhua.com/4.webp',
-      ],
-      imageCount: 3,
-      authorId: '3',
-      authorAvatar:
-          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
-      authorNickName: '小怪兽',
-      authorLevel: '2',
-      communityId: '2',
-      communityName: 'Gal游戏综合区',
-      communityLogo: 'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
-      commentCount: 52,
-      likeCount: 200,
-    ),
-  ];
+  final List<CommunityInfo> _gameList = PostService().gameList;
+  final List<PostBase> _postList = PostService().postList;
   // 下拉刷新
   Future<void> _onRefresh() async {
     await Future.delayed(
@@ -127,10 +30,12 @@ class _HomeRecommendState extends State<HomeRecommend> {
   Widget _buildPostItem(PostBase postBase) {
     return PostItem(postBase: postBase);
   }
-  void _onTapAll(){
+
+  void _onTapAll() {
     MsgUtil.show('点击了全部');
   }
-  void _onTapItem(String name){
+
+  void _onTapItem(String name) {
     MsgUtil.show('点击了$name');
   }
 
@@ -178,7 +83,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
                 );
               }
               return GestureDetector(
-                onTap: ()=>_onTapItem(_gameList[index].name),
+                onTap: () => _onTapItem(_gameList[index].name),
                 child: Column(
                   children: [
                     Container(
