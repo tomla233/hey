@@ -25,6 +25,9 @@ class PostItem extends StatelessWidget {
 
   //点击更多图标的方法
   void _onTapMore(BuildContext context) {
+    double leftRightPadding = 16.0;
+    double wrapSpacing = 12.0;
+    double wrapSizeBox = (MediaQuery.of(context).size.width - 32 - 12) / 2;
     showModalBottomSheet(
       backgroundColor: Colors.white,
       context: context,
@@ -39,9 +42,9 @@ class PostItem extends StatelessWidget {
         }
 
         return Container(
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 16,
+          padding: EdgeInsets.only(
+            left: leftRightPadding,
+            right: leftRightPadding,
             top: 16,
             bottom: 40,
           ),
@@ -56,48 +59,48 @@ class PostItem extends StatelessWidget {
               const SizedBox(height: 16),
               Wrap(
                 //水平间距
-                spacing: 12,
+                spacing: wrapSpacing,
                 //垂直间距
                 runSpacing: 12,
                 alignment: WrapAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '不喜欢该社区: ${postBase.communityName}',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '相似内容过多',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '不喜欢该作者: ${postBase.authorNickName}',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '不喜欢该内容',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '不喜欢: ${postBase.communityName}相关',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '不喜欢: ${postBase.communityName}相关',
                       onClose: closeBottomSheet,
@@ -119,56 +122,56 @@ class PostItem extends StatelessWidget {
                 alignment: WrapAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '软文广告',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '标题党',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '不实炒作',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: 'AI生成',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '内容低俗',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '分区错误',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '内容质量差',
                       onClose: closeBottomSheet,
                     ),
                   ),
                   SizedBox(
-                    width: (MediaQuery.of(context).size.width - 32 - 12) / 2,
+                    width: wrapSizeBox,
                     child: FeedbackTag(
                       feedbackContent: '内容不适',
                       onClose: closeBottomSheet,
