@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/BadgeIcon.dart';
 import 'package:hey/components/common/CustomTabAppBar.dart';
+import 'package:hey/components/hot/HotShell.dart';
 import 'package:hey/constant/GlobalConstants.dart';
+
 class Hot extends StatefulWidget {
   const Hot({super.key});
 
@@ -10,7 +12,7 @@ class Hot extends StatefulWidget {
 }
 
 class _HotState extends State<Hot> {
-   late final List<IconActionItem> _rightIconItems;
+  late final List<IconActionItem> _rightIconItems;
   int _selectedTabIndex = 0;
   final _tabTitles = ["热点"];
   // 切换标签的回调
@@ -30,7 +32,7 @@ class _HotState extends State<Hot> {
 
   List<Widget> _buildContentPages() {
     return [
-      const Center(child: Text("热点页面内容", style: TextStyle(fontSize: 20))),
+      const HotShell(),
     ];
   }
 
@@ -39,7 +41,11 @@ class _HotState extends State<Hot> {
     super.initState();
     _rightIconItems = [
       IconActionItem(
-        icon: const Icon(Icons.search_outlined, size: GlobalConstants.topIconSize, color: Colors.black),
+        icon: const Icon(
+          Icons.search_outlined,
+          size: GlobalConstants.topIconSize,
+          color: Colors.black,
+        ),
         onTap: _onSearchTap,
       ),
       IconActionItem(
@@ -48,6 +54,7 @@ class _HotState extends State<Hot> {
       ),
     ];
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
