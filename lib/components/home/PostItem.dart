@@ -356,6 +356,16 @@ class PostItem extends StatelessWidget {
             communityLogo: postBase.communityLogo,
           ),
         ),
+        if (postBase.postTime?.isNotEmpty == true) ...[
+          const SizedBox(width: 10),
+          Text(
+            postBase.postTime!,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFF8E9295),
+            ),
+          ),
+        ],
         const Spacer(),
         CommentHorizontal(commentCount: postBase.commentCount),
         const SizedBox(width: 10),

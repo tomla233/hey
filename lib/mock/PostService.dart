@@ -86,6 +86,7 @@ class PostService {
     PostBase(
       postId: '1',
       postType: 'attention',
+      postTime: '2小时前',
       title: '妹控牛福',
       shortContent: '妹控闻着味来评论区了',
       contentImages: [
@@ -108,8 +109,10 @@ class PostService {
     PostBase(
       postId: '2',
       postType: 'attention',
+      postTime: '昨天18:11',
       title: '今年玩过的最有深度的作品，还得是柚子社',
-      shortContent: '抱歉，刚刚腾不出手，今天给大家介绍一款很有深度的作品，柚子社的《我是个机器人》，他探讨了机器人的未来，以及机器人与人类的关系。',
+      shortContent:
+          '抱歉，刚刚腾不出手，今天给大家介绍一款很有深度的作品，柚子社的《我是个机器人》，他探讨了机器人的未来，以及机器人与人类的关系。',
       contentImages: [
         'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
         'https://storage.moegirl.org.cn/moegirl/commons/e/e3/%E5%8D%83%E6%81%8B%E4%B8%87%E8%8A%B1_%E8%8C%89%E5%AD%90A00_%E5%BE%AE%E7%AC%91.png!/fw/480/watermark/url/L21vZWdpcmwvd2F0ZXJtYXJrLnBuZw==/align/southeast/margin/10x10/opacity/50?v=20170326042512',
@@ -131,6 +134,7 @@ class PostService {
     PostBase(
       postId: '3',
       postType: 'attention',
+      postTime: '01-22',
       title: '我不行了😭',
       shortContent: '这是我在游戏社区里的最后一次互动，我很遗憾，我不能继续和其他玩家互动了，我很想知道，其他玩家是否有和我一样的体验。',
       contentImages: [
