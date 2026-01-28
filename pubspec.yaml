@@ -15,7 +15,6 @@ dependencies:
   mobx: ^2.6.0
   flutter_mobx: ^2.3.0
   oktoast: ^3.4.0
-  easy_refresh: ^3.4.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

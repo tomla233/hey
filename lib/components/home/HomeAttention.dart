@@ -1,4 +1,3 @@
-import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:hey/components/home/PostItem.dart';
 import 'package:hey/constant/ColorConstants.dart';
@@ -119,11 +118,8 @@ class _HomeAttentionState extends State<HomeAttention> {
 
   @override
   Widget build(BuildContext context) {
-    return EasyRefresh(
-      onRefresh: () async {
-        _onRefresh;
-      },
-      onLoad: () async {},
+    return RefreshIndicator(
+      onRefresh: _onRefresh,
       child: ListView.builder(
         itemCount: 1 + _postList.length,
         itemBuilder: (context, index) {
