@@ -37,8 +37,8 @@ class PostService {
     PostBase(
       postId: '2',
       postType: 'recommend',
-      title: '有没有互动性强的galgame推荐一下',
-      shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
+      title: '我是柚子大王😎',
+      shortContent: '我是柚子大王，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
       contentImages: [
         'https://i.bobopic.com/small/115366189.jpg',
         'https://qianlianwanhua.com/2.webp',
@@ -60,8 +60,54 @@ class PostService {
     PostBase(
       postId: '3',
       postType: 'recommend',
-      title: '有没有互动性强的galgame推荐一下',
-      shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
+      title: '戒妹妹第一天，失败了',
+      shortContent: '认识我的朋友都知道，我戒妹妹失败了，但是我很想知道，失败的原因是什么？',
+      contentImages: [
+        'https://qianlianwanhua.com/gsbj.webp',
+        'https://qianlianwanhua.com/2.webp',
+        'https://qianlianwanhua.com/4.webp',
+      ],
+      imageCount: 3,
+      authorId: '3',
+      authorAvatar:
+          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
+      authorNickName: '小怪兽',
+      authorLevel: '2',
+      communityId: '2',
+      communityName: 'Gal游戏综合区',
+      communityLogo:
+          'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
+      commentCount: 52,
+      likeCount: 200,
+    ),
+    PostBase(
+      postId: '4',
+      postType: 'recommend',
+      title: '难道我是旮旯给木高手？',
+      shortContent: '我是一个 galgame 玩家，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
+      contentImages: [
+        'https://qianlianwanhua.com/gsbj.webp',
+        'https://qianlianwanhua.com/2.webp',
+        'https://qianlianwanhua.com/4.webp',
+      ],
+      imageCount: 3,
+      authorId: '3',
+      authorAvatar:
+          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
+      authorNickName: '小怪兽',
+      authorLevel: '2',
+      communityId: '2',
+      communityName: 'Gal游戏综合区',
+      communityLogo:
+          'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
+      commentCount: 52,
+      likeCount: 200,
+    ),
+    PostBase(
+      postId: '5',
+      postType: 'recommend',
+      title: '我是不是触发坏结局了',
+      shortContent: '我在游戏中触发了一个坏结局，我很想知道，这是为什么？',
       contentImages: [
         'https://qianlianwanhua.com/gsbj.webp',
         'https://qianlianwanhua.com/2.webp',
@@ -133,6 +179,54 @@ class PostService {
     ),
     PostBase(
       postId: '3',
+      postType: 'attention',
+      postTime: '01-22',
+      title: '我不行了😭',
+      shortContent: '这是我在游戏社区里的最后一次互动，我很遗憾，我不能继续和其他玩家互动了，我很想知道，其他玩家是否有和我一样的体验。',
+      contentImages: [
+        'https://storage.moegirl.org.cn/moegirl/commons/8/85/%E5%8F%A2%E9%9B%A8_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+        'https://storage.moegirl.org.cn/moegirl/commons/6/60/%E8%95%BE%E5%A8%9C%C2%B7%E8%8E%89%E5%B8%8C%E7%89%B9%E5%A8%9C%E7%93%A6_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+        'https://qianlianwanhua.com/4.webp',
+      ],
+      imageCount: 3,
+      authorId: '3',
+      authorAvatar:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+      authorNickName: '茉子',
+      authorLevel: '2',
+      communityId: '2',
+      communityName: 'Gal游戏综合区',
+      communityLogo:
+          'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
+      commentCount: 52,
+      likeCount: 200,
+    ),
+    PostBase(
+      postId: '4',
+      postType: 'attention',
+      postTime: '01-22',
+      title: '我不行了😭',
+      shortContent: '这是我在游戏社区里的最后一次互动，我很遗憾，我不能继续和其他玩家互动了，我很想知道，其他玩家是否有和我一样的体验。',
+      contentImages: [
+        'https://storage.moegirl.org.cn/moegirl/commons/8/85/%E5%8F%A2%E9%9B%A8_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+        'https://storage.moegirl.org.cn/moegirl/commons/6/60/%E8%95%BE%E5%A8%9C%C2%B7%E8%8E%89%E5%B8%8C%E7%89%B9%E5%A8%9C%E7%93%A6_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+        'https://qianlianwanhua.com/4.webp',
+      ],
+      imageCount: 3,
+      authorId: '3',
+      authorAvatar:
+          'https://storage.moegirl.org.cn/moegirl/commons/6/64/%E5%B8%B8%E9%99%B8%E8%8C%89%E5%AD%90_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+      authorNickName: '茉子',
+      authorLevel: '2',
+      communityId: '2',
+      communityName: 'Gal游戏综合区',
+      communityLogo:
+          'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
+      commentCount: 52,
+      likeCount: 200,
+    ),
+    PostBase(
+      postId: '5',
       postType: 'attention',
       postTime: '01-22',
       title: '我不行了😭',

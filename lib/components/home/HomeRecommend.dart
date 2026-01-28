@@ -17,6 +17,10 @@ class HomeRecommend extends StatefulWidget {
 class _HomeRecommendState extends State<HomeRecommend> {
   final List<CommunityInfo> _gameList = PostService().gameList;
   final List<PostBase> _postList = PostService().postList;
+  // 滚动控制器
+  final ScrollController _scrollController = ScrollController();
+  // 上拉加载状态
+  bool _isLoading = false;
   // 下拉刷新
   Future<void> _onRefresh() async {
     await Future.delayed(
@@ -25,6 +29,18 @@ class _HomeRecommendState extends State<HomeRecommend> {
         if (mounted) {ToastUtils.showToast(context, '已推荐10条新内容')},
       },
     );
+  }
+
+  // 加载更多
+  void _loadMore() {
+    if (_isLoading) return;
+    setState(() {
+      _isLoading = true;
+    });
+    MsgUtil.show('模拟上拉加载功能😁');
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   Widget _buildPostItem(PostBase postBase) {
@@ -38,7 +54,23 @@ class _HomeRecommendState extends State<HomeRecommend> {
   void _onTapItem(String name) {
     MsgUtil.show('点击了$name');
   }
+@override
+  void initState() {
+    super.initState();
+    // 添加滚动监听
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent - 200) {
+        _loadMore();
+      }
+    });
+  }
 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
   Widget _buildGameCardList() {
     return Column(
       children: [
@@ -152,6 +184,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
     return RefreshIndicator(
       onRefresh: _onRefresh,
       child: ListView.builder(
+        controller: _scrollController,
         itemCount: 1 + _postList.length,
         itemBuilder: (context, index) {
           if (index == 0) {

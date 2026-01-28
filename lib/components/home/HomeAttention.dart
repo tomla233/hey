@@ -19,6 +19,10 @@ class _HomeAttentionState extends State<HomeAttention> {
   //关注列表
   final List<AttentionUserInfo> _attentionUserList =
       PostService().attentionUserList;
+  // 滚动控制器
+  final ScrollController _scrollController = ScrollController();
+  // 上拉加载状态
+  bool _isLoading = false;
   // 下拉刷新
   Future<void> _onRefresh() async {
     await Future.delayed(
@@ -27,6 +31,18 @@ class _HomeAttentionState extends State<HomeAttention> {
         if (mounted) {ToastUtils.showToast(context, '已推荐10条新内容')},
       },
     );
+  }
+
+  // 加载更多
+  void _loadMore() {
+    if (_isLoading) return;
+    setState(() {
+      _isLoading = true;
+    });
+    MsgUtil.show('模拟上拉加载功能😁');
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   void _onTapAttentionUser(String name) {
@@ -109,10 +125,18 @@ class _HomeAttentionState extends State<HomeAttention> {
   @override
   void initState() {
     super.initState();
+    // 添加滚动监听
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent - 200) {
+        _loadMore();
+      }
+    });
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -121,6 +145,7 @@ class _HomeAttentionState extends State<HomeAttention> {
     return RefreshIndicator(
       onRefresh: _onRefresh,
       child: ListView.builder(
+        controller: _scrollController,
         itemCount: 1 + _postList.length,
         itemBuilder: (context, index) {
           if (index == 0) {
