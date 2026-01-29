@@ -22,10 +22,19 @@ class _HotShellState extends State<HotShell>
     '极限国度',
   ];
   late TabController _tabController;
+  String _currentCategory = '全部';
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: _hotCategories.length, vsync: this);
+    // 监听tab切换事件
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        setState(() {
+          _currentCategory = _hotCategories[_tabController.index];
+        });
+      }
+    });
   }
 
   @override
@@ -47,7 +56,7 @@ class _HotShellState extends State<HotShell>
               Expanded(
                 child: TabBar(
                   controller: _tabController,
-                  tabAlignment:TabAlignment.start,
+                  tabAlignment: TabAlignment.start,
                   isScrollable: true,
                   labelColor: Colors.red,
                   unselectedLabelColor: Colors.grey,
@@ -65,7 +74,14 @@ class _HotShellState extends State<HotShell>
             ],
           ),
         ),
-        const Expanded(child: HotContent()),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: _hotCategories.map((category) {
+              return HotContent(currentCategory: category);
+            }).toList(),
+          ),
+        ),
       ],
     );
   }
