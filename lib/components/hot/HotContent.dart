@@ -90,7 +90,6 @@ class _HotContentState extends State<HotContent> {
     return Column(
       children: [
         CustomCarouselSlider(sliderList: sliderList),
-        const SizedBox(height: 10),
         ListView.builder(
           //收缩包裹内容
           shrinkWrap: true,

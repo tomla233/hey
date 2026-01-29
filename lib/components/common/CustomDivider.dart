@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hey/constant/ColorConstants.dart';
+
 // 自定义分割线组件
 class CustomDivider extends StatelessWidget {
-  const CustomDivider({super.key});
+  final double thickness;
+  const CustomDivider({super.key, this.thickness = 4});
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(
+    return Divider(
       height: 1,
-      thickness: 4,
+      thickness: thickness,
       color: ColorConstants.dividerColor,
     );
   }

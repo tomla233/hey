@@ -126,6 +126,52 @@ class PostService {
       commentCount: 52,
       likeCount: 200,
     ),
+    PostBase(
+      postId: '1',
+      postType: 'recommend',
+      title: '有没有互动性强的galgame推荐一下',
+      shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
+      contentImages: [
+        'https://so1.360tres.com/t01900439c6c79694db.jpg',
+        'https://qianlianwanhua.com/gsbj.webp',
+        'https://storage.moegirl.org.cn/moegirl/commons/8/85/%E5%8F%A2%E9%9B%A8_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
+      ],
+      imageCount: 1,
+      authorId: '1',
+      authorAvatar:
+          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
+      authorNickName: '小怪兽',
+      authorLevel: '1',
+      communityId: '2',
+      communityName: '千恋 * 万花',
+      communityLogo:
+          'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
+      commentCount: 52,
+      likeCount: 200,
+    ),
+    PostBase(
+      postId: '2',
+      postType: 'recommend',
+      title: '我是柚子大王😎',
+      shortContent: '我是柚子大王，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
+      contentImages: [
+        'https://i.bobopic.com/small/115366189.jpg',
+        'https://qianlianwanhua.com/2.webp',
+        'https://i.bobopic.com/small/107089863.jpg',
+      ],
+      imageCount: 4,
+      authorId: '2',
+      authorAvatar:
+          'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
+      authorNickName: '小怪兽',
+      authorLevel: '4',
+      communityId: '2',
+      communityName: '千恋 * 万花',
+      communityLogo:
+          'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
+      commentCount: 52,
+      likeCount: 200,
+    ),
   ];
   //全局共享的关注的人帖子列表
   final List<PostBase> attentionPostList = [
