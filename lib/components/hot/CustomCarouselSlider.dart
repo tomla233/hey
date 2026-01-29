@@ -29,7 +29,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: 200.0,
+            height: 180.0,
             viewportFraction: 1.0,
             autoPlay: true,
             clipBehavior: Clip.antiAlias,

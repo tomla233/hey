@@ -31,7 +31,7 @@ class PostService {
       authorNickName: '小怪兽',
       authorLevel: '1',
       communityId: '2',
-      communityName: '千恋 * 万花2222222222222222222222222222222222222222',
+      communityName: '千恋 * 万花',
       communityLogo:
           'https://store.ymgal.games/topic/content/84/845c878a5d8a43188dce03adef76760f.jpeg',
       commentCount: 52,

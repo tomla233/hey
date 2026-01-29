@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey/constant/GlobalConstants.dart';
 
 class CustomNumberBox extends StatelessWidget {
   final int number;
@@ -42,7 +43,7 @@ class CustomNumberBox extends StatelessWidget {
 
     return Container(
       width: 24,
-      height: 80,
+      height: GlobalConstants.hotPostContainerHeight,
       color: Colors.white,
       alignment: Alignment.topLeft,
       child: Container(

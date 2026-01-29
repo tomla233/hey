@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hey/components/common/CommentHorizontal.dart';
 import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/hot/CustomNumberBox.dart';
+import 'package:hey/constant/GlobalConstants.dart';
 import 'package:hey/models/home/PostBase.dart';
 import 'package:hey/utils/MsgUtil.dart';
 import 'package:hey/utils/StrUtil.dart';
@@ -20,7 +21,7 @@ class HotPostItem extends StatefulWidget {
 }
 
 class _HotPostItemState extends State<HotPostItem> {
-  static const double _imageHeight = 60;
+  static const double _imageHeight = GlobalConstants.hotPostContainerHeight;
   Widget _buildCommonPostContent() {
     return Expanded(
       child: SizedBox(
@@ -44,7 +45,7 @@ class _HotPostItemState extends State<HotPostItem> {
                   Text(
                     StrUtil.limitTextLength(
                       '${widget.postBase.viewCount}阅读·${widget.postBase.communityName}',
-                      maxLength: 12
+                      maxLength: 15
                     ),
                     style: const TextStyle(
                       color: Color(0xFFC8CDD1),
@@ -56,6 +57,7 @@ class _HotPostItemState extends State<HotPostItem> {
                   Text(
                     StrUtil.limitTextLength(
                       '${widget.postBase.postTime}·${widget.postBase.communityName}',
+                      maxLength: 15
                     ),
                     style: const TextStyle(
                       color: Color(0xFFC8CDD1),
