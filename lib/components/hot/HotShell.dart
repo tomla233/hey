@@ -59,6 +59,7 @@ class _HotShellState extends State<HotShell>
                   tabAlignment: TabAlignment.start,
                   isScrollable: true,
                   labelColor: Colors.red,
+                  dividerColor: Colors.transparent,
                   unselectedLabelColor: Colors.grey,
                   indicator: const UnderlineTabIndicator(
                     borderSide: BorderSide(color: Colors.red, width: 2),
@@ -69,7 +70,14 @@ class _HotShellState extends State<HotShell>
               //抽屉icon
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: const EndDrawerButton(),
+                child: IconButton(
+                  icon: const Icon(Icons.menu),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onPressed: () {
+                    print('点击了【抽屉图标】');
+                  },
+                ),
               ),
             ],
           ),
