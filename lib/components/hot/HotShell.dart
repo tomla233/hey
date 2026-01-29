@@ -22,19 +22,10 @@ class _HotShellState extends State<HotShell>
     '极限国度',
   ];
   late TabController _tabController;
-  String _currentCategory = '全部';
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: _hotCategories.length, vsync: this);
-    // 监听tab切换事件
-    _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
-        setState(() {
-          _currentCategory = _hotCategories[_tabController.index];
-        });
-      }
-    });
   }
 
   @override
