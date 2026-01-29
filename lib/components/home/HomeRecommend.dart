@@ -6,7 +6,7 @@ import 'package:hey/mock/PostService.dart';
 import 'package:hey/models/home/CommunityInfo.dart';
 import 'package:hey/models/home/PostBase.dart';
 import 'package:hey/utils/MsgUtil.dart';
-import 'package:hey/utils/ToastUtils.dart';
+import 'package:oktoast/oktoast.dart';
 
 class HomeRecommend extends StatefulWidget {
   const HomeRecommend({super.key});
@@ -26,9 +26,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
   Future<void> _onRefresh() async {
     await Future.delayed(
       const Duration(seconds: 2),
-      () => {
-        if (mounted) {ToastUtils.showToast(context, '已推荐10条新内容')},
-      },
+      () => {MsgUtil.show('已推荐10条新内容', position: ToastPosition.bottom)},
     );
   }
 
@@ -55,7 +53,8 @@ class _HomeRecommendState extends State<HomeRecommend> {
   void _onTapItem(String name) {
     MsgUtil.show('点击了$name');
   }
-@override
+
+  @override
   void initState() {
     super.initState();
     // 添加滚动监听
@@ -72,6 +71,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
     _scrollController.dispose();
     super.dispose();
   }
+
   Widget _buildGameCardList() {
     return Column(
       children: [

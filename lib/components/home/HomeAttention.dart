@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/home/PostItem.dart';
-import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/mock/PostService.dart';
 import 'package:hey/models/home/AttentionUserInfo.dart';
 import 'package:hey/models/home/PostBase.dart';
 import 'package:hey/utils/MsgUtil.dart';
-import 'package:hey/utils/ToastUtils.dart';
+import 'package:oktoast/oktoast.dart';
 
 class HomeAttention extends StatefulWidget {
   const HomeAttention({super.key});
@@ -29,7 +28,7 @@ class _HomeAttentionState extends State<HomeAttention> {
     await Future.delayed(
       const Duration(seconds: 2),
       () => {
-        if (mounted) {ToastUtils.showToast(context, '已推荐10条新内容')},
+        MsgUtil.show('已推荐10条新内容', position: ToastPosition.bottom),
       },
     );
   }

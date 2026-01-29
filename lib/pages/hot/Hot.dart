@@ -3,6 +3,7 @@ import 'package:hey/components/common/BadgeIcon.dart';
 import 'package:hey/components/common/CustomTabAppBar.dart';
 import 'package:hey/components/hot/HotShell.dart';
 import 'package:hey/constant/GlobalConstants.dart';
+import 'package:hey/utils/MsgUtil.dart';
 
 class Hot extends StatefulWidget {
   const Hot({super.key});
@@ -23,11 +24,11 @@ class _HotState extends State<Hot> {
   }
 
   void _onSearchTap() {
-    print("点击了【搜索图标】");
+    MsgUtil.show("点击了【搜索图标】");
   }
 
   void _onMailTap() {
-    print("点击了【邮件图标】");
+    MsgUtil.show("点击了【邮件图标】");
   }
 
   List<Widget> _buildContentPages() {
