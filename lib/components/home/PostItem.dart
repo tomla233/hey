@@ -361,10 +361,7 @@ class PostItem extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             postBase.postTime!,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xFF8E9295),
-            ),
+            style: const TextStyle(fontSize: 12, color: Color(0xFF8E9295)),
           ),
         ],
         const Spacer(),

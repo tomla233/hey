@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hey/utils/StrUtil.dart';
 
 class CommunityTag extends StatelessWidget {
   final String communityName;
   final String communityLogo;
   static const logoSize = 12.0;
-  
+
   const CommunityTag({
     super.key,
     required this.communityName,
@@ -42,8 +43,11 @@ class CommunityTag extends StatelessWidget {
               Flexible(
                 fit: FlexFit.loose,
                 child: Text(
-                  communityName,
-                  style: const TextStyle(color: Color(0xFF676B70), fontSize: 10),
+                  StrUtil.limitTextLength(communityName),
+                  style: const TextStyle(
+                    color: Color(0xFF676B70),
+                    fontSize: 10,
+                  ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),

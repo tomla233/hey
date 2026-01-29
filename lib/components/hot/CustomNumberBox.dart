@@ -41,7 +41,7 @@ class CustomNumberBox extends StatelessWidget {
     final gradient = _getGradientByNumber(number);
 
     return Container(
-      width: 50,
+      width: 24,
       height: 80,
       color: Colors.white,
       alignment: Alignment.topLeft,
