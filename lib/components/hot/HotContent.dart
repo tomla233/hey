@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/hot/CustomCarouselSlider.dart';
+import 'package:hey/mock/HotService.dart';
+import 'package:hey/models/hot/SliderInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -19,6 +22,7 @@ class _HotContentState extends State<HotContent> {
       () => {MsgUtil.show('已推荐10条新内容', position: ToastPosition.bottom)},
     );
   }
+
   //构建可下拉刷新的容器
   Widget _buildRefreshContainer(Widget content) {
     return RefreshIndicator(
@@ -44,7 +48,13 @@ class _HotContentState extends State<HotContent> {
   }
 
   Widget _buildAllContent() {
-    return const Center(child: Text("全部内容"));
+    final List<SliderInfo> sliderList = HotService().sliderList;
+    return Column(
+      children: [
+        CustomCarouselSlider(sliderList: sliderList),
+        const SizedBox(height: 10,)
+      ],
+    );
   }
 
   Widget _buildHotContent() {
