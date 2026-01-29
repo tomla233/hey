@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hey/utils/MsgUtil.dart';
+import 'package:oktoast/oktoast.dart';
 
 class HotContent extends StatefulWidget {
   // 接收当前选中的分类
@@ -10,15 +12,35 @@ class HotContent extends StatefulWidget {
 }
 
 class _HotContentState extends State<HotContent> {
+  // 下拉刷新
+  Future<void> _onRefresh() async {
+    await Future.delayed(
+      const Duration(seconds: 2),
+      () => {MsgUtil.show('已推荐10条新内容', position: ToastPosition.bottom)},
+    );
+  }
+  //构建可下拉刷新的容器
+  Widget _buildRefreshContainer(Widget content) {
+    return RefreshIndicator(
+      onRefresh: _onRefresh,
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: content,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget content;
     if (widget.currentCategory == '全部') {
-      return _buildAllContent();
+      content = _buildAllContent();
     } else if (widget.currentCategory == '热榜') {
-      return _buildHotContent();
+      content = _buildHotContent();
     } else {
-      return _buildNormalContent(widget.currentCategory);
+      content = _buildNormalContent(widget.currentCategory);
     }
+    return _buildRefreshContainer(content);
   }
 
   Widget _buildAllContent() {
