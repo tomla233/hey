@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CustomDivider.dart';
+import 'package:hey/components/hot/CustomNumberBox.dart';
 import 'package:hey/models/home/PostBase.dart';
 
 class HotPostItem extends StatefulWidget {
   final PostBase postBase;
   final String category;
+  final int? rank;
   const HotPostItem({
     super.key,
     required this.postBase,
     required this.category,
+    this.rank,
   });
 
   @override
@@ -29,9 +32,10 @@ class _HotPostItemState extends State<HotPostItem> {
                 children: [
                   Expanded(
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (widget.category == "热榜") ...[
-                          const Text('data'),
+                          CustomNumberBox(number: widget.rank ?? 0),
                           const Text('data'),
                         ] else
                           const Text('data'),

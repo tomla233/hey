@@ -6,6 +6,8 @@ class PostBase {
   final String postType;
   //帖子发布时间
   final String? postTime;
+  //帖子排名
+  final int? rank;
   //文章标题
   final String title;
   //帖子内容简略
@@ -37,6 +39,7 @@ class PostBase {
     required this.postId,
     required this.postType,
     this.postTime,
+    this.rank,
     required this.title,
     required this.shortContent,
     required this.contentImages,
@@ -57,6 +60,7 @@ class PostBase {
       postId: json['postId'],
       postType: json['postType'],
       postTime: json['postTime'] ?? '',
+      rank: json['rank'],
       title: json['title'],
       shortContent: json['shortContent'],
       contentImages: json['contentImages'] is List

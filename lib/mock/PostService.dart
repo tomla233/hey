@@ -14,6 +14,7 @@ class PostService {
     PostBase(
       postId: '1',
       postType: 'recommend',
+      rank: 1,
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
       contentImages: [
@@ -37,6 +38,7 @@ class PostService {
     PostBase(
       postId: '2',
       postType: 'recommend',
+      rank: 2,
       title: '我是柚子大王😎',
       shortContent: '我是柚子大王，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
       contentImages: [
@@ -60,6 +62,7 @@ class PostService {
     PostBase(
       postId: '3',
       postType: 'recommend',
+      rank: 3,
       title: '戒妹妹第一天，失败了',
       shortContent: '认识我的朋友都知道，我戒妹妹失败了，但是我很想知道，失败的原因是什么？',
       contentImages: [
@@ -83,6 +86,7 @@ class PostService {
     PostBase(
       postId: '4',
       postType: 'recommend',
+      rank: 4,
       title: '难道我是旮旯给木高手？',
       shortContent: '我是一个 galgame 玩家，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
       contentImages: [
@@ -106,6 +110,7 @@ class PostService {
     PostBase(
       postId: '5',
       postType: 'recommend',
+      rank: 5,
       title: '我是不是触发坏结局了',
       shortContent: '我在游戏中触发了一个坏结局，我很想知道，这是为什么？',
       contentImages: [
@@ -127,8 +132,9 @@ class PostService {
       likeCount: 200,
     ),
     PostBase(
-      postId: '1',
+      postId: '6',
       postType: 'recommend',
+      rank: 6,
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
       contentImages: [
@@ -150,8 +156,9 @@ class PostService {
       likeCount: 200,
     ),
     PostBase(
-      postId: '2',
+      postId: '7',
       postType: 'recommend',
+      rank: 7,
       title: '我是柚子大王😎',
       shortContent: '我是柚子大王，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
       contentImages: [

@@ -99,7 +99,10 @@ class _HotContentState extends State<HotContent> {
           itemCount: _postList.length,
           itemBuilder: (context, index) {
             PostBase postBase = _postList[index];
-            return HotPostItem(postBase: postBase,category: widget.currentCategory,);
+            return HotPostItem(
+              postBase: postBase,
+              category: widget.currentCategory,
+            );
           },
         ),
       ],
@@ -107,7 +110,6 @@ class _HotContentState extends State<HotContent> {
   }
 
   Widget _buildHotContent() {
-    final List<SliderInfo> sliderList = HotService().sliderList;
     return Column(
       children: [
         ListView.builder(
@@ -119,7 +121,11 @@ class _HotContentState extends State<HotContent> {
           itemCount: _postList.length,
           itemBuilder: (context, index) {
             PostBase postBase = _postList[index];
-            return HotPostItem(postBase: postBase,category: widget.currentCategory,);
+            return HotPostItem(
+              postBase: postBase,
+              category: widget.currentCategory,
+              rank: postBase.rank,
+            );
           },
         ),
       ],
@@ -127,6 +133,24 @@ class _HotContentState extends State<HotContent> {
   }
 
   Widget _buildNormalContent(String category) {
-    return Center(child: Text("普通分类内容$category"));
+    return Column(
+      children: [
+        ListView.builder(
+          //收缩包裹内容
+          shrinkWrap: true,
+          //禁用自身滚动
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _scrollController,
+          itemCount: _postList.length,
+          itemBuilder: (context, index) {
+            PostBase postBase = _postList[index];
+            return HotPostItem(
+              postBase: postBase,
+              category: widget.currentCategory,
+            );
+          },
+        ),
+      ],
+    );
   }
 }
