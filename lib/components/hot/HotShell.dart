@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/hot/HotContent.dart';
+import 'package:hey/constant/ColorConstants.dart';
 
 class HotShell extends StatefulWidget {
   const HotShell({super.key});
@@ -49,11 +50,14 @@ class _HotShellState extends State<HotShell>
                   controller: _tabController,
                   tabAlignment: TabAlignment.start,
                   isScrollable: true,
-                  labelColor: Colors.red,
+                  labelColor: ColorConstants.primaryBlack,
                   dividerColor: Colors.transparent,
-                  unselectedLabelColor: Colors.grey,
+                  unselectedLabelColor: ColorConstants.primaryGray,
                   indicator: const UnderlineTabIndicator(
-                    borderSide: BorderSide(color: Colors.red, width: 2),
+                    borderSide: BorderSide(
+                      color: ColorConstants.primaryBlack,
+                      width: 2,
+                    ),
                   ),
                   tabs: _hotCategories.map((c) => Tab(text: c)).toList(),
                 ),
@@ -62,6 +66,7 @@ class _HotShellState extends State<HotShell>
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: IconButton(
+                  color: ColorConstants.primaryGray,
                   icon: const Icon(Icons.menu),
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
