@@ -27,7 +27,17 @@ class _HotPostItemState extends State<HotPostItem> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: Text(widget.postBase.title)),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        if (widget.category == "热榜") ...[
+                          const Text('data'),
+                          const Text('data'),
+                        ] else
+                          const Text('data'),
+                      ],
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   SizedBox(
                     width: 140,

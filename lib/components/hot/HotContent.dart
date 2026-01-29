@@ -107,7 +107,23 @@ class _HotContentState extends State<HotContent> {
   }
 
   Widget _buildHotContent() {
-    return const Center(child: Text("热榜内容"));
+    final List<SliderInfo> sliderList = HotService().sliderList;
+    return Column(
+      children: [
+        ListView.builder(
+          //收缩包裹内容
+          shrinkWrap: true,
+          //禁用自身滚动
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _scrollController,
+          itemCount: _postList.length,
+          itemBuilder: (context, index) {
+            PostBase postBase = _postList[index];
+            return HotPostItem(postBase: postBase,category: widget.currentCategory,);
+          },
+        ),
+      ],
+    );
   }
 
   Widget _buildNormalContent(String category) {
