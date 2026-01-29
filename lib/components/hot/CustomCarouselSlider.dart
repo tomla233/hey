@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hey/models/hot/SliderInfo.dart';
+import 'package:hey/utils/MsgUtil.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
   final List<SliderInfo> sliderList;
@@ -40,40 +41,48 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             },
           ),
           items: widget.sliderList.map((item) {
-            return SizedBox(
-              width: double.infinity,
-              height: double.infinity,
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Image.network(
-                    item.imageUrl,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: double.infinity,
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 20,
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(
-                            color: Color.fromRGBO(0, 0, 0, 0.3),
-                            blurRadius: 2,
-                            offset: Offset(1, 1),
-                          ),
-                        ],
+            return InkWell(
+              onTap: () {
+                MsgUtil.show("点击了【轮播图】,社区id:${item.communityId}");
+              },
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Image.network(
+                      item.imageUrl,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: double.infinity,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset('lib/assets/box.png');
+                      },
+                    ),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 20,
+                      child: Text(
+                        item.title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.3),
+                              blurRadius: 2,
+                              offset: Offset(1, 1),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           }).toList(),
