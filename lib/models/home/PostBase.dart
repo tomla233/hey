@@ -18,6 +18,8 @@ class PostBase {
   final int imageCount;
   //帖子作者id
   final String authorId;
+  //浏览量
+  final String? viewCount;
   //用户头像
   final String authorAvatar;
   //用户昵称
@@ -45,6 +47,7 @@ class PostBase {
     required this.contentImages,
     required this.imageCount,
     required this.authorId,
+    this.viewCount,
     required this.authorAvatar,
     required this.authorNickName,
     required this.authorLevel,
@@ -68,6 +71,7 @@ class PostBase {
           : [],
       imageCount: json['imageCount'],
       authorId: json['authorId'],
+      viewCount: json['viewCount'] ?? '',
       authorAvatar: json['authorAvatar'],
       authorNickName: json['authorNickName'],
       authorLevel: json['authorLevel'],

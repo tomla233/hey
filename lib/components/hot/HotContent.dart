@@ -124,7 +124,6 @@ class _HotContentState extends State<HotContent> {
             return HotPostItem(
               postBase: postBase,
               category: widget.currentCategory,
-              rank: postBase.rank,
             );
           },
         ),

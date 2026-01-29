@@ -14,6 +14,7 @@ class PostService {
     PostBase(
       postId: '1',
       postType: 'recommend',
+      postTime: '3小时前',
       rank: 1,
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
@@ -24,6 +25,7 @@ class PostService {
       ],
       imageCount: 1,
       authorId: '1',
+      viewCount: '1000万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
@@ -38,6 +40,7 @@ class PostService {
     PostBase(
       postId: '2',
       postType: 'recommend',
+      postTime: '4小时前',
       rank: 2,
       title: '我是柚子大王😎',
       shortContent: '我是柚子大王，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
@@ -48,6 +51,7 @@ class PostService {
       ],
       imageCount: 4,
       authorId: '2',
+      viewCount: '100万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
@@ -62,6 +66,7 @@ class PostService {
     PostBase(
       postId: '3',
       postType: 'recommend',
+      postTime: '5小时前',
       rank: 3,
       title: '戒妹妹第一天，失败了',
       shortContent: '认识我的朋友都知道，我戒妹妹失败了，但是我很想知道，失败的原因是什么？',
@@ -72,6 +77,7 @@ class PostService {
       ],
       imageCount: 3,
       authorId: '3',
+      viewCount: '90万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
@@ -86,6 +92,7 @@ class PostService {
     PostBase(
       postId: '4',
       postType: 'recommend',
+      postTime: '6小时前',
       rank: 4,
       title: '难道我是旮旯给木高手？',
       shortContent: '我是一个 galgame 玩家，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
@@ -96,6 +103,7 @@ class PostService {
       ],
       imageCount: 3,
       authorId: '3',
+      viewCount: '80万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
@@ -110,6 +118,7 @@ class PostService {
     PostBase(
       postId: '5',
       postType: 'recommend',
+      postTime: '6小时前',
       rank: 5,
       title: '我是不是触发坏结局了',
       shortContent: '我在游戏中触发了一个坏结局，我很想知道，这是为什么？',
@@ -120,6 +129,7 @@ class PostService {
       ],
       imageCount: 3,
       authorId: '3',
+      viewCount: '70万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
@@ -134,6 +144,7 @@ class PostService {
     PostBase(
       postId: '6',
       postType: 'recommend',
+      postTime: '6小时前',
       rank: 6,
       title: '有没有互动性强的galgame推荐一下',
       shortContent: '前阵子千恋万花不是史低嘛，然后煮啵就去买了，画风挺可爱的，但是选项太少了，看了很久的剧情才弹出...',
@@ -144,6 +155,7 @@ class PostService {
       ],
       imageCount: 1,
       authorId: '1',
+      viewCount: '60万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
@@ -158,6 +170,7 @@ class PostService {
     PostBase(
       postId: '7',
       postType: 'recommend',
+      postTime: '6小时前',
       rank: 7,
       title: '我是柚子大王😎',
       shortContent: '我是柚子大王，我很喜欢这个游戏，我很想和其他玩家分享我的游戏经历。',
@@ -168,6 +181,7 @@ class PostService {
       ],
       imageCount: 4,
       authorId: '2',
+      viewCount: '50万',
       authorAvatar:
           'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
       authorNickName: '小怪兽',
