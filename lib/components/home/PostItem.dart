@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CommentHorizontal.dart';
+import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/common/LikeHorizontal.dart';
 import 'package:hey/components/home/FeedbackTag.dart';
 import 'package:hey/components/home/LevelTag.dart';
@@ -428,11 +429,7 @@ class PostItem extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.only(bottom: 10),
-          child: Divider(
-            height: 1,
-            thickness: 4,
-            color: ColorConstants.dividerColor,
-          ),
+          child: CustomDivider(),
         ),
       ],
     );

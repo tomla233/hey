@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/BadgeIcon.dart';
+import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/common/CustomTabAppBar.dart';
 import 'package:hey/constant/GlobalConstants.dart';
 
@@ -12,6 +13,7 @@ class Mine extends StatefulWidget {
 
 class _MineState extends State<Mine> {
   late final List<IconActionItem> _rightIconItems;
+  late PageController _pageController;
   int _selectedTabIndex = 0;
   final _tabTitles = ["数据", "动态"];
   // 切换标签的回调
@@ -19,6 +21,12 @@ class _MineState extends State<Mine> {
     setState(() {
       _selectedTabIndex = index;
     });
+    // 滑动到对应的页面
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
   }
 
   void _onSearchTap() {
@@ -43,9 +51,14 @@ class _MineState extends State<Mine> {
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: _selectedTabIndex);
     _rightIconItems = [
       IconActionItem(
-        icon: const Icon(Icons.search_outlined, size: GlobalConstants.topIconSize, color: Colors.black),
+        icon: const Icon(
+          Icons.search_outlined,
+          size: GlobalConstants.topIconSize,
+          color: Colors.black,
+        ),
         onTap: _onSearchTap,
       ),
       IconActionItem(
@@ -64,6 +77,12 @@ class _MineState extends State<Mine> {
   }
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomTabAppBar(
@@ -72,9 +91,32 @@ class _MineState extends State<Mine> {
         onTabTap: _onTabTap,
         rightIconItems: _rightIconItems,
       ),
-      body: IndexedStack(
-        index: _selectedTabIndex,
-        children: _buildContentPages(),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 100,
+            child: Column(
+              children: [
+                Text("我的页面顶部固定内容"),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: CustomDivider(),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _selectedTabIndex = index;
+                });
+              },
+              children: _buildContentPages(),
+            ),
+          ),
+        ],
       ),
     );
   }

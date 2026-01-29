@@ -12,6 +12,7 @@ class Game extends StatefulWidget {
 
 class _GameState extends State<Game> {
   late final List<IconActionItem> _rightIconItems;
+  late PageController _pageController;
   int _selectedTabIndex = 0;
   final _tabTitles = ["推荐", "榜单"];
   // 切换标签的回调
@@ -19,6 +20,12 @@ class _GameState extends State<Game> {
     setState(() {
       _selectedTabIndex = index;
     });
+    // 滑动到对应的页面
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
   }
 
   void _onSearchTap() {
@@ -39,9 +46,14 @@ class _GameState extends State<Game> {
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: _selectedTabIndex);
     _rightIconItems = [
       IconActionItem(
-        icon: const Icon(Icons.search_outlined, size: GlobalConstants.topIconSize, color: Colors.black),
+        icon: const Icon(
+          Icons.search_outlined,
+          size: GlobalConstants.topIconSize,
+          color: Colors.black,
+        ),
         onTap: _onSearchTap,
       ),
       IconActionItem(
@@ -49,6 +61,12 @@ class _GameState extends State<Game> {
         onTap: _onMailTap,
       ),
     ];
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -60,8 +78,13 @@ class _GameState extends State<Game> {
         onTabTap: _onTabTap,
         rightIconItems: _rightIconItems,
       ),
-      body: IndexedStack(
-        index: _selectedTabIndex,
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            _selectedTabIndex = index;
+          });
+        },
         children: _buildContentPages(),
       ),
     );

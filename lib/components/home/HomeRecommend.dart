@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/home/PostItem.dart';
 import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/mock/PostService.dart';
@@ -169,11 +170,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
         ),
         const Padding(
           padding: EdgeInsets.only(bottom: 10),
-          child: Divider(
-            height: 1,
-            thickness: 4,
-            color: ColorConstants.dividerColor,
-          ),
+          child: CustomDivider(),
         ),
       ],
     );
