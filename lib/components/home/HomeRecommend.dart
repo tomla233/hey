@@ -105,7 +105,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        _gameList[index].name,
+                        _gameList[index].communityName,
                         style: const TextStyle(
                           fontSize: 10,
                           color: ColorConstants.primaryBlack,
@@ -116,7 +116,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
                 );
               }
               return GestureDetector(
-                onTap: () => _onTapItem(_gameList[index].name),
+                onTap: () => _onTapItem(_gameList[index].communityName),
                 child: Column(
                   children: [
                     Container(
@@ -156,7 +156,7 @@ class _HomeRecommendState extends State<HomeRecommend> {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      _gameList[index].name,
+                      _gameList[index].communityName,
                       style: const TextStyle(
                         fontSize: 10,
                         color: ColorConstants.primaryBlack,

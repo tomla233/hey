@@ -1,18 +1,22 @@
+//社区基础类
 class CommunityInfo {
-  String name;
+  String communityId;
+  String communityName;
   String picture;
 
-  CommunityInfo({required this.name, required this.picture});
+  CommunityInfo({required this.communityName, required this.picture, required this.communityId});
 
   factory CommunityInfo.fromJson(Map<String, dynamic> json) {
     return CommunityInfo(
-      name: json['name'],
+      communityId: json['communityId'],
+      communityName: json['communityName'],
       picture: json['picture'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
+      'communityId': communityId,
+      'communityName': communityName,
       'picture': picture,
     };
   }

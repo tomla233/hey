@@ -319,37 +319,44 @@ class PostService {
   ];
   // 全局共享的游戏社区列表
   final List<CommunityInfo> gameList = [
-    CommunityInfo(name: '全部', picture: 'https://qianlianwanhua.com/gsbj.webp'),
+    CommunityInfo(communityId: '0', communityName: '全部', picture: 'https://qianlianwanhua.com/gsbj.webp'),
     CommunityInfo(
-      name: 'CS2',
+      communityId: '2',
+      communityName: 'CS2',
       picture:
           'https://media.cdn.queniuqe.com/apps/csgo/images/csgo_react//cs2/header_ctt.png',
     ),
     CommunityInfo(
-      name: 'Wallpaper...',
+      communityId: '3',
+      communityName: 'Wallpaper...',
       picture:
           'https://www.wallpaperengine.io/assets/img/wpe/wallpaper_engine.gif',
     ),
     CommunityInfo(
-      name: 'Steam',
+      communityId: '4',
+      communityName: 'Steam',
       picture:
           'https://ts2.tc.mm.bing.net/th/id/OIP-C.UC56kzwDjCf3o1uc_hpYyAHaHa?w=108&h=108&c=1&bgcl=6cfca9&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3',
     ),
     CommunityInfo(
-      name: '千恋 * 万花',
+      communityId: '5',
+      communityName: '千恋 * 万花',
       picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
-      name: 'PC游戏',
+      communityId: '6',
+      communityName: 'PC游戏',
       picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
-      name: '刀塔2',
+      communityId: '7',
+      communityName: '刀塔2',
       picture:
           'https://bkimg.cdn.bcebos.com/pic/58ee3d6d55fbb2fb1d69a212464a20a44623dc74?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080',
     ),
     CommunityInfo(
-      name: '古墓丽影',
+      communityId: '8',
+      communityName: '古墓丽影',
       picture:
           'https://bkimg.cdn.bcebos.com/pic/d8f9d72a6059252dbe52cc48379b033b5bb5b931?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080',
     ),
