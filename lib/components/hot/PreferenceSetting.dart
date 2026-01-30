@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CustomDivider.dart';
+import 'package:hey/components/common/CustomOutlinedButton.dart';
 import 'package:hey/components/common/Search.dart';
 import 'package:hey/models/home/CommunityInfo.dart';
 
@@ -157,45 +158,8 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                         ),
                       )
                     else
-                      Container(
-                        width: 46,
-                        height: 22,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: [Color(0xFF171C20), Color(0xFF43484C)],
-                          ),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: OutlinedButton(
-                          onPressed: _onBtnClick,
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStateProperty.all(
-                              Colors.transparent,
-                            ),
-                            foregroundColor: WidgetStateProperty.all(
-                              Colors.white,
-                            ),
-                            side: WidgetStateProperty.all(BorderSide.none),
-                            padding: WidgetStateProperty.all(EdgeInsets.zero),
-                            shape: WidgetStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                            minimumSize: WidgetStateProperty.all(
-                              const Size(double.infinity, double.infinity),
-                            ),
-                          ),
-                          child: const Text(
-                            '完成',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                      CustomOutlinedButton(
+                        onPressed: _onBtnClick,
                       ),
                   ],
                 ),
@@ -248,6 +212,4 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
       ],
     );
   }
-
-  /// 构建单个社区卡片
 }
