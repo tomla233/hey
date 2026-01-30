@@ -3,6 +3,7 @@ import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/common/CustomOutlinedButton.dart';
 import 'package:hey/components/common/Search.dart';
 import 'package:hey/models/home/CommunityInfo.dart';
+import 'package:hey/utils/MsgUtil.dart';
 import 'package:hey/utils/StrUtil.dart';
 import 'package:hey/utils/VibrationUtil.dart';
 
@@ -71,7 +72,6 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
       });
     }
   }
-
 
   // 原始未关注列表（数据源）
   final List<CommunityInfo> _originalUnFollowedCommunityList = [
@@ -242,6 +242,8 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                       } else {
                         _onPlusClick(community);
                       }
+                    } else {
+                      MsgUtil.show("点击了【${community.communityName}】");
                     }
                   },
                   child: Column(
@@ -271,6 +273,18 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                                       size: 48,
                                       color: Colors.grey,
                                     ),
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
+                                      if (loadingProgress == null) {
+                                        return child;
+                                      } else {
+                                        return const Icon(
+                                          Icons.image,
+                                          size: 48,
+                                          color: Colors.grey,
+                                        );
+                                      }
+                                    },
                               ),
                             ),
                           ),
