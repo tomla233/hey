@@ -3,6 +3,7 @@ import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/common/CustomOutlinedButton.dart';
 import 'package:hey/components/common/Search.dart';
 import 'package:hey/models/home/CommunityInfo.dart';
+import 'package:hey/utils/StrUtil.dart';
 
 class PreferenceSetting extends StatefulWidget {
   const PreferenceSetting({super.key});
@@ -25,7 +26,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   List<CommunityInfo> followedCommunityList = [
     CommunityInfo(
       communityId: '1',
-      communityName: '千恋*万花1',
+      communityName: '千恋*万花',
       picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
@@ -260,13 +261,15 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                       ),
                       const SizedBox(height: 4),
                       SizedBox(
-                        width: 48,
                         child: Text(
-                          community.communityName,
+                          StrUtil.limitTextLength(
+                            community.communityName,
+                            maxLength: 8,
+                          ),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
