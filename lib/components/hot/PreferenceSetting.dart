@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/common/CustomDivider.dart';
 import 'package:hey/components/common/Search.dart';
 import 'package:hey/models/home/CommunityInfo.dart';
 
@@ -106,7 +107,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
             padding: EdgeInsets.symmetric(horizontal: hPadding, vertical: 10),
             child: _buildCardView(followedCommunityList, true, cardWidth),
           ),
-          const SizedBox(height: 20),
+          const CustomDivider(),
           // 更多推荐
           Padding(
             padding: EdgeInsets.symmetric(horizontal: hPadding, vertical: 10),
