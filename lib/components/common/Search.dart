@@ -35,7 +35,7 @@ class Search extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       onChanged: (value) {
-        onTextChanged!(value);
+        onTextChanged(value);
       },
     );
   }
