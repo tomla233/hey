@@ -15,6 +15,8 @@ class PreferenceSetting extends StatefulWidget {
 class _PreferenceSettingState extends State<PreferenceSetting> {
   // 编辑状态标记
   bool isEditing = false;
+  //图片宽度
+  double imageWidth = 58;
   void _onBtnClick() {
     setState(() {
       // 切换编辑状态
@@ -91,7 +93,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   @override
   Widget build(BuildContext context) {
     // 统一padding
-    final double hPadding = 20;
+    final double hPadding = 10;
     // 计算每个卡片的宽度
     final double screenWidth = MediaQuery.of(context).size.width;
     final double cardWidth = (screenWidth - hPadding * 2 - 24) / 4;
@@ -150,7 +152,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
           children: [
             Text(
               isFollowed ? '我的偏好' : '更多推荐',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             if (isFollowed)
               GestureDetector(
@@ -175,10 +177,10 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
               ),
           ],
         ),
-        const SizedBox(height: 20),
+        // const SizedBox(height: 10),
         Wrap(
-          spacing: 8, // 列之间的水平间距
-          runSpacing: 12, // 行之间的垂直间距
+          spacing: 6, // 列之间的水平间距
+          runSpacing: 10, // 行之间的垂直间距
           children: communityList.map((community) {
             return SizedBox(
               width: cardWidth,
@@ -206,16 +208,16 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                           Padding(
                             padding: const EdgeInsets.only(top: 8, right: 8),
                             child: Container(
-                              width: 48,
-                              height: 48,
+                              width: imageWidth,
+                              height: imageWidth,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               clipBehavior: Clip.antiAlias,
                               child: Image.network(
                                 community.picture,
-                                width: 48,
-                                height: 48,
+                                width: imageWidth,
+                                height: imageWidth,
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) =>
                                     const Icon(
@@ -260,16 +262,21 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                         ],
                       ),
                       const SizedBox(height: 4),
-                      SizedBox(
-                        child: Text(
-                          StrUtil.limitTextLength(
-                            community.communityName,
-                            maxLength: 8,
-                          ),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
+                      Padding(
+                        // 补偿图片的right:8偏移
+                        padding: const EdgeInsets.only(right: 8),
+                        child: SizedBox(
+                          width: imageWidth,
+                          child: Text(
+                            StrUtil.limitTextLength(
+                              community.communityName,
+                              maxLength: 8,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
