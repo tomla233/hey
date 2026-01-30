@@ -38,7 +38,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   void _onMinusClick(CommunityInfo community) {
     setState(() {
       followedCommunityList.remove(community);
-      unFollowedCommunityList.add(community);
+      unFollowedCommunityList.insert(0, community);
     });
   }
 
