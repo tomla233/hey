@@ -25,56 +25,66 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   List<CommunityInfo> followedCommunityList = [
     CommunityInfo(
       communityId: '1',
-      communityName: '案例1',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花1',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
       communityId: '2',
-      communityName: '案例2',
-      picture: 'lib/assets/box.png',
-    ),
-    CommunityInfo(
-      communityId: '3',
-      communityName: '案例3',
-      picture: 'lib/assets/box.png',
-    ),
-    CommunityInfo(
-      communityId: '4',
-      communityName: '案例4',
-      picture: 'lib/assets/box.png',
-    ),
-    CommunityInfo(
-      communityId: '5',
-      communityName: '案例5',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花2',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
   ];
+  // 点击减号
+  void _onMinusClick(CommunityInfo community) {
+    setState(() {
+      followedCommunityList.remove(community);
+      unFollowedCommunityList.add(community);
+    });
+  }
+
+  // 点击加号
+  void _onPlusClick(CommunityInfo community) {
+    setState(() {
+      unFollowedCommunityList.remove(community);
+      followedCommunityList.add(community);
+    });
+  }
+
+  // 长按卡片触发图标显示
+  void _onCardLongPress() {
+    if (!isEditing) {
+      setState(() {
+        isEditing = true;
+      });
+    }
+  }
+
   // 未关注列表
   List<CommunityInfo> unFollowedCommunityList = [
     CommunityInfo(
       communityId: '6',
-      communityName: '案例6',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花6',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
       communityId: '7',
-      communityName: '案例7',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花7',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
       communityId: '8',
-      communityName: '案例8',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花8',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
       communityId: '9',
-      communityName: '案例9',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花9',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
     CommunityInfo(
       communityId: '10',
-      communityName: '案例10',
-      picture: 'lib/assets/box.png',
+      communityName: '千恋*万花10',
+      picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
   ];
   @override
@@ -158,9 +168,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                         ),
                       )
                     else
-                      CustomOutlinedButton(
-                        onPressed: _onBtnClick,
-                      ),
+                      CustomOutlinedButton(onPressed: _onBtnClick),
                   ],
                 ),
               ),
@@ -173,38 +181,98 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
           children: communityList.map((community) {
             return SizedBox(
               width: cardWidth,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Image.asset(
-                      community.picture,
-                      width: 48,
-                      height: 48,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.image, size: 48, color: Colors.grey),
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  SizedBox(
-                    width: 48,
-                    child: Text(
-                      community.communityName,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onLongPress: _onCardLongPress,
+                  onTap: () {
+                    if (isEditing) {
+                      if (isFollowed) {
+                        _onMinusClick(community);
+                      } else {
+                        _onPlusClick(community);
+                      }
+                    }
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Stack(
+                        // clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8, right: 8),
+                              child: Image.network(
+                                community.picture,
+                                width: 48,
+                                height: 48,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(
+                                      Icons.image,
+                                      size: 48,
+                                      color: Colors.grey,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          if (isEditing)
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: () {
+                                  if (isFollowed) {
+                                    _onMinusClick(community);
+                                  } else {
+                                    _onPlusClick(community);
+                                  }
+                                },
+                                child: Container(
+                                  width: 16,
+                                  height: 16,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: isFollowed
+                                        ? const Color(0xFFC9CED2)
+                                        : Colors.black,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    isFollowed ? Icons.remove : Icons.add,
+                                    size: 10,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
-                    ),
+                      const SizedBox(height: 4),
+                      SizedBox(
+                        width: 48,
+                        child: Text(
+                          community.communityName,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             );
           }).toList(),

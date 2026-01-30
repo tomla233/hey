@@ -49,6 +49,9 @@ class CustomOutlinedButton extends StatelessWidget {
           foregroundColor: WidgetStateProperty.all(textColor),
           side: WidgetStateProperty.all(BorderSide.none),
           padding: WidgetStateProperty.all(EdgeInsets.zero),
+          // shape: WidgetStateProperty.all(
+          //   RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          // ),
           minimumSize: WidgetStateProperty.all(
             const Size(double.infinity, double.infinity),
           ),
