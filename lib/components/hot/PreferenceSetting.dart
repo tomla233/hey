@@ -4,6 +4,7 @@ import 'package:hey/components/common/CustomOutlinedButton.dart';
 import 'package:hey/components/common/Search.dart';
 import 'package:hey/models/home/CommunityInfo.dart';
 import 'package:hey/utils/StrUtil.dart';
+import 'package:hey/utils/VibrationUtil.dart';
 
 class PreferenceSetting extends StatefulWidget {
   const PreferenceSetting({super.key});
@@ -17,6 +18,8 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   bool isEditing = false;
   //图片宽度
   double imageWidth = 58;
+  // 搜索关键词
+  String _searchKeyword = '';
   void _onBtnClick() {
     setState(() {
       // 切换编辑状态
@@ -41,29 +44,37 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   void _onMinusClick(CommunityInfo community) {
     setState(() {
       followedCommunityList.remove(community);
-      unFollowedCommunityList.insert(0, community);
+      // 添加到原始未关注列表
+      _originalUnFollowedCommunityList.insert(0, community);
+      // 重新筛选
+      _filterUnFollowedList();
     });
   }
 
   // 点击加号
   void _onPlusClick(CommunityInfo community) {
     setState(() {
-      unFollowedCommunityList.remove(community);
+      _originalUnFollowedCommunityList.remove(community);
       followedCommunityList.add(community);
+      // 重新筛选
+      _filterUnFollowedList();
     });
   }
 
   // 长按卡片触发图标显示
   void _onCardLongPress() {
     if (!isEditing) {
+      //震动
+      VibrationUtil.lightVibrate();
       setState(() {
         isEditing = true;
       });
     }
   }
 
-  // 未关注列表
-  List<CommunityInfo> unFollowedCommunityList = [
+
+  // 原始未关注列表（数据源）
+  final List<CommunityInfo> _originalUnFollowedCommunityList = [
     CommunityInfo(
       communityId: '6',
       communityName: '千恋*万花6',
@@ -90,6 +101,33 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
       picture: 'https://qianlianwanhua.com/gsbj.webp',
     ),
   ];
+
+  // 筛选后的未关注列表
+  late List<CommunityInfo> _filteredUnFollowedCommunityList;
+  @override
+  void initState() {
+    super.initState();
+    // 初始化筛选列表
+    _filteredUnFollowedCommunityList = List.from(
+      _originalUnFollowedCommunityList,
+    );
+  }
+
+  // 根据搜索关键词筛选
+  void _filterUnFollowedList() {
+    if (_searchKeyword.isEmpty) {
+      _filteredUnFollowedCommunityList = List.from(
+        _originalUnFollowedCommunityList,
+      );
+    } else {
+      _filteredUnFollowedCommunityList = _originalUnFollowedCommunityList
+          .where(
+            (community) => community.communityName.startsWith(_searchKeyword),
+          )
+          .toList();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // 统一padding
@@ -118,7 +156,11 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
               height: 30,
               child: Search(
                 onTextChanged: (String value) {
-                  print('搜索内容变化：$value');
+                  setState(() {
+                    _searchKeyword = value;
+                    // 重新筛选列表
+                    _filterUnFollowedList();
+                  });
                 },
               ),
             ),
@@ -132,7 +174,11 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
           // 更多推荐
           Padding(
             padding: EdgeInsets.symmetric(horizontal: hPadding, vertical: 10),
-            child: _buildCardView(unFollowedCommunityList, false, cardWidth),
+            child: _buildCardView(
+              _filteredUnFollowedCommunityList,
+              false,
+              cardWidth,
+            ),
           ),
         ],
       ),
