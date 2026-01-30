@@ -13,6 +13,13 @@ class PreferenceSetting extends StatefulWidget {
 class _PreferenceSettingState extends State<PreferenceSetting> {
   // 编辑状态标记
   bool isEditing = false;
+  void _onBtnClick() {
+    setState(() {
+      // 切换编辑状态
+      isEditing = !isEditing;
+    });
+  }
+
   // 已关注
   List<CommunityInfo> followedCommunityList = [
     CommunityInfo(
@@ -135,24 +142,61 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
             ),
             if (isFollowed)
               GestureDetector(
-                onTap: () {
-                  setState(() {
-                    // 切换编辑状态
-                    isEditing = !isEditing;
-                  });
-                },
+                onTap: _onBtnClick,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.edit_outlined, size: 16),
+                    if (!isEditing) const Icon(Icons.settings, size: 16),
                     const SizedBox(width: 4),
-                    Text(
-                      isEditing ? '完成' : '管理',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+                    if (!isEditing)
+                      const Text(
+                        '管理',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    else
+                      Container(
+                        width: 46,
+                        height: 22,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [Color(0xFF171C20), Color(0xFF43484C)],
+                          ),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: OutlinedButton(
+                          onPressed: _onBtnClick,
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStateProperty.all(
+                              Colors.transparent,
+                            ),
+                            foregroundColor: WidgetStateProperty.all(
+                              Colors.white,
+                            ),
+                            side: WidgetStateProperty.all(BorderSide.none),
+                            padding: WidgetStateProperty.all(EdgeInsets.zero),
+                            shape: WidgetStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            minimumSize: WidgetStateProperty.all(
+                              const Size(double.infinity, double.infinity),
+                            ),
+                          ),
+                          child: const Text(
+                            '完成',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -190,6 +234,10 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                     child: Text(
                       community.communityName,
                       textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
