@@ -7,16 +7,19 @@
 ## 项目依赖介绍
 - flutter版本：[3.38.5](https://docs.flutter.cn/install/archive/)
 
-- 状态管理框架：[Mobx](https://mobx.netlify.app/getting-started)
-    - 修改每个store文件后执行：`flutter pub run build_runner build`
-    - 自动监听并构建*.g.dart文件：`flutter pub run build_runner watch`
-
 - 消息提示插件： [oktoast](https://pub.dev/packages/oktoast)
     - utils包下的MsgUtil.dart是基于此插件封装的消息提示类
+
+- 路由管理插件：[go_router](https://pub.dev/packages/go_router)
+  - 本项目的路由配置文件：lib/routers/index.dart
 
 - 本地存储插件：[shared_preferences](https://pub.dev/packages/shared_preferences)
 
 - 轮播图插件：[carousel_slider](https://pub.dev/packages/carousel_slider)
+
+- 状态管理框架：[Mobx](https://mobx.netlify.app/getting-started)
+    - 修改每个store文件后执行：`flutter pub run build_runner build`
+    - 自动监听并构建*.g.dart文件：`flutter pub run build_runner watch`
 
 ## lib目录结构说明
 + assets 存放静态资源文件

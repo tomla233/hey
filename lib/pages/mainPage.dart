@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hey/pages/game/Game.dart';
 import 'package:hey/pages/home/home.dart';
 import 'package:hey/pages/hot/Hot.dart';
@@ -135,7 +136,7 @@ class _MainPageState extends State<MainPage>
         onTap: (index) {
           final item = tabList[index];
           if (item["type"] == "add_button") {
-            Navigator.pushNamed(context, '/article').then((_) {
+            context.push('/article').then((_) {
               setState(() {});
             });
             return;

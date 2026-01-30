@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hey/components/hot/HotContent.dart';
 import 'package:hey/constant/ColorConstants.dart';
 
@@ -71,7 +72,7 @@ class _HotShellState extends State<HotShell>
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onPressed: () {
-                    print('点击了【抽屉图标】');
+                    context.push('/preferenceSetting');
                   },
                 ),
               ),
