@@ -201,17 +201,17 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Stack(
-                        // clipBehavior: Clip.none,
+                        clipBehavior: Clip.none,
                         children: [
-                          Container(
-                            width: 48,
-                            height: 48,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            clipBehavior: Clip.antiAlias,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 8, right: 8),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8, right: 8),
+                            child: Container(
+                              width: 48,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              clipBehavior: Clip.antiAlias,
                               child: Image.network(
                                 community.picture,
                                 width: 48,
