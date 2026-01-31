@@ -7,6 +7,7 @@ import 'package:hey/utils/MsgUtil.dart';
 import 'package:hey/utils/StrUtil.dart';
 import 'package:hey/utils/VibrationUtil.dart';
 
+/// 偏好设置
 class PreferenceSetting extends StatefulWidget {
   const PreferenceSetting({super.key});
 
@@ -22,6 +23,9 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   // 搜索关键词
   String _searchKeyword = '';
   void _onBtnClick() {
+    if (isEditing) {
+        MsgUtil.show('点击了【完成】按钮');
+      }
     setState(() {
       // 切换编辑状态
       isEditing = !isEditing;
