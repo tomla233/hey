@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/BadgeIcon.dart';
 import 'package:hey/components/common/CustomTabAppBar.dart';
+import 'package:hey/components/game/GameRank.dart';
+import 'package:hey/components/game/GameRecommend.dart';
 import 'package:hey/constant/GlobalConstants.dart';
 
 class Game extends StatefulWidget {
@@ -37,10 +39,7 @@ class _GameState extends State<Game> {
   }
 
   List<Widget> _buildContentPages() {
-    return [
-      const Center(child: Text("推荐页面内容", style: TextStyle(fontSize: 20))),
-      const Center(child: Text("榜单页面内容", style: TextStyle(fontSize: 20))),
-    ];
+    return [const GameRecommend(), const GameRank()];
   }
 
   @override
