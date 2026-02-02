@@ -31,6 +31,8 @@ class _GameRecommendState extends State<GameRecommend> {
   final ScrollController _scrollController = ScrollController();
   // 上拉加载状态
   bool _isLoading = false;
+  // 统一上左右padding
+  final double padding = 10;
   // 下拉刷新
   Future<void> _onRefresh() async {
     await Future.delayed(
@@ -73,6 +75,13 @@ class _GameRecommendState extends State<GameRecommend> {
     return const Text('游戏推荐');
   }
 
+  Widget _buildChildItem(Widget widget) {
+    return Padding(
+      padding: EdgeInsets.only(top: padding, left: padding, right: padding),
+      child: widget,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -80,6 +89,7 @@ class _GameRecommendState extends State<GameRecommend> {
       child: ListView.builder(
         controller: _scrollController,
         itemCount: 9 + _gameList.length,
+
         itemBuilder: (context, index) {
           if (index == 0) {
             //轮播图
@@ -90,31 +100,31 @@ class _GameRecommendState extends State<GameRecommend> {
             );
           } else if (index == 1) {
             //标签卡片
-            return const TagCard();
+            return _buildChildItem(const TagCard());
           } else if (index == 2) {
             //为你推荐
-            return const RecommendForYou();
+            return _buildChildItem(const RecommendForYou());
           } else if (index == 3) {
             //Steam 促销
-            return const SteamPromotion();
+            return _buildChildItem(const SteamPromotion());
           } else if (index == 4) {
             //黑盒促销
-            return const BoxPromotion();
+            return _buildChildItem(const BoxPromotion());
           } else if (index == 5) {
             //即将上线
-            return const ComingGame();
+            return _buildChildItem(const ComingGame());
           } else if (index == 6) {
             //销量榜
-            return const SalesRanking();
+            return _buildChildItem(const SalesRanking());
           } else if (index == 7) {
             //促销神作
-            return const PromotionForGod();
+            return _buildChildItem(const PromotionForGod());
           } else if (index == 8) {
             //安利墙
-            return const AmwayWall();
+            return _buildChildItem(const AmwayWall());
           } else {
             //为你推荐更多
-            GameInfo gameInfo = _gameList[index - 1];
+            GameInfo gameInfo = _gameList[index - 9];
             return _buildGameItem(gameInfo);
           }
         },

@@ -24,8 +24,8 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
   String _searchKeyword = '';
   void _onBtnClick() {
     if (isEditing) {
-        MsgUtil.show('点击了【完成】按钮');
-      }
+      MsgUtil.show('点击了【完成】按钮');
+    }
     setState(() {
       // 切换编辑状态
       isEditing = !isEditing;
@@ -134,11 +134,13 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
 
   @override
   Widget build(BuildContext context) {
-    // 统一padding
+    // 统一左右padding
     final double hPadding = 10;
+    //列之间的水平间距
+    final double hSpacing = 6;
     // 计算每个卡片的宽度
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double cardWidth = (screenWidth - hPadding * 2 - 24) / 4;
+    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 4) / 4;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -172,7 +174,12 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
           //我的偏好
           Padding(
             padding: EdgeInsets.symmetric(horizontal: hPadding, vertical: 10),
-            child: _buildCardView(followedCommunityList, true, cardWidth),
+            child: _buildCardView(
+              followedCommunityList,
+              true,
+              cardWidth,
+              hSpacing,
+            ),
           ),
           const CustomDivider(),
           // 更多推荐
@@ -182,6 +189,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
               _filteredUnFollowedCommunityList,
               false,
               cardWidth,
+              hSpacing,
             ),
           ),
         ],
@@ -193,6 +201,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
     List<CommunityInfo> communityList,
     bool isFollowed,
     double cardWidth,
+    double hSpacing,
   ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -229,7 +238,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
         ),
         // const SizedBox(height: 10),
         Wrap(
-          spacing: 6, // 列之间的水平间距
+          spacing: hSpacing, // 列之间的水平间距
           runSpacing: 10, // 行之间的垂直间距
           children: communityList.map((community) {
             return SizedBox(
