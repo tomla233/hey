@@ -5,7 +5,9 @@ import 'package:hey/utils/MsgUtil.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
   final List<SliderInfo> sliderList;
-  const CustomCarouselSlider({super.key, required this.sliderList});
+  final double? sliderHeight;
+  final bool? showTitle;
+  const CustomCarouselSlider({super.key, required this.sliderList, this.sliderHeight = 180.0, this.showTitle = true});
 
   @override
   State<CustomCarouselSlider> createState() => _CustomCarouselSliderState();
@@ -29,7 +31,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: 180.0,
+            height: widget.sliderHeight,
             viewportFraction: 1.0,
             autoPlay: true,
             clipBehavior: Clip.antiAlias,
@@ -60,12 +62,13 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                         return Image.asset('lib/assets/box.png');
                       },
                     ),
+                    if (widget.showTitle == true)
                     Positioned(
                       left: 0,
                       right: 0,
                       bottom: 20,
                       child: Text(
-                        item.title,
+                        item.title ?? '',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.white,

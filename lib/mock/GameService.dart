@@ -1,0 +1,78 @@
+import 'package:hey/models/game/GameInfo.dart';
+
+class GameService {
+  GameService._();
+
+  static final GameService _instance = GameService._();
+  factory GameService() => _instance;
+
+  //游戏信息列表
+  final List<GameInfo> gameInfoList = [
+    GameInfo(
+      gameId: '1',
+      gameChineseName: '千恋万花',
+      gameEnglishName: 'Senren * Banka',
+      gamePrice: '88',
+      gameIcon: '',
+      gameDesc: '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
+      gameScreenshots: ['', '', '', '', ''],
+      platformPrice: '88',
+      discountPercent: '',
+      originalPrice: '',
+      gameScore: '9.8',
+      gameScoreNum: 5799,
+      gameTags: ['恋爱', '和风', '角色'],
+      gamePlatforms: ['PC', 'Steam'],
+      isSupportChinese: true,
+      isSupportSteamDeck: true,
+      isSupportController: true,
+      isSupportFamilySharing: true,
+      supportPlayerNum: '单人',
+      currentOnlineNum: 100000,
+      historyPrice: '88',
+      fullLanguageRating: '95%',
+      yesterdayPeakOnline: 100000,
+      globalSalesRank: 1,
+      platformPlayerNum: 100000,
+      averageGameTime: '10小时',
+      releaseTime: '2023-01-01',
+      developer: 'Yuzusoft',
+      publisher: 'Yuzusoft',
+      qqGroup: '123456',
+      series: '千恋万花',
+    ),
+    GameInfo(
+      gameId: '2',
+      gameChineseName: '千恋万花',
+      gameEnglishName: 'Senren * Banka',
+      gamePrice: '88',
+      gameIcon: '',
+      gameDesc: '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
+      gameScreenshots: ['', '', '', '', ''],
+      platformPrice: '88',
+      discountPercent: '',
+      originalPrice: '',
+      gameScore: '9.8',
+      gameScoreNum: 5799,
+      gameTags: ['恋爱', '和风', '角色'],
+      gamePlatforms: ['PC', 'Steam'],
+      isSupportChinese: true,
+      isSupportSteamDeck: true,
+      isSupportController: true,
+      isSupportFamilySharing: true,
+      supportPlayerNum: '单人',
+      currentOnlineNum: 100000,
+      historyPrice: '88',
+      fullLanguageRating: '95%',
+      yesterdayPeakOnline: 100000,
+      globalSalesRank: 1,
+      platformPlayerNum: 100000,
+      averageGameTime: '10小时',
+      releaseTime: '2023-01-01',
+      developer: 'Yuzusoft',
+      publisher: 'Yuzusoft',
+      qqGroup: '123456',
+      series: '千恋万花',
+    ),
+  ];
+}

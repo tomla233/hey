@@ -1,12 +1,12 @@
 class SliderInfo {
   final String communityId;
   final String imageUrl;
-  final String title;
+  final String? title;
 
   SliderInfo({
     required this.communityId,
     required this.imageUrl,
-    required this.title,
+    this.title,
   });
   factory SliderInfo.fromJson(Map<String, dynamic> json) {
     return SliderInfo(
