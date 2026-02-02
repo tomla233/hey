@@ -77,7 +77,7 @@ class _GameRecommendState extends State<GameRecommend> {
 
   Widget _buildChildItem(Widget widget) {
     return Padding(
-      padding: EdgeInsets.only(top: padding, left: padding, right: padding),
+      padding: EdgeInsets.only(top: 20, left: padding, right: padding),
       child: widget,
     );
   }
@@ -95,12 +95,12 @@ class _GameRecommendState extends State<GameRecommend> {
             //轮播图
             return CustomCarouselSlider(
               sliderList: sliderList,
-              sliderHeight: 50,
+              sliderHeight: 60,
               showTitle: false,
             );
           } else if (index == 1) {
             //标签卡片
-            return _buildChildItem(const TagCard());
+            return _buildChildItem(TagCard());
           } else if (index == 2) {
             //为你推荐
             return _buildChildItem(const RecommendForYou());

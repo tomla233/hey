@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hey/mock/GameService.dart';
+import 'package:hey/models/game/TagCardEntity.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
 /// 标签卡片
 class TagCard extends StatelessWidget {
-  const TagCard({super.key});
+  TagCard({super.key});
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
+  void _onTagTap(TagCardEntity item) {
+    MsgUtil.show(item.tagName);
+  }
 
+  final List<TagCardEntity> tagCardList = GameService().tagCardList;
   @override
   Widget build(BuildContext context) {
     // 统一上左右padding
@@ -16,41 +22,43 @@ class TagCard extends StatelessWidget {
     final double hSpacing = 6;
     // 计算每个卡片的宽度
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 4) / 4;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              '标题',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 3) / 4;
+    return Wrap(
+      spacing: hSpacing,
+      runSpacing: 10,
+      children: tagCardList.map((item) {
+        return GestureDetector(
+          onTap:()=> _onTagTap(item),
+          child: Container(
+            width: cardWidth,
+            height: cardWidth * 0.5,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF3F4F6),
+              borderRadius: BorderRadius.circular(8),
             ),
-            const Spacer(),
-            GestureDetector(
-              onTap: _onMoreTap,
-              child: const Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    '更多',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 4,
+                  top: 4,
+                  child: Text(
+                    item.tagName,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  SizedBox(width: 4),
-                  Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    size: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ],
-              ),
+                ),
+                Positioned(
+                  bottom: 4,
+                  right: 4,
+                  child: Image.asset(item.tagIcon, width: 16, height: 16),
+                ),
+              ],
             ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Text('data'),
-      ],
+          ),
+        );
+      }).toList(),
     );
   }
 }

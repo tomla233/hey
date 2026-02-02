@@ -1,4 +1,5 @@
 import 'package:hey/models/game/GameInfo.dart';
+import 'package:hey/models/game/TagCardEntity.dart';
 
 class GameService {
   GameService._();
@@ -14,7 +15,8 @@ class GameService {
       gameEnglishName: 'Senren * Banka',
       gamePrice: '88',
       gameIcon: '',
-      gameDesc: '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
+      gameDesc:
+          '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
       gameScreenshots: ['', '', '', '', ''],
       platformPrice: '88',
       discountPercent: '',
@@ -47,7 +49,8 @@ class GameService {
       gameEnglishName: 'Senren * Banka',
       gamePrice: '88',
       gameIcon: '',
-      gameDesc: '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
+      gameDesc:
+          '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
       gameScreenshots: ['', '', '', '', ''],
       platformPrice: '88',
       discountPercent: '',
@@ -74,5 +77,16 @@ class GameService {
       qqGroup: '123456',
       series: '千恋万花',
     ),
+  ];
+  //标签卡片列表
+  final List<TagCardEntity> tagCardList = [
+    TagCardEntity(tagName: '黑盒商城', tagIcon: 'lib/assets/game/shopify.png'),
+    TagCardEntity(tagName: '喜加一', tagIcon: 'lib/assets/game/gift.png'),
+    TagCardEntity(tagName: '赛事中心', tagIcon: 'lib/assets/game/match.png'),
+    TagCardEntity(tagName: '黑盒语音', tagIcon: 'lib/assets/game/voice.png'),
+    TagCardEntity(tagName: '刀塔战绩', tagIcon: 'lib/assets/box.png'),
+    TagCardEntity(tagName: 'CS2战绩', tagIcon: 'lib/assets/box.png'),
+    TagCardEntity(tagName: '开箱统计', tagIcon: 'lib/assets/box.png'),
+    TagCardEntity(tagName: '更多', tagIcon: 'lib/assets/all.png'),
   ];
 }

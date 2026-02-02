@@ -27,3 +27,4 @@ flutter:
   assets:
     - lib/assets/
     - lib/assets/tabIcon/
+    - lib/assets/game/

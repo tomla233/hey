@@ -140,7 +140,7 @@ class _PreferenceSettingState extends State<PreferenceSetting> {
     final double hSpacing = 6;
     // 计算每个卡片的宽度
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 4) / 4;
+    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 3) / 4;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
