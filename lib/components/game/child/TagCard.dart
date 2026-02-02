@@ -45,7 +45,6 @@ class TagCard extends StatelessWidget {
                     item.tagName,
                     style: const TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
