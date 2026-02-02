@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/game/child/AmwayWall.dart';
+import 'package:hey/components/game/child/BoxPromotion.dart';
+import 'package:hey/components/game/child/ComingGame.dart';
+import 'package:hey/components/game/child/PromotionForGod.dart';
+import 'package:hey/components/game/child/RecommendForYou.dart';
+import 'package:hey/components/game/child/SalesRanking.dart';
+import 'package:hey/components/game/child/SteamPromotion.dart';
+import 'package:hey/components/game/child/TagCard.dart';
 import 'package:hey/components/hot/CustomCarouselSlider.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/mock/HotService.dart';
@@ -71,15 +79,41 @@ class _GameRecommendState extends State<GameRecommend> {
       onRefresh: _onRefresh,
       child: ListView.builder(
         controller: _scrollController,
-        itemCount: 1 + _gameList.length,
+        itemCount: 9 + _gameList.length,
         itemBuilder: (context, index) {
           if (index == 0) {
+            //轮播图
             return CustomCarouselSlider(
               sliderList: sliderList,
               sliderHeight: 50,
               showTitle: false,
             );
+          } else if (index == 1) {
+            //标签卡片
+            return const TagCard();
+          } else if (index == 2) {
+            //为你推荐
+            return const RecommendForYou();
+          } else if (index == 3) {
+            //Steam 促销
+            return const SteamPromotion();
+          } else if (index == 4) {
+            //黑盒促销
+            return const BoxPromotion();
+          } else if (index == 5) {
+            //即将上线
+            return const ComingGame();
+          } else if (index == 6) {
+            //销量榜
+            return const SalesRanking();
+          } else if (index == 7) {
+            //促销神作
+            return const PromotionForGod();
+          } else if (index == 8) {
+            //安利墙
+            return const AmwayWall();
           } else {
+            //为你推荐更多
             GameInfo gameInfo = _gameList[index - 1];
             return _buildGameItem(gameInfo);
           }
