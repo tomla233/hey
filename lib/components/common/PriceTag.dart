@@ -12,34 +12,37 @@ class PriceTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: isDiscountPrice == true? 76: 44,
-      height: 20,
       decoration: BoxDecoration(
         color: const Color(0xFFF3F4F8),
         borderRadius: BorderRadius.circular(4),
       ),
-      padding: const EdgeInsets.all(2),
-      child: Wrap(
-        spacing: 2, // 水平子组件间距
-        runSpacing: 2,
-        alignment: WrapAlignment.start,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        children: [
-          const Icon(
-            Icons.snowboarding_rounded,
-            size: 10,
-            fontWeight: FontWeight.bold,
-          ),
-          Text(
-            '￥$gamePrice',
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-          ),
-          if (isDiscountPrice == true)
-            const Text(
-              '券后价',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+      child: IntrinsicWidth(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.snowboarding_rounded,
+              size: 10,
+              fontWeight: FontWeight.bold,
             ),
-        ],
+            const SizedBox(width: 2),
+            Text(
+              '￥$gamePrice',
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+            ),
+            if (isDiscountPrice == true)
+              ...[
+                const SizedBox(width: 4),
+                const Text(
+                '券后价',
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
+              )
+              ],
+          ],
+        ),
       ),
     );
   }
