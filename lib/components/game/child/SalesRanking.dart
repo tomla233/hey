@@ -13,7 +13,7 @@ class SalesRanking extends StatelessWidget {
     // 统一上左右padding
     final double hPadding = 10;
     //列之间的水平间距
-    final double hSpacing = 6;
+    final double hSpacing = 14;
     // 计算每个卡片的宽度
     final double screenWidth = MediaQuery.of(context).size.width;
     final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 4) / 4;
