@@ -64,7 +64,7 @@ class RecommendForYou extends StatelessWidget {
             return GestureDetector(
               onTap: () => _onCardTap(item),
               child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
@@ -75,7 +75,7 @@ class RecommendForYou extends StatelessWidget {
                       height: cardWidth * 0.5,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 4),
                   Text(
                     item.gameChineseName,
                     style: const TextStyle(
@@ -83,10 +83,59 @@ class RecommendForYou extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 4),
                   PriceTag(
                     gamePrice: item.gamePrice,
                     isDiscountPrice: item.isDiscountPrice,
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF3F4F8),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 2,
+                        ),
+                        child: Text(
+                          item.outFirstTag,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        item.gameTags[0],
+                        style: const TextStyle(
+                          color: Color(0xFF8D9194),
+                          fontSize: 10,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      const Text(
+                        '|',
+                        style: TextStyle(
+                          color: Color(0xFF8D9194),
+                          fontSize: 10,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        item.gameTags[1],
+                        style: const TextStyle(
+                          color: Color(0xFF8D9194),
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
