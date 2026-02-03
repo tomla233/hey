@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hey/components/game/child/AmwayWall.dart';
 import 'package:hey/components/game/child/BoxPromotion.dart';
-import 'package:hey/components/game/child/ComingGame.dart';
 import 'package:hey/components/game/child/PromotionForGod.dart';
 import 'package:hey/components/game/child/RecommendForYou.dart';
 import 'package:hey/components/game/child/SalesRanking.dart';
-import 'package:hey/components/game/child/SteamPromotion.dart';
 import 'package:hey/components/game/child/TagCard.dart';
 import 'package:hey/components/hot/CustomCarouselSlider.dart';
 import 'package:hey/mock/GameService.dart';
@@ -105,26 +103,20 @@ class _GameRecommendState extends State<GameRecommend> {
             //为你推荐
             return _buildChildItem(RecommendForYou());
           } else if (index == 3) {
-            //Steam 促销
-            return _buildChildItem(const SteamPromotion());
-          } else if (index == 4) {
-            //黑盒促销
+            //黑盒热销
             return _buildChildItem(const BoxPromotion());
-          } else if (index == 5) {
-            //即将上线
-            return _buildChildItem(const ComingGame());
-          } else if (index == 6) {
+          } else if (index == 4) {
             //销量榜
             return _buildChildItem(const SalesRanking());
-          } else if (index == 7) {
+          } else if (index == 5) {
             //促销神作
             return _buildChildItem(const PromotionForGod());
-          } else if (index == 8) {
+          } else if (index == 6) {
             //安利墙
             return _buildChildItem(const AmwayWall());
           } else {
             //为你推荐更多
-            GameInfo gameInfo = _gameList[index - 9];
+            GameInfo gameInfo = _gameList[index - 7];
             return _buildGameItem(gameInfo);
           }
         },
