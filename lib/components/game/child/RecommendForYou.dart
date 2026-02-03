@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:hey/components/common/PriceTag.dart';
+import 'package:hey/mock/GameService.dart';
+import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
 /// 为你推荐
 class RecommendForYou extends StatelessWidget {
-  const RecommendForYou({super.key});
+  RecommendForYou({super.key});
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
 
+  void _onCardTap(GameInfo gameInfo) {
+    MsgUtil.show(gameInfo.gameChineseName);
+  }
+
+  final List<GameInfo> gameInfoList = GameService().gameInfoList;
   @override
   Widget build(BuildContext context) {
     // 统一上左右padding
@@ -16,7 +24,7 @@ class RecommendForYou extends StatelessWidget {
     final double hSpacing = 6;
     // 计算每个卡片的宽度
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 4) / 4;
+    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 1) / 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,7 +32,7 @@ class RecommendForYou extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              '标题',
+              '为你推荐',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
@@ -49,7 +57,42 @@ class RecommendForYou extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        Text('data'),
+        Wrap(
+          spacing: hSpacing,
+          runSpacing: 10,
+          children: gameInfoList.map((item) {
+            return GestureDetector(
+              onTap: () => _onCardTap(item),
+              child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      item.gameScreenshots.take(1).first,
+                      fit: BoxFit.cover,
+                      width: cardWidth,
+                      height: cardWidth * 0.5,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    item.gameChineseName,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  PriceTag(
+                    gamePrice: item.gamePrice,
+                    isDiscountPrice: item.isDiscountPrice,
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ),
       ],
     );
   }

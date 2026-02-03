@@ -17,6 +17,8 @@ class GameInfo {
   String gameScore;
   //评分人数
   int gameScoreNum;
+  //外部首个标签
+  String outFirstTag;
   //游戏标签
   List<String> gameTags;
   //是否支持中文
@@ -50,6 +52,7 @@ class GameInfo {
     required this.gameScreenshots,
     required this.gameScore,
     required this.gameScoreNum,
+    required this.outFirstTag,
     required this.gameTags,
     required this.isSupportChinese,
     required this.isSupportSteamDeck,

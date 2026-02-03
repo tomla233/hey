@@ -6,9 +6,6 @@ import 'package:hey/utils/MsgUtil.dart';
 /// 标签卡片
 class TagCard extends StatelessWidget {
   TagCard({super.key});
-  void _onMoreTap() {
-    MsgUtil.show('更多');
-  }
   void _onTagTap(TagCardEntity item) {
     MsgUtil.show(item.tagName);
   }
@@ -28,7 +25,7 @@ class TagCard extends StatelessWidget {
       runSpacing: 10,
       children: tagCardList.map((item) {
         return GestureDetector(
-          onTap:()=> _onTagTap(item),
+          onTap: () => _onTagTap(item),
           child: Container(
             width: cardWidth,
             height: cardWidth * 0.5,
@@ -43,15 +40,13 @@ class TagCard extends StatelessWidget {
                   top: 4,
                   child: Text(
                     item.tagName,
-                    style: const TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: const TextStyle(fontSize: 12,fontWeight: FontWeight.w500),
                   ),
                 ),
                 Positioned(
                   bottom: 4,
                   right: 4,
-                  child: Image.asset(item.tagIcon, width: 16, height: 16),
+                  child: Image.asset(item.tagIcon, width: 22, height: 22),
                 ),
               ],
             ),

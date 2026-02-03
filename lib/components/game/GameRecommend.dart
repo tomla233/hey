@@ -103,7 +103,7 @@ class _GameRecommendState extends State<GameRecommend> {
             return _buildChildItem(TagCard());
           } else if (index == 2) {
             //为你推荐
-            return _buildChildItem(const RecommendForYou());
+            return _buildChildItem(RecommendForYou());
           } else if (index == 3) {
             //Steam 促销
             return _buildChildItem(const SteamPromotion());
