@@ -79,7 +79,7 @@ class RecommendForYou extends StatelessWidget {
                   Text(
                     item.gameChineseName,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

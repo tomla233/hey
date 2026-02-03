@@ -12,8 +12,8 @@ class PriceTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: isDiscountPrice == true? 96: 60,
-      height: 26,
+      width: isDiscountPrice == true? 76: 44,
+      height: 20,
       decoration: BoxDecoration(
         color: const Color(0xFFF3F4F8),
         borderRadius: BorderRadius.circular(4),
@@ -27,17 +27,17 @@ class PriceTag extends StatelessWidget {
         children: [
           const Icon(
             Icons.snowboarding_rounded,
-            size: 16,
+            size: 10,
             fontWeight: FontWeight.bold,
           ),
           Text(
             '￥$gamePrice',
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
           ),
           if (isDiscountPrice == true)
             const Text(
               '券后价',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
             ),
         ],
       ),
