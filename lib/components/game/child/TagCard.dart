@@ -46,7 +46,7 @@ class TagCard extends StatelessWidget {
                 Positioned(
                   bottom: 4,
                   right: 4,
-                  child: Image.asset(item.tagIcon, width: 20, height: 20),
+                  child: Image.asset(item.tagIcon, width: 18, height: 18),
                 ),
               ],
             ),
