@@ -13,7 +13,7 @@ class PriceTag extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: isDiscountPrice == true? 96: 60,
-      height: 24,
+      height: 26,
       decoration: BoxDecoration(
         color: const Color(0xFFF3F4F8),
         borderRadius: BorderRadius.circular(4),
