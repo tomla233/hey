@@ -40,13 +40,13 @@ class TagCard extends StatelessWidget {
                   top: 4,
                   child: Text(
                     item.tagName,
-                    style: const TextStyle(fontSize: 12,fontWeight: FontWeight.w500),
+                    style: const TextStyle(fontSize: 12,color: Colors.black),
                   ),
                 ),
                 Positioned(
                   bottom: 4,
                   right: 4,
-                  child: Image.asset(item.tagIcon, width: 22, height: 22),
+                  child: Image.asset(item.tagIcon, width: 20, height: 20),
                 ),
               ],
             ),
