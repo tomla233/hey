@@ -24,7 +24,7 @@ class BoxPromotion extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              '标题',
+              '黑盒热销',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
@@ -49,7 +49,7 @@ class BoxPromotion extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        Text('data'),
+        
       ],
     );
   }

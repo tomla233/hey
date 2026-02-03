@@ -31,6 +31,10 @@ class _GameRecommendState extends State<GameRecommend> {
   bool _isLoading = false;
   // 统一上左右padding
   final double padding = 10;
+  // 黑盒热销专属背景色
+  final Color boxPromotionBgColor = const Color(0xFFFAFBFD);
+  // 通用子组件背景色
+  final Color childBgColor = Colors.white;
   // 下拉刷新
   Future<void> _onRefresh() async {
     await Future.delayed(
@@ -76,6 +80,15 @@ class _GameRecommendState extends State<GameRecommend> {
   Widget _buildChildItem(Widget widget) {
     return Padding(
       padding: EdgeInsets.only(top: 20, left: padding, right: padding),
+      child: Container(color: childBgColor, child: widget),
+    );
+  }
+
+  /// 黑盒热销
+  Widget _buildBoxPromotionItem(Widget widget) {
+    return Container(
+      color: boxPromotionBgColor,
+      padding: EdgeInsets.only(top: 20, left: padding, right: padding),
       child: widget,
     );
   }
@@ -86,7 +99,7 @@ class _GameRecommendState extends State<GameRecommend> {
       onRefresh: _onRefresh,
       child: ListView.builder(
         controller: _scrollController,
-        itemCount: 9 + _gameList.length,
+        itemCount: 7 + _gameList.length,
 
         itemBuilder: (context, index) {
           if (index == 0) {
@@ -103,8 +116,8 @@ class _GameRecommendState extends State<GameRecommend> {
             //为你推荐
             return _buildChildItem(RecommendForYou());
           } else if (index == 3) {
-            //黑盒热销
-            return _buildChildItem(const BoxPromotion());
+            //黑盒热销(特殊处理)
+            return _buildBoxPromotionItem(const BoxPromotion());
           } else if (index == 4) {
             //销量榜
             return _buildChildItem(const SalesRanking());
