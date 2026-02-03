@@ -7,8 +7,8 @@ class GameInfo {
   String gameEnglishName;
   //游戏价格
   String gamePrice;
-  //是否为券后价
-  bool isDiscountPrice;
+  //价格右侧标签数组,固定四个元素，示例：['券后价','80','-90%','新史低']，如果为空则用null表示，不可省略，例如['券后价',null,'-90%','新史低']
+  List<String?> priceRightTags;
   // 游戏简介
   String gameDesc;
   //游戏截图
@@ -47,7 +47,7 @@ class GameInfo {
     required this.gameChineseName,
     required this.gameEnglishName,
     required this.gamePrice,
-    required this.isDiscountPrice,
+    required this.priceRightTags,
     required this.gameDesc,
     required this.gameScreenshots,
     required this.gameScore,
@@ -64,7 +64,7 @@ class GameInfo {
     required this.publisher,
     required this.qqGroup,
     required this.series,
-  });
+  }) : assert(priceRightTags.length == 4, 'priceRightTags 必须有四个元素');
 
   //todo factory
 }

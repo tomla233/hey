@@ -86,7 +86,7 @@ class RecommendForYou extends StatelessWidget {
                   const SizedBox(height: 4),
                   PriceTag(
                     gamePrice: item.gamePrice,
-                    isDiscountPrice: item.isDiscountPrice,
+                    tags: item.priceRightTags,
                   ),
                   const SizedBox(height: 4),
                   Row(

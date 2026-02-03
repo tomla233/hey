@@ -14,10 +14,10 @@ class GameService {
       gameChineseName: '千恋万花',
       gameEnglishName: 'Senren * Banka',
       gamePrice: '88',
-      isDiscountPrice: true,
+      priceRightTags: [null, '80', '-90%', '新史低'],
       gameDesc:
           '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
-       gameScreenshots: [
+      gameScreenshots: [
         'https://img6.donews.com/img/2021/08/27/img_pic_171630034638.jpg',
         'https://storage.moegirl.org.cn/moegirl/commons/6/60/%E8%95%BE%E5%A8%9C%C2%B7%E8%8E%89%E5%B8%8C%E7%89%B9%E5%A8%9C%E7%93%A6_%E8%A7%92%E8%89%B2%E5%B0%88%E8%BC%AF%E5%B0%81%E9%9D%A2.jpg',
         'https://i0.hdslb.com/bfs/new_dyn/5fe72304a5b46efb51d27724a0065807626510519.jpg@1192w.avif',
@@ -44,7 +44,7 @@ class GameService {
       gameChineseName: '千恋万花',
       gameEnglishName: 'Senren * Banka',
       gamePrice: '88',
-      isDiscountPrice: false,
+      priceRightTags: ['券后价', '80', '-90%', null],
       gameDesc:
           '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
       gameScreenshots: [
@@ -74,7 +74,7 @@ class GameService {
       gameChineseName: '千恋万花',
       gameEnglishName: 'Senren * Banka',
       gamePrice: '88',
-      isDiscountPrice: true,
+      priceRightTags: ['券后价', '80', null, '新史低'],
       gameDesc:
           '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
       gameScreenshots: [
@@ -104,7 +104,7 @@ class GameService {
       gameChineseName: '千恋万花',
       gameEnglishName: 'Senren * Banka',
       gamePrice: '88',
-      isDiscountPrice: true,
+      priceRightTags: ['券后价', null, '-90%', '新史低'],
       gameDesc:
           '《千恋万花》是日本美少女游戏品牌Yuzusoft（柚子社）制作的一款和风恋爱题材作品。本作也是柚子社创立十周年的纪念作，在发售当年除展现出势如破竹的高人气外还赢得了大量奖项。',
       gameScreenshots: [
