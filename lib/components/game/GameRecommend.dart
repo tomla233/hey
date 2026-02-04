@@ -117,7 +117,7 @@ class _GameRecommendState extends State<GameRecommend> {
             return _buildChildItem(RecommendForYou());
           } else if (index == 3) {
             //黑盒热销(特殊处理)
-            return _buildBoxPromotionItem(BoxPromotion());
+            return _buildBoxPromotionItem(const BoxPromotion());
           } else if (index == 4) {
             //销量榜
             return _buildChildItem(const SalesRanking());
