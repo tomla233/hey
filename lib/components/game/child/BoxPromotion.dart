@@ -23,14 +23,14 @@ class _BoxPromotionState extends State<BoxPromotion> {
 
   double _overscroll = 0;
   bool _readyToTrigger = false;
-  final double triggerDistance = 30;
+  final double triggerDistance = 15;
   bool _triggerOnRelease = false;
 
   // 记录列表项宽度和间距，用于计算滚动位置
   final double hSpacing = 14;
   final double containerWidth = 130;
   // 从该阈值开始旋转箭头，箭头完成180°旋转需额外的 `triggerDistance`
-  final double rotationStart = 40;
+  final double rotationStart = 15;
 
   @override
   void initState() {
@@ -105,7 +105,7 @@ class _BoxPromotionState extends State<BoxPromotion> {
       child: Opacity(
         opacity: showProgress,
         child: SizedBox(
-          width: 40,
+          width: 36,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -184,167 +184,170 @@ class _BoxPromotionState extends State<BoxPromotion> {
           child: Stack(
             alignment: Alignment.centerRight,
             children: [
-              NotificationListener<ScrollNotification>(
-                onNotification: (notification) {
-                  if (notification is UserScrollNotification) {
-                    if (notification.direction == ScrollDirection.idle) {
-                      if (_triggerOnRelease) {
-                        print('trigger on release');
-                        _onTriggerMore();
+              Padding(
+                padding: const EdgeInsets.only(right: 18),
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (notification) {
+                    if (notification is UserScrollNotification) {
+                      if (notification.direction == ScrollDirection.idle) {
+                        if (_triggerOnRelease) {
+                          print('trigger on release');
+                          _onTriggerMore();
+                        }
+                        _triggerOnRelease = false;
                       }
-                      _triggerOnRelease = false;
                     }
-                  }
-                  if (notification is ScrollUpdateNotification &&
-                      notification.dragDetails != null) {
-                    _triggerOnRelease = _readyToTrigger;
-                  }
-                  return false;
-                },
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: _gameList.length,
-                  controller: _scrollController,
-                  physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics(),
-                  ),
-                  separatorBuilder: (context, index) {
-                    return SizedBox(width: hSpacing);
+                    if (notification is ScrollUpdateNotification &&
+                        notification.dragDetails != null) {
+                      _triggerOnRelease = _readyToTrigger;
+                    }
+                    return false;
                   },
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: containerWidth,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: borderColor, width: 0.8),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            top: circleTop,
-                            child: Container(
-                              width: circleHW,
-                              height: circleHW,
-                              decoration: const BoxDecoration(
-                                color: Color(0xFFFAFBFD),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            top: imgTop,
-                            child: Center(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: SizedBox(
-                                  width: imgWidth,
-                                  height: imgHeight,
-                                  child: Image.network(
-                                    _gameList[index].gameScreenshots[0],
-                                    fit: BoxFit.cover,
-                                    alignment: Alignment.center,
-                                  ),
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: _gameList.length,
+                    controller: _scrollController,
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
+                    separatorBuilder: (context, index) {
+                      return SizedBox(width: hSpacing);
+                    },
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: containerWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: borderColor, width: 0.8),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: circleTop,
+                              child: Container(
+                                width: circleHW,
+                                height: circleHW,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xFFFAFBFD),
+                                  shape: BoxShape.circle,
                                 ),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            top: dividerY,
-                            child: Container(height: 0.5, color: borderColor),
-                          ),
-                          Positioned(
-                            top: couponTagTop,
-                            child: Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: marginHorizontal,
-                              ),
-                              height: couponTagHeight,
-                              width: couponTagWidth,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF69E34),
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  '领券9折',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            top: gameNameTop,
-                            child: Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: marginHorizontal,
-                              ),
-                              padding: const EdgeInsets.only(right: 10),
-                              width: gameNameWidth,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '${_gameList[index].gameChineseName},-${_gameList[index].gameDesc}',
-                                    style: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500,
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: imgTop,
+                              child: Center(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(4),
+                                  child: SizedBox(
+                                    width: imgWidth,
+                                    height: imgHeight,
+                                    child: Image.network(
+                                      _gameList[index].gameScreenshots[0],
+                                      fit: BoxFit.cover,
+                                      alignment: Alignment.center,
                                     ),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  const SizedBox(height: 4),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    spacing: 3,
-                                    children: [
-                                      const Text(
-                                        '￥',
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w800,
-                                          color: Colors.black,
-                                        ),
-                                        textAlign: TextAlign.end,
-                                      ),
-                                      Text(
-                                        _gameList[index].gamePrice,
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w800,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      const Text(
-                                        '券后价',
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black,
-                                          height: 1.4,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                            Positioned(
+                              left: 0,
+                              right: 0,
+                              top: dividerY,
+                              child: Container(height: 0.5, color: borderColor),
+                            ),
+                            Positioned(
+                              top: couponTagTop,
+                              child: Container(
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: marginHorizontal,
+                                ),
+                                height: couponTagHeight,
+                                width: couponTagWidth,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF69E34),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    '领券9折',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              top: gameNameTop,
+                              child: Container(
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: marginHorizontal,
+                                ),
+                                padding: const EdgeInsets.only(right: 10),
+                                width: gameNameWidth,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${_gameList[index].gameChineseName},-${_gameList[index].gameDesc}',
+                                      style: const TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      spacing: 3,
+                                      children: [
+                                        const Text(
+                                          '￥',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black,
+                                          ),
+                                          textAlign: TextAlign.end,
+                                        ),
+                                        Text(
+                                          _gameList[index].gamePrice,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const Text(
+                                          '券后价',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            height: 1.4,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               // 将提示组件放在Stack中，叠加在列表右侧
