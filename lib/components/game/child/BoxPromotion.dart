@@ -59,7 +59,11 @@ class _BoxPromotionState extends State<BoxPromotion> {
   }
 
   double get _arrowRotation {
-    final progress = (_overscroll / triggerDistance).clamp(0.0, 1.0);
+    // 等文字完全出现后（_overscroll >= 40）再开始旋转
+    if (_overscroll < 40) {
+      return 0; // 不旋转
+    }
+    final progress = ((_overscroll - 40) / triggerDistance).clamp(0.0, 1.0);
     return -progress * 3.1415926; // 0 → π
   }
 
@@ -106,7 +110,7 @@ class _BoxPromotionState extends State<BoxPromotion> {
                   ),
                 ),
                 const SizedBox(width: 4),
-                _verticalText(_readyToTrigger ? '松开查看' : '左滑更多'),
+                _verticalText(_overscroll >= 40 && _readyToTrigger ? '松开查看' : '左滑更多'),
               ],
             ),
           ),
