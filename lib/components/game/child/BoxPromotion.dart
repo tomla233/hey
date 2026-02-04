@@ -1,6 +1,7 @@
 //黑盒促销
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
@@ -24,7 +25,7 @@ class _BoxPromotionState extends State<BoxPromotion> {
   bool _readyToTrigger = false;
   final double triggerDistance = 30;
   bool _triggerOnRelease = false;
-  
+
   // 记录列表项宽度和间距，用于计算滚动位置
   final double hSpacing = 14;
   final double containerWidth = 130;
@@ -66,12 +67,18 @@ class _BoxPromotionState extends State<BoxPromotion> {
     if (_overscroll < rotationStart) {
       return 0;
     }
-    final progress = ((_overscroll - rotationStart) / triggerDistance).clamp(0.0, 1.0);
+    final progress = ((_overscroll - rotationStart) / triggerDistance).clamp(
+      0.0,
+      1.0,
+    );
     return -progress * 3.1415926; // 0 → π (-180deg)
   }
 
   void _onTriggerMore() {
     MsgUtil.show('触发查看更多');
+    context.push('/article').then((_) {
+      setState(() {});
+    });
   }
 
   Widget _verticalText(String text) {
@@ -89,10 +96,10 @@ class _BoxPromotionState extends State<BoxPromotion> {
   Widget _buildPullMoreItem() {
     // 计算显示进度（0-1），控制组件从右侧滑入
     final showProgress = (_overscroll / rotationStart).clamp(0.0, 1.0);
-    
+
     // 完全隐藏时偏移到屏幕右侧，显示时逐渐向左移动
     final offsetX = rotationStart * (1 - showProgress);
-    
+
     return Transform.translate(
       offset: Offset(offsetX, 0),
       child: Opacity(
@@ -138,7 +145,7 @@ class _BoxPromotionState extends State<BoxPromotion> {
     final double imgHeight = 50;
     final double imgWidth = 110;
     final double imgTop = circleTop + (circleHW - imgHeight) / 2;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -182,6 +189,7 @@ class _BoxPromotionState extends State<BoxPromotion> {
                   if (notification is UserScrollNotification) {
                     if (notification.direction == ScrollDirection.idle) {
                       if (_triggerOnRelease) {
+                        print('trigger on release');
                         _onTriggerMore();
                       }
                       _triggerOnRelease = false;
@@ -196,7 +204,6 @@ class _BoxPromotionState extends State<BoxPromotion> {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  // 移除+1，不再在列表末尾添加提示项
                   itemCount: _gameList.length,
                   controller: _scrollController,
                   physics: const BouncingScrollPhysics(
