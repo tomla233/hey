@@ -28,6 +28,8 @@ class _BoxPromotionState extends State<BoxPromotion> {
   // 记录列表项宽度和间距，用于计算滚动位置
   final double hSpacing = 14;
   final double containerWidth = 130;
+  // 从该阈值开始旋转箭头，箭头完成180°旋转需额外的 `triggerDistance`
+  final double rotationStart = 40;
 
   @override
   void initState() {
@@ -45,7 +47,8 @@ class _BoxPromotionState extends State<BoxPromotion> {
       if (extra > 0) {
         setState(() {
           _overscroll = extra;
-          _readyToTrigger = _overscroll >= triggerDistance;
+          // 只有在箭头完成180°旋转后才准备触发更多（rotationStart + triggerDistance）
+          _readyToTrigger = _overscroll >= (rotationStart + triggerDistance);
         });
       } else {
         if (_overscroll != 0) {
@@ -59,12 +62,12 @@ class _BoxPromotionState extends State<BoxPromotion> {
   }
 
   double get _arrowRotation {
-    // 等文字完全出现后（_overscroll >= 40）再开始旋转
-    if (_overscroll < 40) {
-      return 0; // 不旋转
+    // 从 rotationStart 开始旋转，旋转完成需额外的 triggerDistance
+    if (_overscroll < rotationStart) {
+      return 0;
     }
-    final progress = ((_overscroll - 40) / triggerDistance).clamp(0.0, 1.0);
-    return -progress * 3.1415926; // 0 → π
+    final progress = ((_overscroll - rotationStart) / triggerDistance).clamp(0.0, 1.0);
+    return -progress * 3.1415926; // 0 → π (-180deg)
   }
 
   void _onTriggerMore() {
@@ -85,10 +88,10 @@ class _BoxPromotionState extends State<BoxPromotion> {
 
   Widget _buildPullMoreItem() {
     // 计算显示进度（0-1），控制组件从右侧滑入
-    final showProgress = (_overscroll / 40).clamp(0.0, 1.0);
+    final showProgress = (_overscroll / rotationStart).clamp(0.0, 1.0);
     
     // 完全隐藏时偏移到屏幕右侧，显示时逐渐向左移动
-    final offsetX = 40 * (1 - showProgress);
+    final offsetX = rotationStart * (1 - showProgress);
     
     return Transform.translate(
       offset: Offset(offsetX, 0),
@@ -110,7 +113,7 @@ class _BoxPromotionState extends State<BoxPromotion> {
                   ),
                 ),
                 const SizedBox(width: 4),
-                _verticalText(_overscroll >= 40 && _readyToTrigger ? '松开查看' : '左滑更多'),
+                _verticalText(_readyToTrigger ? '松开查看' : '左滑更多'),
               ],
             ),
           ),
