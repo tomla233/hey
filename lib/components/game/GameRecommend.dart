@@ -88,7 +88,7 @@ class _GameRecommendState extends State<GameRecommend> {
   Widget _buildBoxPromotionItem(Widget widget) {
     return Container(
       color: boxPromotionBgColor,
-      padding: EdgeInsets.only(top: 20,bottom: 20, left: padding, right: padding),
+      padding: EdgeInsets.only(top: 10,bottom: 20, left: padding, right: padding),
       child: widget,
     );
   }
