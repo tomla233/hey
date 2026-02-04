@@ -140,8 +140,8 @@ class BoxPromotion extends StatelessWidget {
                                     fontSize: 10,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.black,
-                                    height: 1.4,
                                   ),
+                                  textAlign: TextAlign.end,
                                 ),
                                 Text(
                                   _gameList[index].gamePrice,
