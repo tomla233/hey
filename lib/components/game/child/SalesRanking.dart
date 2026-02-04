@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
 class SalesRanking extends StatelessWidget {
-  const SalesRanking({super.key});
+  SalesRanking({super.key});
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
 
+  final List<String> _rankList = [
+    '销量榜',
+    '最受欢迎榜',
+    '最受期待榜',
+  ];
   @override
   Widget build(BuildContext context) {
     // 统一上左右padding

@@ -88,7 +88,12 @@ class _GameRecommendState extends State<GameRecommend> {
   Widget _buildBoxPromotionItem(Widget widget) {
     return Container(
       color: boxPromotionBgColor,
-      padding: EdgeInsets.only(top: 10,bottom: 20, left: padding, right: padding),
+      padding: EdgeInsets.only(
+        top: 10,
+        bottom: 20,
+        left: padding,
+        right: padding,
+      ),
       child: widget,
     );
   }
@@ -120,7 +125,7 @@ class _GameRecommendState extends State<GameRecommend> {
             return _buildBoxPromotionItem(const BoxPromotion());
           } else if (index == 4) {
             //销量榜
-            return _buildChildItem(const SalesRanking());
+            return _buildChildItem(SalesRanking());
           } else if (index == 5) {
             //促销神作
             return _buildChildItem(const PromotionForGod());
