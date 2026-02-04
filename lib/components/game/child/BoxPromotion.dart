@@ -15,8 +15,8 @@ class BoxPromotion extends StatelessWidget {
   Widget build(BuildContext context) {
     //列之间的水平间距
     final double hSpacing = 14;
-    double sizeBoxHeight = 180;
-    double ContainerWidth = 140;
+    double sizeBoxHeight = 190;
+    double ContainerWidth = 130;
     final double dividerY = sizeBoxHeight * 3 / 5;
     final Color borderColor = const Color(0xFFF4F4F5);
     //领券9折标签的高度
@@ -31,6 +31,16 @@ class BoxPromotion extends StatelessWidget {
     final double gameNameTop = couponTagTop + couponTagHeight + 4;
     //游戏名称、价格区域宽度
     final double gameNameWidth = ContainerWidth - marginHorizontal * 2;
+    //圆形背景的宽高
+    final double circleHW = 74;
+    //圆形背景距离顶部的高度
+    final double circleTop = 20;
+    //圆形背景中图片的高
+    final double imgHeight = 50;
+    //圆形背景中图片的宽
+    final double imgWidth = 110;
+    //圆形背景中图片距离顶部的高度
+    final double imgTop = circleTop + (circleHW - imgHeight) / 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -80,6 +90,38 @@ class BoxPromotion extends StatelessWidget {
                 ),
                 child: Stack(
                   children: [
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: circleTop,
+                      child: Container(
+                        width: circleHW,
+                        height: circleHW,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFFAFBFD),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: imgTop,
+                      child: Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: SizedBox(
+                            width: imgWidth,
+                            height: imgHeight,
+                            child: Image.network(
+                              _gameList[index].gameScreenshots[0],
+                              fit: BoxFit.cover,
+                              alignment: Alignment.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     Positioned(
                       left: 0,
                       right: 0,
