@@ -4,13 +4,20 @@ import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
-class BoxPromotion extends StatelessWidget {
-  BoxPromotion({super.key});
+class BoxPromotion extends StatefulWidget {
+  const BoxPromotion({super.key});
+
+  @override
+  State<BoxPromotion> createState() => _BoxPromotionState();
+}
+
+class _BoxPromotionState extends State<BoxPromotion> {
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
 
   final List<GameInfo> _gameList = GameService().gameInfoList;
+
   @override
   Widget build(BuildContext context) {
     //列之间的水平间距
