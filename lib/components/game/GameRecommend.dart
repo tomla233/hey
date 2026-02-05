@@ -135,7 +135,7 @@ class _GameRecommendState extends State<GameRecommend> {
             return _buildSalesRankingItem(const SalesRanking());
           } else if (index == 5) {
             //促销神作
-            return _buildChildItem(const PromotionForGod());
+            return _buildChildItem(PromotionForGod());
           } else if (index == 6) {
             //安利墙
             return _buildChildItem(const AmwayWall());

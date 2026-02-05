@@ -96,7 +96,7 @@ class PriceTag extends StatelessWidget {
       if (index == nonNullIndexes.last) {
         borderRadius = const BorderRadius.horizontal(
           left: Radius.zero,
-          right: Radius.circular(4),
+          right: Radius.circular(outerRadius),
         );
       }
 
