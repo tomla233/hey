@@ -136,7 +136,7 @@ class PromotionForGod extends StatelessWidget {
                       child: Text(
                         gameInfo.gameChineseName,
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
