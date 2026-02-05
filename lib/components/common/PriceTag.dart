@@ -11,7 +11,9 @@ class PriceTag extends StatelessWidget {
   static const outerRadius = 2.0;
   @override
   Widget build(BuildContext context) {
+    bool hasValidTags = tags.any((e) => e != null);
     return Container(
+      padding: EdgeInsets.only(left: 4, right: hasValidTags ? 0 : 4),
       decoration: const BoxDecoration(
         color: Color(0xFFF3F4F8),
         borderRadius: BorderRadius.horizontal(

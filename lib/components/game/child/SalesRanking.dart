@@ -127,7 +127,6 @@ class _SalesRankingState extends State<SalesRanking>
                             children: [
                               PriceTag(
                                 gamePrice: game.gamePrice,
-                                tags: game.priceRightTags,
                               ),
                               const AttentionTag(),
                             ],
