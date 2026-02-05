@@ -4,19 +4,24 @@ class PriceTag extends StatelessWidget {
   final String gamePrice;
   // 标签数组
   final List<String?> tags;
+  // 是否将外层背景稍微变为半透明以降低对比度
+  final bool dimBackground;
 
-  const PriceTag({super.key, required this.gamePrice, this.tags = const []});
+  const PriceTag({super.key, required this.gamePrice, this.tags = const [], this.dimBackground = false});
 
   // 外层容器左侧圆角
   static const outerRadius = 2.0;
   @override
   Widget build(BuildContext context) {
     bool hasValidTags = tags.any((e) => e != null);
+    final Color baseBg = const Color(0xFFF3F4F8);
+    final Color outerBg = dimBackground ? baseBg.withValues(alpha: 0.8) : baseBg;
+
     return Container(
       padding: EdgeInsets.only(left: 4, right: hasValidTags ? 0 : 4),
-      decoration: const BoxDecoration(
-        color: Color(0xFFF3F4F8),
-        borderRadius: BorderRadius.horizontal(
+      decoration: BoxDecoration(
+        color: outerBg,
+        borderRadius: const BorderRadius.horizontal(
           left: Radius.circular(outerRadius),
           right: Radius.circular(outerRadius),
         ),
