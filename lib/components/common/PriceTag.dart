@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
 
 class PriceTag extends StatelessWidget {
   final String gamePrice;

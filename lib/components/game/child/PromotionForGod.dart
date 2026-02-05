@@ -19,13 +19,13 @@ class PromotionForGod extends StatelessWidget {
   //文字和标签距离左侧
   final double leftWidth = 10.0;
   //遮罩层高度
-  final double overlayHeight = 140.0;
+  final double overlayHeight = 190;
   //游戏名称距离底部的高度
   final double nameBottomHeight = 70.0;
   //促销标签距离底部的高度
   final double promoTagHeight = 44.0;
   //分类标签距离底部的高度
-  final double categoryTagHeight = 34.0;
+  final double categoryTagHeight = 22.0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -120,7 +120,7 @@ class PromotionForGod extends StatelessWidget {
                             end: Alignment.bottomCenter,
                             colors: [
                               Colors.black.withValues(alpha: 0),
-                              Colors.black.withValues(alpha: 102),
+                              Colors.black.withValues(alpha: 30),
                             ],
                           ),
                           borderRadius: const BorderRadius.only(
@@ -136,9 +136,9 @@ class PromotionForGod extends StatelessWidget {
                       child: Text(
                         gameInfo.gameChineseName,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           color: Colors.white,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -149,6 +149,37 @@ class PromotionForGod extends StatelessWidget {
                         gamePrice: gameInfo.gamePrice,
                         tags: gameInfo.priceRightTags,
                         dimBackground: true,
+                      ),
+                    ),
+                    Positioned(
+                      left: leftWidth,
+                      bottom: categoryTagHeight,
+                      child: Row(
+                        children: gameInfo.gameTags.asMap().entries.map((entry) {
+                          int index = entry.key;
+                          String tag = entry.value;
+                          List<Widget> widgets = [
+                            Text(
+                              tag,
+                              style: const TextStyle(
+                                fontSize: 8,
+                                color: Colors.white70,
+                              ),
+                            ),
+                          ];
+                          if (index < gameInfo.gameTags.length - 1) {
+                            widgets.add(
+                              const Text(
+                                ' | ',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            );
+                          }
+                          return Row(children: widgets);
+                        }).expand((widget) => [widget]).toList(),
                       ),
                     ),
                   ],
