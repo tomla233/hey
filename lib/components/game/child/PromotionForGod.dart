@@ -163,7 +163,8 @@ class PromotionForGod extends StatelessWidget {
                               tag,
                               style: const TextStyle(
                                 fontSize: 8,
-                                color: Colors.white70,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500
                               ),
                             ),
                           ];
@@ -173,7 +174,7 @@ class PromotionForGod extends StatelessWidget {
                                 ' | ',
                                 style: TextStyle(
                                   fontSize: 8,
-                                  color: Colors.white,
+                                  color: Colors.white70,
                                 ),
                               ),
                             );
