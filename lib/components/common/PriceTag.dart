@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class PriceTag extends StatelessWidget {
   final String gamePrice;
@@ -6,8 +7,10 @@ class PriceTag extends StatelessWidget {
   final List<String?> tags;
   // 是否将外层背景稍微变为半透明以降低对比度
   final bool dimBackground;
+  // 是否启用毛玻璃（BackdropFilter）效果
+  final bool frosted;
 
-  const PriceTag({super.key, required this.gamePrice, this.tags = const [], this.dimBackground = false});
+  const PriceTag({super.key, required this.gamePrice, this.tags = const [], this.dimBackground = false, this.frosted = false});
 
   // 外层容器左侧圆角
   static const outerRadius = 2.0;
@@ -15,16 +18,21 @@ class PriceTag extends StatelessWidget {
   Widget build(BuildContext context) {
     bool hasValidTags = tags.any((e) => e != null);
     final Color baseBg = const Color(0xFFF3F4F8);
-    final Color outerBg = dimBackground ? baseBg.withValues(alpha: 0.8) : baseBg;
+    // when frosted, use a slightly stronger translucent overlay to reduce "whiteness"
+    final Color outerBg = frosted
+      ? baseBg.withValues(alpha: 0.45)
+      : (dimBackground ? baseBg.withValues(alpha: 0.2) : baseBg);
 
-    return Container(
+    final borderRadius = const BorderRadius.horizontal(
+      left: Radius.circular(outerRadius),
+      right: Radius.circular(outerRadius),
+    );
+
+    final content = Container(
       padding: EdgeInsets.only(left: 4, right: hasValidTags ? 0 : 4),
       decoration: BoxDecoration(
         color: outerBg,
-        borderRadius: const BorderRadius.horizontal(
-          left: Radius.circular(outerRadius),
-          right: Radius.circular(outerRadius),
-        ),
+        borderRadius: borderRadius,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -48,6 +56,22 @@ class PriceTag extends StatelessWidget {
         ],
       ),
     );
+
+    if (frosted) {
+      // reduce blur and add a subtle translucent overlay to tone down brightness
+      return ClipRRect(
+        borderRadius: borderRadius,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+          child: Container(
+            color: baseBg.withValues(alpha: 0.15),
+            child: content,
+          ),
+        ),
+      );
+    }
+
+    return content;
   }
 
   // 构建标签

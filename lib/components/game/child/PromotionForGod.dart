@@ -148,7 +148,7 @@ class PromotionForGod extends StatelessWidget {
                       child: PriceTag(
                         gamePrice: gameInfo.gamePrice,
                         tags: gameInfo.priceRightTags,
-                        
+                        frosted: true,
                       ),
                     ),
                   ],
