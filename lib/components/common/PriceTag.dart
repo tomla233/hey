@@ -8,7 +8,7 @@ class PriceTag extends StatelessWidget {
   const PriceTag({super.key, required this.gamePrice, this.tags = const []});
 
   // 外层容器左侧圆角
-  static const outerRadius = 4.0;
+  static const outerRadius = 2.0;
   @override
   Widget build(BuildContext context) {
     return Container(
