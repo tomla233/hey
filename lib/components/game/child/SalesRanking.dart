@@ -40,14 +40,17 @@ class _SalesRankingState extends State<SalesRanking>
   Widget _buildRankCard(String rankType) {
     return Column(
       children: _gameList.map((game) {
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14.0),
-              child: Row(children: [Text('data')]),
-            ),
-            CustomDivider(thickness: 1),
-          ],
+        return SizedBox(
+          height: 40,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                child: Row(children: [Text('data')]),
+              ),
+              CustomDivider(thickness: 1),
+            ],
+          ),
         );
       }).toList(),
     );

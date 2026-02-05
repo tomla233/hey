@@ -84,6 +84,13 @@ class _GameRecommendState extends State<GameRecommend> {
     );
   }
 
+  Widget _buildSalesRankingItem(Widget widget) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20, right: padding),
+      child: Container(color: childBgColor, child: widget),
+    );
+  }
+
   /// 黑盒热销
   Widget _buildBoxPromotionItem(Widget widget) {
     return Container(
@@ -125,7 +132,7 @@ class _GameRecommendState extends State<GameRecommend> {
             return _buildBoxPromotionItem(const BoxPromotion());
           } else if (index == 4) {
             //销量榜
-            return _buildChildItem(const SalesRanking());
+            return _buildSalesRankingItem(const SalesRanking());
           } else if (index == 5) {
             //促销神作
             return _buildChildItem(const PromotionForGod());
