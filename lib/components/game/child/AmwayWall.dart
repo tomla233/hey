@@ -13,9 +13,9 @@ class AmwayWall extends StatelessWidget {
 
   final List<GameInfo> _gameList = GameService().gameInfoList.toList();
   final double cardHPadding = 10; // 卡片水平间距
-  final double cardHeight = 240; // 卡片高度
+  final double cardHeight = 280; // 卡片高度
   final double commonRadius = 8; // 圆角
-  final double singleSideExpose = 40; // 单侧露边宽度
+  final double singleSideExpose = 30; // 单侧露边宽度
 
   /// 构建安利墙卡片
   Widget _buildAmwayWallCard(GameInfo gameInfo, double cardWidth) {
@@ -27,7 +27,7 @@ class AmwayWall extends StatelessWidget {
       width: cardWidth,
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey[100]!,
@@ -37,6 +37,40 @@ class AmwayWall extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(commonRadius),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: imageHeight,
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(commonRadius),
+                  child: Image.network(
+                    gameInfo.gameScreenshots[0],
+                    width: smallImageWidth,
+                    height: imageHeight,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(commonRadius),
+                    child: Image.network(
+                      gameInfo.gameScreenshots[1],
+                      width: double.infinity,
+                      height: imageHeight,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
       ),
     );
   }
