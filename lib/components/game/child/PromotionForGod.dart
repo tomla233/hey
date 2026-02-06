@@ -152,140 +152,135 @@ class _PromotionForGodState extends State<PromotionForGod> {
               },
               itemBuilder: (BuildContext context, int index) {
                 GameInfo gameInfo = _gameList[index];
-                return Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFFE5E7EB),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  width: itemWidth,
-                  height: itemHeight,
-                  child: Stack(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          gameInfo.gameScreenshots[0],
-                          width: itemWidth,
-                          height: itemHeight,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            bottomRight: Radius.circular(8.0),
-                            topLeft: Radius.circular(8.0),
-                          ),
-                          child: Container(
-                            color: const Color(0xFF009015),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 4.0,
-                              vertical: 4,
-                            ),
-                            child: const Text(
-                              '折扣剩余7天',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      //  遮罩层
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        height: overlayHeight,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.black.withValues(alpha: 0),
-                                Colors.black.withValues(alpha: 30),
-                              ],
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: nameBottomHeight,
-                        left: leftWidth,
-                        child: Text(
-                          gameInfo.gameChineseName,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: leftWidth,
-                        bottom: promoTagHeight,
-                        child: PriceTag(
-                          gamePrice: gameInfo.gamePrice,
-                          tags: gameInfo.priceRightTags,
-                          dimBackground: true,
-                        ),
-                      ),
-                      Positioned(
-                        left: leftWidth,
-                        bottom: categoryTagHeight,
-                        child: Row(
-                          children: gameInfo.gameTags
-                              .asMap()
-                              .entries
-                              .map((entry) {
-                                int index = entry.key;
-                                String tag = entry.value;
-                                List<Widget> widgets = [
-                                  Text(
-                                    tag,
-                                    style: const TextStyle(
-                                      fontSize: 8,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ];
-                                if (index < gameInfo.gameTags.length - 1) {
-                                  widgets.add(
-                                    const Text(
-                                      ' | ',
-                                      style: TextStyle(
-                                        fontSize: 8,
-                                        color: Colors.white70,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                return Row(children: widgets);
-                              })
-                              .expand((widget) => [widget])
-                              .toList(),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
+                return _buildGameCard(gameInfo);
               },
             ),
           ),
         ),
       ],
+    );
+  }
+
+  Container _buildGameCard(GameInfo gameInfo) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      width: itemWidth,
+      height: itemHeight,
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.network(
+              gameInfo.gameScreenshots[0],
+              width: itemWidth,
+              height: itemHeight,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(8.0),
+                topLeft: Radius.circular(8.0),
+              ),
+              child: Container(
+                color: const Color(0xFF009015),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4.0,
+                  vertical: 4,
+                ),
+                child: const Text(
+                  '折扣剩余7天',
+                  style: TextStyle(fontSize: 10, color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+          //  遮罩层
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: overlayHeight,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black.withValues(alpha: 0),
+                    Colors.black.withValues(alpha: 30),
+                  ],
+                ),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: nameBottomHeight,
+            left: leftWidth,
+            child: Text(
+              gameInfo.gameChineseName,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          Positioned(
+            left: leftWidth,
+            bottom: promoTagHeight,
+            child: PriceTag(
+              gamePrice: gameInfo.gamePrice,
+              tags: gameInfo.priceRightTags,
+              dimBackground: true,
+            ),
+          ),
+          Positioned(
+            left: leftWidth,
+            bottom: categoryTagHeight,
+            child: Row(
+              children: gameInfo.gameTags
+                  .asMap()
+                  .entries
+                  .map((entry) {
+                    int index = entry.key;
+                    String tag = entry.value;
+                    List<Widget> widgets = [
+                      Text(
+                        tag,
+                        style: const TextStyle(
+                          fontSize: 8,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ];
+                    if (index < gameInfo.gameTags.length - 1) {
+                      widgets.add(
+                        const Text(
+                          ' | ',
+                          style: TextStyle(fontSize: 8, color: Colors.white70),
+                        ),
+                      );
+                    }
+                    return Row(children: widgets);
+                  })
+                  .expand((widget) => [widget])
+                  .toList(),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
