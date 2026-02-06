@@ -62,19 +62,20 @@ class _PromotionForGodState extends State<PromotionForGod> {
   /// 吸附逻辑
   void _handleSnapToItem() {
     if (_isAnimating) return;
-
+    //列表向左滚动了多少像素
     double currentOffset = _scrollController.offset;
+    //计算当前处于当前视口最左侧的卡片索引
     int currentIndex = (currentOffset / itemTotalWidth).floor();
+    //计算当前左侧卡片的中心位置的偏移量（相对于列表起点的偏移量）
     double centerOffset = currentIndex * itemTotalWidth + itemWidth / 2;
-    double screenLeftEdgeOffset = currentOffset;
 
     int targetIndex;
-    if (centerOffset <= screenLeftEdgeOffset) {
+    if (centerOffset <= currentOffset) {
       targetIndex = currentIndex + 1;
     } else {
       targetIndex = currentIndex;
     }
-    // 边界处理
+    // 边界处理 clamp(min, max)：把数值限制在min和max之间
     targetIndex = targetIndex.clamp(0, _gameList.length - 1);
     double targetOffset = targetIndex * itemTotalWidth;
     // 执行平滑滚动
