@@ -30,7 +30,7 @@ class _PromotionForGodState extends State<PromotionForGod> {
   final double itemWidth = 200.0;
 
   //单个条目高度
-  final double itemHeight = 280.0;
+  final double itemHeight = 300.0;
 
   //文字和标签距离左侧
   final double leftWidth = 10.0;
