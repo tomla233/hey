@@ -138,10 +138,10 @@ class _GameRecommendState extends State<GameRecommend> {
             return _buildSalesRankingItem(const SalesRanking());
           } else if (index == 5) {
             //促销神作
-            return _buildChildItem(PromotionForGod());
+            return _buildChildItem(const PromotionForGod());
           } else if (index == 6) {
             //安利墙
-            return _buildChildItem(const AmwayWall());
+            return _buildChildItem(AmwayWall());
           } else {
             //为你推荐更多
             GameInfo gameInfo = _gameList[index - 7];

@@ -4,41 +4,30 @@ import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
-class AmwayWall extends StatefulWidget {
-  const AmwayWall({super.key});
+class AmwayWall extends StatelessWidget {
+  AmwayWall({super.key});
 
-  @override
-  State<AmwayWall> createState() => _AmwayWallState();
-}
-
-class _AmwayWallState extends State<AmwayWall> {
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
 
   final List<GameInfo> _gameList = GameService().gameInfoList.toList();
-  //卡片水平padding
-  final double cardHPadding = 10;
-  //卡片的宽度=屏幕宽度-卡片padding*2-左右两侧凸出内容宽度
-  late final double cardWidth =
-      MediaQuery.of(context).size.width - cardHPadding * 2 - 80;
-  //卡片高度
-  final double cardHeight = 240;
-  //卡片顶部图片高度
-  late final double imageHeight = cardHeight * 2 / 5;
-  //小图片宽度
-  late final double smallImageWidth = cardWidth / 4;
-  //外部容器以及图片圆角
-  final double commonRadius = 8;
+  final double cardHPadding = 10; // 卡片水平间距
+  final double cardHeight = 240; // 卡片高度
+  final double commonRadius = 8; // 圆角
+  final double singleSideExpose = 40; // 单侧露边宽度
 
-  ///构建安利墙卡片
-  Widget _buildAmwayWallCard(GameInfo gameInfo) {
+  /// 构建安利墙卡片
+  Widget _buildAmwayWallCard(GameInfo gameInfo, double cardWidth) {
+    final double imageHeight = cardHeight * 2 / 5;
+    final double smallImageWidth = cardWidth / 4;
+
     return Container(
       height: cardHeight,
       width: cardWidth,
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.red,
         boxShadow: [
           BoxShadow(
             color: Colors.grey[100]!,
@@ -54,6 +43,8 @@ class _AmwayWallState extends State<AmwayWall> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double cardWidth = screenWidth - singleSideExpose * 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -87,15 +78,20 @@ class _AmwayWallState extends State<AmwayWall> {
         const SizedBox(height: 10),
         SizedBox(
           height: cardHeight,
-          child: ListView.separated(
+          child: PageView.builder(
             itemCount: _gameList.length,
             scrollDirection: Axis.horizontal,
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(width: cardHPadding);
-            },
+            padEnds: true,
+            controller: PageController(
+              initialPage: 2,
+              viewportFraction: cardWidth / screenWidth,
+            ),
             itemBuilder: (BuildContext context, int index) {
               GameInfo gameInfo = _gameList[index];
-              return _buildAmwayWallCard(gameInfo);
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: cardHPadding / 2),
+                child: _buildAmwayWallCard(gameInfo, cardWidth),
+              );
             },
           ),
         ),
