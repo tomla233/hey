@@ -1,21 +1,59 @@
 //安利墙
 import 'package:flutter/material.dart';
+import 'package:hey/mock/GameService.dart';
+import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
-class AmwayWall extends StatelessWidget {
+class AmwayWall extends StatefulWidget {
   const AmwayWall({super.key});
-void _onMoreTap() {
+
+  @override
+  State<AmwayWall> createState() => _AmwayWallState();
+}
+
+class _AmwayWallState extends State<AmwayWall> {
+  void _onMoreTap() {
     MsgUtil.show('更多');
   }
+
+  final List<GameInfo> _gameList = GameService().gameInfoList.toList();
+  //卡片水平padding
+  final double cardHPadding = 10;
+  //卡片的宽度=屏幕宽度-卡片padding*2-左右两侧凸出内容宽度
+  late final double cardWidth =
+      MediaQuery.of(context).size.width - cardHPadding * 2 - 80;
+  //卡片高度
+  final double cardHeight = 240;
+  //卡片顶部图片高度
+  late final double imageHeight = cardHeight * 2 / 5;
+  //小图片宽度
+  late final double smallImageWidth = cardWidth / 4;
+  //外部容器以及图片圆角
+  final double commonRadius = 8;
+
+  ///构建安利墙卡片
+  Widget _buildAmwayWallCard(GameInfo gameInfo) {
+    return Container(
+      height: cardHeight,
+      width: cardWidth,
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey[100]!,
+            blurRadius: commonRadius,
+            offset: const Offset(0, 2),
+            spreadRadius: 0.5,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(commonRadius),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // 统一上左右padding
-    final double hPadding = 10;
-    //列之间的水平间距
-    final double hSpacing = 14;
-    // 计算每个卡片的宽度
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double cardWidth = (screenWidth - hPadding * 2 - hSpacing * 4) / 4;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,7 +85,20 @@ void _onMoreTap() {
           ],
         ),
         const SizedBox(height: 10),
-        const Text('data'),
+        SizedBox(
+          height: cardHeight,
+          child: ListView.separated(
+            itemCount: _gameList.length,
+            scrollDirection: Axis.horizontal,
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(width: cardHPadding);
+            },
+            itemBuilder: (BuildContext context, int index) {
+              GameInfo gameInfo = _gameList[index];
+              return _buildAmwayWallCard(gameInfo);
+            },
+          ),
+        ),
       ],
     );
   }

@@ -74,7 +74,10 @@ class _GameRecommendState extends State<GameRecommend> {
   }
 
   Widget _buildGameItem(GameInfo gameInfo) {
-    return const Text('游戏推荐');
+    return Padding(
+      padding: EdgeInsets.only(top: 20, left: padding, right: padding),
+      child: const Text('游戏推荐'),
+    );
   }
 
   Widget _buildChildItem(Widget widget) {
