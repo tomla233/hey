@@ -35,7 +35,6 @@ class RecommendForYou extends StatelessWidget {
               '为你推荐',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            const Spacer(),
             GestureDetector(
               onTap: _onMoreTap,
               child: const Row(

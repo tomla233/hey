@@ -23,10 +23,9 @@ void _onMoreTap() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              '标题',
+              '安利墙',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            const Spacer(),
             GestureDetector(
               onTap: _onMoreTap,
               child: const Row(
