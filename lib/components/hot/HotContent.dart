@@ -89,7 +89,7 @@ class _HotContentState extends State<HotContent> {
     final List<SliderInfo> sliderList = HotService().sliderList;
     return Column(
       children: [
-        CustomCarouselSlider(sliderList: sliderList),
+        CustomCarouselSlider(sliderList: sliderList,isActive: true,),
         ListView.builder(
           //收缩包裹内容
           shrinkWrap: true,

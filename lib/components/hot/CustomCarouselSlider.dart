@@ -9,13 +9,14 @@ class CustomCarouselSlider extends StatefulWidget {
   final double? sliderHeight;
   final bool? showTitle;
   final bool? autoPlay;
-
+  final bool isActive;
   const CustomCarouselSlider({
     super.key,
     required this.sliderList,
     this.sliderHeight = 180.0,
     this.showTitle = true,
     this.autoPlay = true,
+    required this.isActive,
   });
 
   @override
@@ -91,6 +92,25 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
   void dispose() {
     _disposeVideo();
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant CustomCarouselSlider oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    // 🔴 从 active → inactive
+    if (oldWidget.isActive && !widget.isActive) {
+      _resetVideoUI();
+    }
+  }
+
+  void _resetVideoUI() {
+    _controller?.pause();
+    setState(() {
+      _isPlaying = false;
+      _isInitialized = false; // ⭐ 必须
+      _isInitializing = false;
+    });
   }
 
   String? _getCoverUrl(SliderInfo item) {
@@ -177,10 +197,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                     ),
 
                   /// ▶️ 播放按钮
-                  if (isVideo &&
-                      isCurrent &&
-                      !_isInitializing &&
-                      !_isPlaying)
+                  if (isVideo && isCurrent && !_isInitializing && !_isPlaying)
                     Container(
                       width: 56,
                       height: 56,
@@ -231,8 +248,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 width: _currentIndex == index ? 16 : 8,
                 height: 3,
                 decoration: BoxDecoration(
-                  color:
-                      _currentIndex == index ? Colors.white : Colors.white38,
+                  color: _currentIndex == index ? Colors.white : Colors.white38,
                   borderRadius: BorderRadius.circular(2),
                 ),
               );

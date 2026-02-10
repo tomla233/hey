@@ -120,6 +120,7 @@ class _GameRecommendState extends State<GameRecommend> {
           if (index == 0) {
             //轮播图
             return CustomCarouselSlider(
+              isActive: true,
               sliderList: sliderList,
               sliderHeight: 60,
               showTitle: false,

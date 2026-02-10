@@ -6,21 +6,33 @@ import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/models/hot/SliderInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
-class AmwayWall extends StatelessWidget {
+class AmwayWall extends StatefulWidget {
   AmwayWall({super.key});
 
+  @override
+  State<AmwayWall> createState() => _AmwayWallState();
+}
+
+class _AmwayWallState extends State<AmwayWall> {
+  int _currentPage = 0;
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
+
   final List<SliderInfo> sliderList = GameService().sliderList.toList();
+
   final List<GameInfo> _gameList = GameService().gameInfoList.toList();
-  final double cardHPadding = 10; // 卡片水平间距
-  final double cardHeight = 280; // 卡片高度
-  final double commonRadius = 8; // 圆角
-  final double singleSideExpose = 30; // 单侧露边宽度
+
+  final double cardHPadding = 10;
+  // 卡片水平间距
+  final double cardHeight = 280;
+  // 卡片高度
+  final double commonRadius = 8;
+  // 圆角
+  final double singleSideExpose = 30;
 
   /// 构建安利墙卡片
-  Widget _buildAmwayWallCard(GameInfo gameInfo, double cardWidth) {
+  Widget _buildAmwayWallCard(GameInfo gameInfo, double cardWidth, int index) {
     final double imageHeight = cardHeight * 2 / 5;
     final double smallImageWidth = cardWidth / 4;
 
@@ -64,6 +76,7 @@ class AmwayWall extends StatelessWidget {
                       sliderList: sliderList,
                       showTitle: false,
                       autoPlay: false,
+                      isActive: index == _currentPage,
                     ),
                     // child: Image.network(
                     //   gameInfo.gameScreenshots[1],
@@ -120,6 +133,11 @@ class AmwayWall extends StatelessWidget {
         SizedBox(
           height: cardHeight,
           child: PageView.builder(
+            onPageChanged: (index) {
+              setState(() {
+                _currentPage = index;
+              });
+            },
             itemCount: _gameList.length,
             scrollDirection: Axis.horizontal,
             padEnds: true,
@@ -131,7 +149,7 @@ class AmwayWall extends StatelessWidget {
               GameInfo gameInfo = _gameList[index];
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: cardHPadding / 2),
-                child: _buildAmwayWallCard(gameInfo, cardWidth),
+                child: _buildAmwayWallCard(gameInfo, cardWidth,index),
               );
             },
           ),
