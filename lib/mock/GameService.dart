@@ -1,5 +1,6 @@
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/models/game/TagCardEntity.dart';
+import 'package:hey/models/hot/SliderInfo.dart';
 
 class GameService {
   GameService._();
@@ -200,5 +201,28 @@ class GameService {
     TagCardEntity(tagName: 'CS2战绩', tagIcon: 'lib/assets/box.png'),
     TagCardEntity(tagName: '开箱统计', tagIcon: 'lib/assets/box.png'),
     TagCardEntity(tagName: '更多', tagIcon: 'lib/assets/all.png'),
+  ];
+  //轮播图数据
+  final List<SliderInfo> sliderList = [
+    SliderInfo(
+      communityId: '1',
+      videoUrl: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4',
+      title: 'DLC正式上线，你还在等什么？一起加入吧！',
+    ),
+    SliderInfo(
+      communityId: '2',
+      videoUrl: 'https://www.w3school.com.cn/example/html5/mov_bbb.mp4',
+      title: 'DLC正式上线，你还在等什么？一起加入吧！',
+    ),
+    SliderInfo(
+      communityId: '3',
+      imageUrl: 'https://i0.hdslb.com/bfs/new_dyn/3034073cc027d3314dddf39f30d3b06c626510519.jpg@1192w.avif',
+      title: '挚爱，我的女主角',
+    ),
+    SliderInfo(
+      communityId: '4',
+      imageUrl: 'https://i0.hdslb.com/bfs/new_dyn/5fe72304a5b46efb51d27724a0065807626510519.jpg@1192w.avif',
+      title: '千恋万花太好玩了，我想和你分享一下,千恋万花太好玩了，我想和你分享一下',
+    ),
   ];
 }

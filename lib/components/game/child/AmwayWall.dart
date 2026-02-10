@@ -1,7 +1,9 @@
 //安利墙
 import 'package:flutter/material.dart';
+import 'package:hey/components/hot/CustomCarouselSlider.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameInfo.dart';
+import 'package:hey/models/hot/SliderInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
 class AmwayWall extends StatelessWidget {
@@ -10,7 +12,7 @@ class AmwayWall extends StatelessWidget {
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
-
+  final List<SliderInfo> sliderList = GameService().sliderList.toList();
   final List<GameInfo> _gameList = GameService().gameInfoList.toList();
   final double cardHPadding = 10; // 卡片水平间距
   final double cardHeight = 280; // 卡片高度
@@ -58,12 +60,17 @@ class AmwayWall extends StatelessWidget {
                 Expanded(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(commonRadius),
-                    child: Image.network(
-                      gameInfo.gameScreenshots[1],
-                      width: double.infinity,
-                      height: imageHeight,
-                      fit: BoxFit.cover,
+                    child: CustomCarouselSlider(
+                      sliderList: sliderList,
+                      showTitle: false,
+                      autoPlay: false,
                     ),
+                    // child: Image.network(
+                    //   gameInfo.gameScreenshots[1],
+                    //   width: double.infinity,
+                    //   height: imageHeight,
+                    //   fit: BoxFit.cover,
+                    // ),
                   ),
                 ),
               ],
