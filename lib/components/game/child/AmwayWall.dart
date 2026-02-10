@@ -7,7 +7,7 @@ import 'package:hey/models/hot/SliderInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
 
 class AmwayWall extends StatefulWidget {
-  AmwayWall({super.key});
+  const AmwayWall({super.key});
 
   @override
   State<AmwayWall> createState() => _AmwayWallState();
@@ -79,12 +79,6 @@ class _AmwayWallState extends State<AmwayWall> {
                       autoPlay: false,
                       isActive: index == _currentPage,
                     ),
-                    // child: Image.network(
-                    //   gameInfo.gameScreenshots[1],
-                    //   width: double.infinity,
-                    //   height: imageHeight,
-                    //   fit: BoxFit.cover,
-                    // ),
                   ),
                 ),
               ],

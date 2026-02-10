@@ -228,10 +228,6 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                             Colors.black.withValues(alpha: 0.6),
                           ],
                         ),
-                        // borderRadius: const BorderRadius.only(
-                        //   bottomLeft: Radius.circular(8),
-                        //   bottomRight: Radius.circular(8),
-                        // ),
                       ),
                     ),
                   ),
