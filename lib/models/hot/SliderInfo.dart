@@ -2,12 +2,14 @@ class SliderInfo {
   final String communityId;
   final String? imageUrl;
   final String? videoUrl;
+  final String? videoCoverUrl;
   final String? title;
 
   SliderInfo({
     required this.communityId,
     this.imageUrl,
     this.videoUrl,
+    this.videoCoverUrl,
     this.title,
   });
   factory SliderInfo.fromJson(Map<String, dynamic> json) {
@@ -15,6 +17,7 @@ class SliderInfo {
       communityId: json['communityId'],
       imageUrl: json['imageUrl'],
       videoUrl: json['videoUrl'],
+      videoCoverUrl: json['videoCoverUrl'],
       title: json['title'],
     );
   }

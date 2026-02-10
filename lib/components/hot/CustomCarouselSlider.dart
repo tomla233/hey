@@ -87,6 +87,15 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
     super.dispose();
   }
 
+  String? _getCoverUrl(SliderInfo item) {
+    if (_isVideo(item.videoUrl)) {
+      // 视频：优先用 videoCoverUrl
+      return item.videoCoverUrl ?? item.imageUrl;
+    }
+    // 普通图片
+    return item.imageUrl;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -126,14 +135,20 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                   if (isVideo && isCurrent && _isInitialized)
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: AspectRatio(
-                        aspectRatio: _controller!.value.aspectRatio,
-                        child: VideoPlayer(_controller!),
+                      child: SizedBox.expand(
+                        child: FittedBox(
+                          fit: BoxFit.cover,
+                          child: SizedBox(
+                            width: _controller!.value.size.width,
+                            height: _controller!.value.size.height,
+                            child: VideoPlayer(_controller!),
+                          ),
+                        ),
                       ),
                     )
                   else
                     Image.network(
-                      item.imageUrl ?? '',
+                      _getCoverUrl(item) ?? '',
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,

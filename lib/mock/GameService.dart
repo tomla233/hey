@@ -207,11 +207,13 @@ class GameService {
     SliderInfo(
       communityId: '1',
       videoUrl: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4',
+      videoCoverUrl: 'https://i0.hdslb.com/bfs/new_dyn/3034073cc027d3314dddf39f30d3b06c626510519.jpg@1192w.avif',
       title: 'DLC正式上线，你还在等什么？一起加入吧！',
     ),
     SliderInfo(
       communityId: '2',
       videoUrl: 'https://www.w3school.com.cn/example/html5/mov_bbb.mp4',
+      videoCoverUrl: 'https://i0.hdslb.com/bfs/new_dyn/5fe72304a5b46efb51d27724a0065807626510519.jpg@1192w.avif',
       title: 'DLC正式上线，你还在等什么？一起加入吧！',
     ),
     SliderInfo(
