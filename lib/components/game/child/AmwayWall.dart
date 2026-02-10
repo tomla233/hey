@@ -1,6 +1,7 @@
 //安利墙
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CustomCarouselSlider.dart';
+import 'package:hey/components/game/child/StarRating.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/models/hot/SliderInfo.dart';
@@ -25,11 +26,9 @@ class _AmwayWallState extends State<AmwayWall> {
   final List<GameInfo> _gameList = GameService().gameInfoList.toList();
 
   final double cardHPadding = 10;
-  // 卡片水平间距
   final double cardHeight = 280;
-  // 卡片高度
   final double commonRadius = 8;
-  // 圆角
+  // 两侧分别露出宽度
   final double singleSideExpose = 30;
 
   /// 构建安利墙卡片
@@ -85,6 +84,7 @@ class _AmwayWallState extends State<AmwayWall> {
             ),
           ),
           const SizedBox(height: 10),
+          const StarRating(rating: 5,starSize: 12,)
         ],
       ),
     );
