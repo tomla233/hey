@@ -124,9 +124,12 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 children: [
                   /// 视频
                   if (isVideo && isCurrent && _isInitialized)
-                    AspectRatio(
-                      aspectRatio: _controller!.value.aspectRatio,
-                      child: VideoPlayer(_controller!),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: AspectRatio(
+                        aspectRatio: _controller!.value.aspectRatio,
+                        child: VideoPlayer(_controller!),
+                      ),
                     )
                   else
                     Image.network(
@@ -168,10 +171,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           shadows: [
-                            Shadow(
-                              blurRadius: 2,
-                              color: Colors.black54,
-                            ),
+                            Shadow(blurRadius: 2, color: Colors.black54),
                           ],
                         ),
                       ),
@@ -193,9 +193,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 width: _currentIndex == index ? 16 : 8,
                 height: 3,
                 decoration: BoxDecoration(
-                  color: _currentIndex == index
-                      ? Colors.white
-                      : Colors.white38,
+                  color: _currentIndex == index ? Colors.white : Colors.white38,
                   borderRadius: BorderRadius.circular(2),
                 ),
               );
