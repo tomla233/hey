@@ -14,7 +14,7 @@ class AmwayWall extends StatefulWidget {
 }
 
 class _AmwayWallState extends State<AmwayWall> {
-  int _currentPage = 0;
+  int _currentPage = 2;
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
