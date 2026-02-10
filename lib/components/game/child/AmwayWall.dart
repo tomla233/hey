@@ -15,6 +15,7 @@ class AmwayWall extends StatefulWidget {
 
 class _AmwayWallState extends State<AmwayWall> {
   int _currentPage = 2;
+  int _initialPage = 2;
   void _onMoreTap() {
     MsgUtil.show('更多');
   }
@@ -142,7 +143,7 @@ class _AmwayWallState extends State<AmwayWall> {
             scrollDirection: Axis.horizontal,
             padEnds: true,
             controller: PageController(
-              initialPage: 2,
+              initialPage: _initialPage,
               viewportFraction: cardWidth / screenWidth,
             ),
             itemBuilder: (BuildContext context, int index) {
