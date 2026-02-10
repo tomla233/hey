@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hey/components/hot/CustomCarouselSlider.dart';
+import 'package:hey/components/common/CustomCarouselSlider.dart';
 import 'package:hey/components/hot/HotPostItem.dart';
 import 'package:hey/mock/HotService.dart';
 import 'package:hey/mock/PostService.dart';

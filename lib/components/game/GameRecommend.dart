@@ -5,7 +5,7 @@ import 'package:hey/components/game/child/PromotionForGod.dart';
 import 'package:hey/components/game/child/RecommendForYou.dart';
 import 'package:hey/components/game/child/SalesRanking.dart';
 import 'package:hey/components/game/child/TagCard.dart';
-import 'package:hey/components/hot/CustomCarouselSlider.dart';
+import 'package:hey/components/common/CustomCarouselSlider.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/mock/HotService.dart';
 import 'package:hey/models/game/GameInfo.dart';

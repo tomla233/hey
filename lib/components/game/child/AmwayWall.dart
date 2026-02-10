@@ -1,6 +1,6 @@
 //安利墙
 import 'package:flutter/material.dart';
-import 'package:hey/components/hot/CustomCarouselSlider.dart';
+import 'package:hey/components/common/CustomCarouselSlider.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/models/hot/SliderInfo.dart';
