@@ -214,7 +214,7 @@ class _PromotionForGodState extends State<PromotionForGod> {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.black.withValues(alpha: 0),
-                    Colors.black.withValues(alpha: 30),
+                    Colors.black.withValues(alpha: 0.6),
                   ],
                 ),
                 borderRadius: const BorderRadius.only(

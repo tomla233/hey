@@ -25,7 +25,8 @@ class CustomCarouselSlider extends StatefulWidget {
 
 class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
   int _currentIndex = 0;
-
+  //遮罩层高度
+  double get overlayHeight => widget.sliderHeight == null? 60 : widget.sliderHeight! * 0.33;
   VideoPlayerController? _controller;
 
   bool _isPlaying = false;
@@ -176,7 +177,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) =>
+                      errorBuilder: (_, _, _) =>
                           Image.asset('lib/assets/box.png'),
                     ),
 
@@ -211,6 +212,29 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                         size: 36,
                       ),
                     ),
+                  //  遮罩层
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    height: overlayHeight,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.black.withValues(alpha: 0),
+                            Colors.black.withValues(alpha: 0.6),
+                          ],
+                        ),
+                        // borderRadius: const BorderRadius.only(
+                        //   bottomLeft: Radius.circular(8),
+                        //   bottomRight: Radius.circular(8),
+                        // ),
+                      ),
+                    ),
+                  ),
 
                   /// 标题
                   if (widget.showTitle == true)
