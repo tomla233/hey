@@ -9,6 +9,7 @@ class CustomCarouselSlider extends StatefulWidget {
   final double? sliderHeight;
   final bool? showTitle;
   final bool? autoPlay;
+
   const CustomCarouselSlider({
     super.key,
     required this.sliderList,
@@ -25,8 +26,10 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
   int _currentIndex = 0;
 
   VideoPlayerController? _controller;
+
   bool _isPlaying = false;
   bool _isInitialized = false;
+  bool _isInitializing = false; // ⭐ 加载中状态
 
   bool _isVideo(String? url) {
     if (url == null) return false;
@@ -35,50 +38,53 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
         url.endsWith('.webm');
   }
 
-  /// 初始化并播放视频
-  void _playVideo(String videoUrl) async {
-    // 如果已经有视频在播 → 切换为暂停
+  /// 点击播放
+  Future<void> _playVideo(String videoUrl) async {
+    // 已初始化 → 切换播放/暂停
     if (_controller != null && _isInitialized) {
       if (_isPlaying) {
-        _controller!.pause();
-        setState(() {
-          _isPlaying = false;
-        });
-        return;
+        await _controller!.pause();
+        setState(() => _isPlaying = false);
       } else {
-        _controller!.play();
-        setState(() {
-          _isPlaying = true;
-        });
-        return;
+        await _controller!.play();
+        setState(() => _isPlaying = true);
       }
+      return;
     }
 
-    // 第一次点击：创建 controller
+    // 初始化中，直接 return，防止重复点击
+    if (_isInitializing) return;
+
+    setState(() {
+      _isInitializing = true;
+    });
+
     _controller = VideoPlayerController.networkUrl(Uri.parse(videoUrl));
 
     try {
       await _controller!.initialize();
-      _controller!
-        ..setLooping(true)
-        ..play();
+      await _controller!.setLooping(true);
+      await _controller!.play();
 
       setState(() {
         _isInitialized = true;
         _isPlaying = true;
+        _isInitializing = false;
       });
     } catch (e) {
       debugPrint('Video init error: $e');
+      _disposeVideo();
     }
   }
 
-  /// 切页 / 退出时释放
   void _disposeVideo() {
     _controller?.pause();
     _controller?.dispose();
     _controller = null;
-    _isInitialized = false;
+
     _isPlaying = false;
+    _isInitialized = false;
+    _isInitializing = false;
   }
 
   @override
@@ -89,10 +95,8 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
 
   String? _getCoverUrl(SliderInfo item) {
     if (_isVideo(item.videoUrl)) {
-      // 视频：优先用 videoCoverUrl
       return item.videoCoverUrl ?? item.imageUrl;
     }
-    // 普通图片
     return item.imageUrl;
   }
 
@@ -109,7 +113,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             autoPlayInterval: const Duration(seconds: 3),
             onPageChanged: (index, reason) {
               setState(() {
-                _disposeVideo(); // 🔴 切页必须销毁
+                _disposeVideo();
                 _currentIndex = index;
               });
             },
@@ -131,7 +135,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  /// 视频
+                  /// 🎬 视频播放
                   if (isVideo && isCurrent && _isInitialized)
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8),
@@ -156,8 +160,27 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                           Image.asset('lib/assets/box.png'),
                     ),
 
-                  /// ▶️ 播放按钮（未播放 or 已暂停）
-                  if (isVideo && (!_isPlaying || !_isInitialized))
+                  /// ⏳ 加载中
+                  if (isVideo && isCurrent && _isInitializing)
+                    Container(
+                      width: 56,
+                      height: 56,
+                      decoration: const BoxDecoration(
+                        color: Colors.black54,
+                        shape: BoxShape.circle,
+                      ),
+                      padding: const EdgeInsets.all(14),
+                      child: const CircularProgressIndicator(
+                        strokeWidth: 3,
+                        color: Colors.white,
+                      ),
+                    ),
+
+                  /// ▶️ 播放按钮
+                  if (isVideo &&
+                      isCurrent &&
+                      !_isInitializing &&
+                      !_isPlaying)
                     Container(
                       width: 56,
                       height: 56,
@@ -208,7 +231,8 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 width: _currentIndex == index ? 16 : 8,
                 height: 3,
                 decoration: BoxDecoration(
-                  color: _currentIndex == index ? Colors.white : Colors.white38,
+                  color:
+                      _currentIndex == index ? Colors.white : Colors.white38,
                   borderRadius: BorderRadius.circular(2),
                 ),
               );
