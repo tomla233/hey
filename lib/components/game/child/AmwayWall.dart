@@ -86,10 +86,72 @@ class _AmwayWallState extends State<AmwayWall> {
             ),
           ),
           const SizedBox(height: 10),
-          const StarRating(rating: 5, starSize: 12),
-          ScoreCard(
-            overallScore: gameComment.overallScore,
-            numbersOfScore: gameComment.numbersOfScore,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: Column(
+                          spacing: 2,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              gameComment.gameName,
+                              style: const TextStyle(
+                                color: Color(0xFF14191C),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Row(
+                              spacing: 5,
+                              children: [
+                                const StarRating(rating: 5, starSize: 14),
+                                CircleAvatar(
+                                  radius: 6,
+                                  backgroundImage: Image.network(
+                                    gameComment.authorAvatar,
+                                  ).image,
+                                ),
+                                Text(
+                                  gameComment.authorName,
+                                  style: const TextStyle(
+                                    color: Color(0xFF8C9195),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Text(
+                                  gameComment.playingTime,
+                                  style: const TextStyle(
+                                    color: Color(0xFF8C9195),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    ScoreCard(
+                      overallScore: gameComment.overallScore,
+                      numbersOfScore: gameComment.numbersOfScore,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
