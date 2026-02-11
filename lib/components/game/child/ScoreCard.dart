@@ -37,7 +37,7 @@ class ScoreCard extends StatelessWidget {
     final gradient = _getGradientByScore(overallScore);
     final double radius = 4.0;
     return Container(
-      width: 66,
+      width: 60,
       height: 50,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius)),
       child: Column(

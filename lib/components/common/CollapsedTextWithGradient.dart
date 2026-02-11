@@ -32,7 +32,7 @@ class CollapsedTextWithGradient extends StatelessWidget {
     this.maxLines = 3,
     this.expandText = '查看全文',
     this.expandTextStyle,
-    this.gradientWidth = 60.0,
+    this.gradientWidth = 70.0,
   });
 
   @override
@@ -47,7 +47,7 @@ class CollapsedTextWithGradient extends StatelessWidget {
         expandTextStyle ??
         const TextStyle(
           color: Color(0xFF0B4986),
-          fontSize: 14,
+          fontSize: 13,
           fontWeight: FontWeight.w500,
         );
 

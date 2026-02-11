@@ -30,7 +30,7 @@ class _AmwayWallState extends State<AmwayWall> {
   final List<GameInfo> _gameList = GameService().gameInfoList.toList();
 
   final double cardHPadding = 10;
-  final double cardHeight = 280;
+  final double cardHeight = 284;
   final double commonRadius = 8;
   // 两侧分别露出宽度
   final double singleSideExpose = 30;
@@ -106,19 +106,19 @@ class _AmwayWallState extends State<AmwayWall> {
                       child: SizedBox(
                         height: 50,
                         child: Column(
-                          spacing: 2,
+                          spacing: 8,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               gameComment.gameName,
                               style: const TextStyle(
                                 color: Color(0xFF14191C),
-                                fontSize: 14,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             Row(
-                              spacing: 5,
+                              spacing: 3,
                               children: [
                                 const StarRating(rating: 5, starSize: 14),
                                 CircleAvatar(
@@ -174,8 +174,8 @@ class _AmwayWallState extends State<AmwayWall> {
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 2,
-                    vertical: 2,
+                    horizontal: 4,
+                    vertical: 4,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
@@ -190,11 +190,11 @@ class _AmwayWallState extends State<AmwayWall> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 4),
+                const SizedBox(width: 6),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 2,
-                    vertical: 2,
+                    horizontal: 4,
+                    vertical: 4,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
