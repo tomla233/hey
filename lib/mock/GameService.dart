@@ -293,7 +293,7 @@ class GameService {
         authorName: '小包子',
         authorAvatar: 'https://c-ssl.dtstatic.com/uploads/blog/202206/12/20220612164733_72d8b.thumb.400_0.jpg',
         commentTime: '2025-10-20',
-        commentContent: '千恋万花真的是柚子社巅峰之作，画风精致到每一帧都想截图，角色塑造鲜活立体，剧情甜虐交织又治愈。BGM 一响起氛围感直接拉满，多线叙事完整不拖沓，入坑 galgame 必玩的神作，越玩越上头。',
+        commentContent: '千恋万花真的是柚子社巅峰之作，画风精致到每一帧都想截图，角色塑造鲜活立体，剧情甜虐交织又治愈。',
         playingTime: '游玩 10 小时',
         rating: 5,
         overallScore: 9.8,

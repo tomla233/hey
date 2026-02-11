@@ -1,5 +1,6 @@
 //安利墙
 import 'package:flutter/material.dart';
+import 'package:hey/components/common/CollapsedTextWithGradient.dart';
 import 'package:hey/components/common/CustomCarouselSlider.dart';
 import 'package:hey/components/game/child/ScoreCard.dart';
 import 'package:hey/components/game/child/StarRating.dart';
@@ -32,6 +33,11 @@ class _AmwayWallState extends State<AmwayWall> {
   final double commonRadius = 8;
   // 两侧分别露出宽度
   final double singleSideExpose = 30;
+
+  ///点击全文事件
+  void _onTapViewAllText(GameComment gameComment) {
+    MsgUtil.show('点击了查看全文');
+  }
 
   /// 构建安利墙卡片
   Widget _buildAmwayWallCard(GameInfo gameInfo, double cardWidth, int index) {
@@ -90,9 +96,7 @@ class _AmwayWallState extends State<AmwayWall> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +113,7 @@ class _AmwayWallState extends State<AmwayWall> {
                               style: const TextStyle(
                                 color: Color(0xFF14191C),
                                 fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             Row(
@@ -152,6 +156,14 @@ class _AmwayWallState extends State<AmwayWall> {
                 ),
               ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: CollapsedTextWithGradient(
+              text: gameComment.commentContent,
+              
+              onExpand: () => _onTapViewAllText(gameComment),
+            ),
           ),
         ],
       ),
