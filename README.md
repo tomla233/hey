@@ -17,6 +17,8 @@
 
 - 震动插件：[vibration](https://pub.dev/packages/vibration)
 
+- 视频播放器：[video_player](https://pub.dev/packages/video_player)
+
 - 状态管理框架：[Mobx](https://mobx.netlify.app/getting-started)
     - 修改每个store文件后执行：`flutter pub run build_runner build`
     - 自动监听并构建*.g.dart文件：`flutter pub run build_runner watch`
