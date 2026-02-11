@@ -126,7 +126,7 @@ class _AmwayWallState extends State<AmwayWall> {
                                   gameComment.authorName,
                                   style: const TextStyle(
                                     color: Color(0xFF8C9195),
-                                    fontSize: 12,
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -134,7 +134,7 @@ class _AmwayWallState extends State<AmwayWall> {
                                   gameComment.playingTime,
                                   style: const TextStyle(
                                     color: Color(0xFF8C9195),
-                                    fontSize: 12,
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
