@@ -1,3 +1,5 @@
+import 'package:hey/models/game/GameComment.dart';
+
 class GameInfo {
   // 游戏ID
   String gameId;
@@ -41,6 +43,8 @@ class GameInfo {
   String qqGroup;
   //系列
   String series;
+  //游戏安利墙评论
+  GameComment? gameComment;
 
   GameInfo({
     required this.gameId,
@@ -64,6 +68,7 @@ class GameInfo {
     required this.publisher,
     required this.qqGroup,
     required this.series,
+    this.gameComment
   }) : assert(priceRightTags.length == 4, 'priceRightTags 必须有四个元素');
 
   //todo factory
