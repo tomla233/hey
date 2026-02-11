@@ -1,8 +1,10 @@
 //安利墙
 import 'package:flutter/material.dart';
 import 'package:hey/components/common/CustomCarouselSlider.dart';
+import 'package:hey/components/game/child/ScoreCard.dart';
 import 'package:hey/components/game/child/StarRating.dart';
 import 'package:hey/mock/GameService.dart';
+import 'package:hey/models/game/GameComment.dart';
 import 'package:hey/models/game/GameInfo.dart';
 import 'package:hey/models/hot/SliderInfo.dart';
 import 'package:hey/utils/MsgUtil.dart';
@@ -35,7 +37,7 @@ class _AmwayWallState extends State<AmwayWall> {
   Widget _buildAmwayWallCard(GameInfo gameInfo, double cardWidth, int index) {
     final double imageHeight = cardHeight * 2 / 5;
     final double smallImageWidth = cardWidth / 4;
-
+    final GameComment gameComment = gameInfo.gameComment!;
     return Container(
       height: cardHeight,
       width: cardWidth,
@@ -84,7 +86,11 @@ class _AmwayWallState extends State<AmwayWall> {
             ),
           ),
           const SizedBox(height: 10),
-          const StarRating(rating: 5,starSize: 12,)
+          const StarRating(rating: 5, starSize: 12),
+          ScoreCard(
+            overallScore: gameComment.overallScore,
+            numbersOfScore: gameComment.numbersOfScore,
+          ),
         ],
       ),
     );
@@ -144,7 +150,7 @@ class _AmwayWallState extends State<AmwayWall> {
               GameInfo gameInfo = _gameList[index];
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: cardHPadding / 2),
-                child: _buildAmwayWallCard(gameInfo, cardWidth,index),
+                child: _buildAmwayWallCard(gameInfo, cardWidth, index),
               );
             },
           ),
