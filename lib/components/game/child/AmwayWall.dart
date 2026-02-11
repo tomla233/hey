@@ -4,6 +4,7 @@ import 'package:hey/components/common/CollapsedTextWithGradient.dart';
 import 'package:hey/components/common/CustomCarouselSlider.dart';
 import 'package:hey/components/game/child/ScoreCard.dart';
 import 'package:hey/components/game/child/StarRating.dart';
+import 'package:hey/constant/ColorConstants.dart';
 import 'package:hey/mock/GameService.dart';
 import 'package:hey/models/game/GameComment.dart';
 import 'package:hey/models/game/GameInfo.dart';
@@ -132,6 +133,7 @@ class _AmwayWallState extends State<AmwayWall> {
                                     color: Color(0xFF8C9195),
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
+                                    height: 1.2,
                                   ),
                                 ),
                                 Text(
@@ -140,6 +142,7 @@ class _AmwayWallState extends State<AmwayWall> {
                                     color: Color(0xFF8C9195),
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
+                                    height: 1.2,
                                   ),
                                 ),
                               ],
@@ -161,8 +164,52 @@ class _AmwayWallState extends State<AmwayWall> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CollapsedTextWithGradient(
               text: gameComment.commentContent,
-              
+
               onExpand: () => _onTapViewAllText(gameComment),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 2,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: const Color(0xFFF8F8FA),
+                  ),
+                  child: Text(
+                    '${gameComment.ratioOfUseful}觉得有用 😃',
+                    style: const TextStyle(
+                      color: ColorConstants.primaryBlack,
+                      fontSize: 10,
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 2,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: const Color(0xFFF8F8FA),
+                  ),
+                  child: const Text(
+                    '好玩奖 2025',
+                    style: TextStyle(
+                      color: ColorConstants.primaryBlack,
+                      fontSize: 10,
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

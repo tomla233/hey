@@ -45,7 +45,11 @@ class CollapsedTextWithGradient extends StatelessWidget {
     // 默认"查看全文"样式
     final defaultExpandStyle =
         expandTextStyle ??
-        const TextStyle(color: Color(0xFF0B4986), fontSize: 14);
+        const TextStyle(
+          color: Color(0xFF0B4986),
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        );
 
     return Stack(
       clipBehavior: Clip.none,
